@@ -17,8 +17,12 @@ class AppController {
   }
   //Define as rotas da nossa Api
   routes() {
+    //URL base:
+    const apiRoutes = require("./routes/apiRoutes");
+    this.express.use("/projeto-de-agendamento/sala-de-aula/v1", apiRoutes);
+
     //Define uma rota GET para o caminho health
-    this.express.get("/health/", (req, res) => {
+    this.express.get("/projeto-de-agendamento/sala-de-aula/v1/health/", (req, res) => {
       res.send({ status: "OK" });
     }); //Essa rota é usada para verificar se a Api está OK
   }
