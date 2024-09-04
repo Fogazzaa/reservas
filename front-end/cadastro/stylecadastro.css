@@ -1,0 +1,54 @@
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif; 
+    text-align: center;
+    background-image: url("../../img/fundo.png"); /* Certifique-se de que o caminho está correto */
+    background-size: cover; /* Redimensiona a imagem para cobrir toda a área do body */
+    background-repeat: no-repeat; /* Impede que a imagem se repita */
+    background-position: center center; /* Centraliza a imagem na tela */
+    background-attachment: fixed; /* Mantém a imagem fixa enquanto o conteúdo rola */
+    color: whitesmoke; /* Cor do texto */
+    height: 100%; /* Garante que o body ocupe a altura total da viewport */
+    margin: 0;
+}
+
+header h3{
+    top: 10%;
+    left: 43.5%;
+    position: absolute;
+}
+
+header button{
+    top: 70%;
+    right: 50%;
+    position: absolute;
+    color: white;
+    background-color: rgb(210, 16, 16);
+    padding: 7px 8px; /* define o espaço interno  do botão em 10px (verical) e 20px (horizontal) */
+    border-radius: 10px; /* arredonda os cantos do botão */
+    border-color: transparent;
+    cursor: pointer; /* define o cursor como ponteiro ao passar pelo botão */
+}
+
+section img{
+    position: absolute;
+    left: 20px; 
+    top: 30px;
+    width: 14%;
+}
+
+.rectangle {
+    position: absolute; /* Posiciona o retângulo vertical em relação ao body */
+    top: 40%;
+    left: 40%;
+    width: 200px; /* Largura do retângulo vertical */
+    height: 250px; /* Altura do retângulo vertical */
+    background-color: #D9D9D9; /* Cor de fundo do retângulo, ajustável conforme necessário */
+    border-radius: 10px; /* Bordas arredondadas */
+    z-index: 0; /* Faz com que o retângulo esteja na frente do fundo */
+}
