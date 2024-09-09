@@ -7,6 +7,7 @@ class AppController {
     //criar a instância do Express dentro da classe
     this.express = express();
     //Chama o método middlewares para configurar os middlewares
+    //middlewares:Permite a comunicação e o gerenciamento de dados para aplicativos distribuídos
     this.middlewares();
     //Chama o método routes para definir as rotas da Api
     this.routes();
