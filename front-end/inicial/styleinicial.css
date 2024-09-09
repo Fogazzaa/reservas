@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-image: url("../../img/fundo.png"); /* Certifique-se de que o caminho está correto */
+  background-size: cover; /* Redimensiona a imagem para cobrir toda a área do body */
+  background-repeat: no-repeat; /* Impede que a imagem se repita */
+  background-position: center center; /* Centraliza a imagem na tela */
+  background-attachment: fixed; /* Mantém a imagem fixa enquanto o conteúdo rola */
+  color: whitesmoke; /* Cor do texto */
+  height: 100%; /* Garante que o body ocupe a altura total da viewport */
+  margin: 0;
+}
+
+header button {
+  font-size: 16px;
+  top: 5%;
+  right: 5%;
+  position: absolute;
+  color: #ffffff;
+  background-color: rgb(211, 27, 27);
+  padding: 7px 8px; /* define o espaço interno  do botão em 10px (verical) e 20px (horizontal) */
+  border-radius: 10px; /* arredonda os cantos do botão */
+  border-color: transparent;
+  cursor: pointer; /* define o cursor como ponteiro ao passar pelo botão */
+}
+
+main button {
+  font-size: 16px;
+  top: 5%;
+  right: 10%;
+  position: absolute;
+  color: #ffffff;
+  background-color: rgb(211, 27, 27);
+  padding: 7px 8px; /* define o espaço interno  do botão em 10px (verical) e 20px (horizontal) */
+  border-radius: 10px; /* arredonda os cantos do botão */
+  border-color: transparent;
+  cursor: pointer; /* define o cursor como ponteiro ao passar pelo botão */
+}
+
+main img {
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  width: 14%;
+}
