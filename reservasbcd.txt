@@ -1,5 +1,5 @@
-\connect root@localhost
-foga_8472
+ \connect alunods@localhost:3306 
+ password: senai@604
 
 create database rs; 
 use rs;
