@@ -17,6 +17,10 @@ body {
   margin: 0;
 }
 
+header{
+  background-color: rgb(177, 16, 16);
+}
+
 header h3 {
   top: 10%;
   left: 43.5%;
