@@ -4,27 +4,27 @@
 create database rs; 
 use rs;
 create table if not exists usuario(
+		 id_usuario int primary key auto_increment,
      nome_usuario varchar(255) not null, 
-     email varchar(255) unique not null, 
-     id_usuario int primary key auto_increment,
+     email varchar(255) unique not null,
      NIF char(7) unique not null,
      senha varchar(255) not null
  );
 
 create table if not exists sala(
-     nome varchar(255) not null,
+     id_sala int primary key auto_increment,
+		 nome varchar(255) not null,
      descricao text, 
      bloco varchar(255) not null, 
-     id_sala int primary key auto_increment,
      tipo varchar(255) not null,
      status tinyint(1),
      capacidade int not null
  );
 
 create table if not exists agendamento(
+     id_agendamento int primary key auto_increment,
      fkid_sala int not null,
      fkid_usuario int not null,
-     id_agendamento int primary key auto_increment,
      horario_inicio time not null, 
      horario_fim time not null,
      tipo varchar(255) not null,
