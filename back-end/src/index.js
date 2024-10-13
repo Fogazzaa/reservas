@@ -1,4 +1,6 @@
 const express = require("express"); //importando o módolo express
+const cors = require("cors");
+const testConnect = require("./db/testConnect");
 
 //Define uma classe para organizar a lógica da aplicação
 class AppController {
@@ -11,22 +13,19 @@ class AppController {
     this.middlewares();
     //Chama o método routes para definir as rotas da Api
     this.routes();
+    testConnect();
   }
   middlewares() {
     //Permitir que a aplicação receba dados em formato JSON nas requisições(solicitação)
     this.express.use(express.json());
+    this.express.use(cors());
   }
   //Define as rotas da nossa Api
   routes() {
     //URL base:
     const apiRoutes = require("./routes/apiRoutes");
-    this.express.use("/projeto-de-agendamento/sala-de-aula/v1", apiRoutes);
-
-    //Define uma rota GET para o caminho health
-    //Então a rota será: http://localhost:5000/projeto-de-agendamento/sala-de-aula/v1/health
-    this.express.get("/projeto-de-agendamento/sala-de-aula/v1/health", (req, res) => {
-      res.send({ status: "OK" });
-    }); //Essa rota é usada para verificar se a Api está OK
+    this.express.use("/reservas/v1", apiRoutes);
+    //Então a rota será: http://localhost:5000/reservas/v1
   }
 }
 //Exportândo a instância de express configurada, para que seja acessada em outros arquivos
