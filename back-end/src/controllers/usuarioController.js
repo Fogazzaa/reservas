@@ -3,9 +3,9 @@ let id_usuario = 0;
 
 module.exports = class usuarioController {
   static async createUsuarios(req, res) {
-    const { NIF, email, senha, nome } = req.body;
+    const { NIF, email, senha, nome_usuario } = req.body;
 
-    if (!NIF || !email || !senha || !nome) {
+    if (!NIF || !email || !senha || !nome_usuario) {
       return res
         .status(400)
         .json({ error: "Todos os campos devem ser preenchidos" });
@@ -27,7 +27,7 @@ module.exports = class usuarioController {
     id_usuario = id_usuario + 1;
 
     // Cria e adiciona novo usuário
-    const novoUsuario = { NIF, email, senha, nome, id_usuario };
+    const novoUsuario = { NIF, email, senha, nome_usuario, id_usuario };
     usuarios.push(novoUsuario);
 
     return res
@@ -43,8 +43,8 @@ module.exports = class usuarioController {
 
   static async updateUsuario(req, res) {
     // desestrutura e recupera os dados enviados via corpo da requisição
-    const { NIF, email, senha, nome } = req.body;
-    if (!NIF || !email || !senha || !nome) {
+    const { NIF, email, senha, nome_usuario } = req.body;
+    if (!NIF || !email || !senha || !nome_usuario) {
       // valida se todos os campos foram preenchidos
       return res
         .status(400)
@@ -58,7 +58,7 @@ module.exports = class usuarioController {
       return res.status(400).json({ error: "Usuário não encontrado" });
     }
     // atualiza os dados do usuario na array 'usuarios'
-    usuarios[usuarioIndex] = { NIF, email, senha, nome };
+    usuarios[usuarioIndex] = { NIF, email, senha, nome_usuario };
     return res
       .status(200)
       .json({ message: "Usuário atualizado", usuario: usuarios[usuarioIndex] });
