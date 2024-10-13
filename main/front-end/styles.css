@@ -1,0 +1,305 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url("./img/fundo.png"); /* Certifique-se de que o caminho está correto */
+  background-size: cover; /* Redimensiona a imagem para cobrir toda a área do body */
+  background-repeat: no-repeat; /* Impede que a imagem se repita */
+  background-position: center center; /* Centraliza a imagem na tela */
+  background-attachment: fixed; /* Mantém a imagem fixa enquanto o conteúdo rola */
+  color: whitesmoke; /* Cor do texto */
+  height: 100%; /* Garante que o body ocupe a altura total da viewport */
+  margin: 0;
+}
+
+header {
+  background-color: #c41212;
+  padding: 2.8%;
+  border-bottom: 3px solid whitesmoke;
+}
+
+header .botao-login button {
+  background-color: rgb(255, 0, 0);
+  color: whitesmoke;
+  border-color: transparent;
+  padding: 0.5%;
+  border-radius: 5px;
+  position: absolute;
+  right: 4%;
+  top: 4%;
+  align-items: center;
+  font-weight: bold;
+  font-size: small;
+}
+
+header .botao-inicial button {
+  background-color: rgb(255, 0, 0);
+  color: whitesmoke;
+  border-color: transparent;
+  padding: 0.5%;
+  border-radius: 5px;
+  position: absolute;
+  right: 8%;
+  top: 4%;
+  font-weight: bold;
+  font-size: small;
+}
+
+header .botao-cadastre-se-login button {
+  background-color: rgb(255, 0, 0);
+  color: whitesmoke;
+  border-color: transparent;
+  padding: 0.5%;
+  border-radius: 5px;
+  position: absolute;
+  right: 1.2%;
+  top: 4%;
+  font-weight: bold;
+  font-size: small;
+}
+
+header .botao-cadastre-se-inicial button {
+  background-color: rgb(255, 0, 0);
+  color: whitesmoke;
+  border-color: transparent;
+  padding: 0.5%;
+  border-radius: 5px;
+  position: absolute;
+  right: 8%;
+  top: 4%;
+  font-weight: bold;
+  font-size: small;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  position: absolute;
+  bottom: 0%;
+  background-color: #980000;
+  height: 65px;
+  width: 100%;
+}
+
+footer .desenvolvido p {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* --- cadastro --- */
+
+main #cadastro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main #cadastro .logo img {
+  position: absolute;
+  top: 35.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 170px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+main #cadastro #formulario-cadastro {
+  background-color: #ffdada;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 25px;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  padding-inline: 30px;
+  padding-block: 25px;
+  margin-top: 50%;
+  padding-top: 90px;
+}
+
+main #cadastro #formulario-cadastro .nome input {
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding: 8%;
+  padding-inline: 20px;
+  padding-block: 12px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #cadastro #formulario-cadastro .email input {
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding: 8%;
+  padding-inline: 20px;
+  padding-block: 12px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #cadastro #formulario-cadastro .NIF input {
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding: 8%;
+  padding-inline: 20px;
+  padding-block: 12px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #cadastro #formulario-cadastro .senha input {
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding: 8%;
+  padding-inline: 20px;
+  padding-block: 12px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #cadastro #formulario-cadastro .botoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+main #cadastro #formulario-cadastro .botoes .cadastre-se input {
+  border-style: none;
+  background-color: #ff2424;
+  border-radius: 15px;
+  border-color: transparent;
+  padding: 15%;
+  color: #ffffff;
+  font-size: medium;
+  margin-top: 8px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #cadastro #formulario-cadastro .botoes .login input {
+  border-style: none;
+  background-color: transparent;
+  border-radius: 15px;
+  border-color: transparent;
+  padding: 15%;
+  color: #980000;
+  text-decoration: underline;
+  font-size: medium;
+  margin-top: 5px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #cadastro #formulario-cadastro .cadastre-se input:hover {
+  background-color: #ff5353;
+}
+
+main #cadastro #formulario-cadastro .login input:hover {
+  color: #973030;
+}
+
+/* --- login --- */
+
+main #login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main #login .logo img {
+  position: absolute;
+  top: 35.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 170px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+main #login #formulario-login {
+  background-color: #ffdada;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 25px;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  padding-inline: 30px;
+  padding-block: 25px;
+  margin-top: 50%;
+  padding-top: 90px;
+}
+
+main #login #formulario-login .usuario input {
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding: 8%;
+  padding-inline: 20px;
+  padding-block: 12px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #login #formulario-login .senha input {
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding: 8%;
+  padding-inline: 20px;
+  padding-block: 12px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+main #login #formulario-login .botoes .login input {
+  border-style: none;
+  background-color: #ff2424;
+  border-radius: 15px;
+  border-color: transparent;
+  padding: 15%;
+  color: #ffffff;
+  font-size: medium;
+  margin-top: 8px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #login #formulario-login .botoes .cadastre-se input {
+  border-style: none;
+  background-color: transparent;
+  border-radius: 15px;
+  border-color: transparent;
+  padding: 15%;
+  color: #980000;
+  text-decoration: underline;
+  font-size: medium;
+  margin-top: 5px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #login #formulario-login .botoes .login input:hover {
+  background-color: #ff5353;
+}
+
+main #login #formulario-login .botoes .cadastre-se input:hover {
+  color: #973030;
+}

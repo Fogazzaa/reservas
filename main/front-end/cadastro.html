@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cadastre-se</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./img/iconesenai.png" type="image/x-icon" />
+  </head>
+  <body>
+    <header>
+      <div class="botao-login">
+        <button onclick="window.location.href='./login.html'">login</button>
+      </div>
+      <div class="botao-inicial">
+        <button onclick="window.location.href='./inicial.html'">inicial</button>
+      </div>
+    </header>
+    <main>
+      <section id="cadastro">
+        <div class="logo">
+          <img src="./img/logo.png" alt="logo SENAI SP" />
+        </div>
+        <form id="formulario-cadastro">
+          <div class="nome">
+            <label for="nome"></label>
+            <input type="text" id="nome" placeholder="nome" required />
+          </div>
+          <div class="email">
+            <label for="email"></label>
+            <input type="email" id="email" placeholder=" email" required />
+          </div>
+          <div class="NIF">
+            <label for="NIF"></label>
+            <input type="text" id="NIF" placeholder=" NIF" required />
+          </div>
+          <div class="senha">
+            <label for="senha"></label>
+            <input type="password" id="senha" placeholder=" senha" required />
+          </div>
+          <div class="botoes">
+            <div class="cadastre-se">
+              <input type="submit" value="Cadastrar" />
+            </div>
+            <div class="login">
+              <input type="submit" value="Login" />
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <div class="desenvolvido">
+        <p>
+          &copy; Desenvolvido por: Vinicius Fogaça, Maria Júlia e Maria Clara
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
