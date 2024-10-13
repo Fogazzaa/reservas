@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-image: url("../../img/fundo.png"); /* Certifique-se de que o caminho está correto */
+  background-size: cover; /* Redimensiona a imagem para cobrir toda a área do body */
+  background-repeat: no-repeat; /* Impede que a imagem se repita */
+  background-position: left; /* Centraliza a imagem na tela */
+  background-attachment: fixed; /* Mantém a imagem fixa enquanto o conteúdo rola */
+  color: whitesmoke; /* Cor do texto */
+  height: 100%; /* Garante que o body ocupe a altura total da viewport */
+  margin: 0;
+}
+.logo{
+  position: absolute; 
+  top: 15px; 
+  left: 20px; 
+  width: 150px; 
+  border: 5px solid #F3F3F3;
+  border-radius: 10px;
+  /*border-color: ;*/
+
+}
+.container{
+  position: relative;
+}
+
+main img {
+  background-image: url("../../img/img_inicial.png");
+  opacity: 0.5; 
+  left: 5%;
+  top: 5%;
+  width: 100%;
+  background-size: cover; /* Redimensiona a imagem para cobrir toda a área da main */
+  background-repeat: no-repeat; /* Impede que a imagem se repita */
+  background-attachment: fixed; /* Mantém a imagem fixa enquanto o conteúdo rola */
+  z-index: 10;
+}
+ 
+
+
+header button {
+  font-size: 16px;
+  top: 20px; 
+  right: 5%;
+  position: right;
+  color: #ffffff;
+  background-color: rgb(214, 65, 65);
+  padding: 7px 8px; /* define o espaço interno  do botão em 10px (verical) e 20px (horizontal) */
+  border-radius: 50px; /* arredonda os cantos do botão */
+  border-color: transparent;
+  cursor: pointer; /* define o cursor como ponteiro ao passar pelo botão */
+  margin: 5px;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+header{
+  background-color: rgb(177, 16, 16);
+  border-bottom: 10px solid white;
+  margin: 0px 0 0 0;
+  height: 80px;
+}
+
+.button-container{
+  display: flex; /* Ativa o flexbox */
+  justify-content: flex-end; /* Alinha os botões à direita */
+  top: 20px;
+  /*margin: 20px; /* Margem para espaçamento */
+}
+
+main button {
+  font-size: 16px;
+  top: 5%;
+  right: 10%;
+  color: #ffffff;
+  background-color: rgb(211, 27, 27);
+  padding: 7px 8px; /* define o espaço interno  do botão em 10px (verical) e 20px (horizontal) */
+  border-radius: 10px; /* arredonda os cantos do botão */
+  border-color: transparent;
+  cursor: pointer; /* define o cursor como ponteiro ao passar pelo botão */
+}
+
+main {
+  border-top: #ffffff;
+  border-width: 5%;
+} 
+
+footer{
+  background-color: rgb(211, 27, 27); /* Cor de fundo escura */
+  color: white; /* Cor do texto do rodapé */
+  text-align: center; /* Centraliza o texto */
+  padding: 20px 0; /* Espaçamento interno no topo e na base */
+  width: 100%; /* Faz com que o rodapé ocupe toda a largura */
+  position: absolute fixed; /* Posiciona o rodapé de forma absoluta */
+  bottom: 0; /* Posiciona o rodapé na parte inferior da página */
+  
+}
+
