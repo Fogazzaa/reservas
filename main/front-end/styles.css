@@ -6,13 +6,13 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-image: url("./img/fundo.png"); /* Certifique-se de que o caminho está correto */
-  background-size: cover; /* Redimensiona a imagem para cobrir toda a área do body */
-  background-repeat: no-repeat; /* Impede que a imagem se repita */
-  background-position: center center; /* Centraliza a imagem na tela */
-  background-attachment: fixed; /* Mantém a imagem fixa enquanto o conteúdo rola */
-  color: whitesmoke; /* Cor do texto */
-  height: 100%; /* Garante que o body ocupe a altura total da viewport */
+  background-image: url("./img/fundo.png"); 
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center center; 
+  background-attachment: fixed; 
+  color: whitesmoke; 
+  height: 100%; 
   margin: 0;
 }
 
@@ -29,14 +29,14 @@ header .botao-login button {
   padding: 0.5%;
   border-radius: 5px;
   position: absolute;
-  right: 4%;
+  right: 1%;
   top: 4%;
   align-items: center;
   font-weight: bold;
   font-size: small;
 }
 
-header .botao-inicial button {
+header .botao-inicial-login button {
   background-color: rgb(255, 0, 0);
   color: whitesmoke;
   border-color: transparent;
@@ -44,6 +44,19 @@ header .botao-inicial button {
   border-radius: 5px;
   position: absolute;
   right: 8%;
+  top: 4%;
+  font-weight: bold;
+  font-size: small;
+}
+
+header .botao-inicial-cadastre-se button {
+  background-color: rgb(255, 0, 0);
+  color: whitesmoke;
+  border-color: transparent;
+  padding: 0.5%;
+  border-radius: 5px;
+  position: absolute;
+  right: 5%;
   top: 4%;
   font-weight: bold;
   font-size: small;
@@ -69,7 +82,7 @@ header .botao-cadastre-se-inicial button {
   padding: 0.5%;
   border-radius: 5px;
   position: absolute;
-  right: 8%;
+  right: 5%;
   top: 4%;
   font-weight: bold;
   font-size: small;
@@ -131,7 +144,7 @@ main #cadastro #formulario-cadastro {
   padding-top: 90px;
 }
 
-main #cadastro #formulario-cadastro .nome input {
+main #cadastro #formulario-cadastro .nome_usuario input {
   border-style: none;
   margin-bottom: 10px;
   border-radius: 15px;
@@ -271,6 +284,14 @@ main #login #formulario-login .senha input {
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
 }
+
+main #cadastro #formulario-cadastro .botoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 main #login #formulario-login .botoes .login input {
   border-style: none;
   background-color: #ff2424;
