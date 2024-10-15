@@ -1,5 +1,3 @@
-let usuarios = [];
-
 const connect = require("../db/connect");
 
 module.exports = class usuarioController {
@@ -45,7 +43,7 @@ module.exports = class usuarioController {
           } // if
           else {
             return res.status(201).json({
-              message: "Usuário Criado com Sucesso",
+              message: "Usuário Criado com Sucesso - controller",
             });
           } // else
         }); // connect
@@ -55,6 +53,47 @@ module.exports = class usuarioController {
       } // catch
     } // else
   } // createUsuarios
+
+  static async loginUsuario(req, res) {
+    const { senha, usuario } = req.body;
+
+    if (!senha || !usuario) {
+      return res
+        .status(400)
+        .json({ error: "Todos os campos devem ser preenchidos" });
+    } else {
+      const query = `SELECT * FROM usuario WHERE email = '${usuario}'`;
+
+      try {
+        // Executando a query
+        connect.query(query, function (err, results) {
+          if (err) {
+            console.log(err);
+            return res.status(500).json({ error: "Erro Interno do Servidor" });
+          }
+
+          // Verifica se o usuário foi encontrado
+          if (results.length === 0) {
+            return res.status(404).json({ error: "Usuário não encontrado" });
+          }
+
+          const usuario = results[0];
+
+          // Verifica se a senha está correta
+          if (usuario.senha === senha) {
+            return res.status(200).json({
+              message: "Login realizado com sucesso",
+            });
+          } else {
+            return res.status(401).json({ error: "Senha incorreta" });
+          }
+        });
+      } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: "Erro Interno do Servidor" });
+      } // catch
+    } // else
+  } // loginUsuario
 
   static async getAllUsuarios(req, res) {
     return res
