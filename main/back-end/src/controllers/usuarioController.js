@@ -1,5 +1,6 @@
 let usuarios = [];
-let id_usuario = 0;
+
+const connect = require("../db/connect");
 
 module.exports = class usuarioController {
   static async createUsuarios(req, res) {
@@ -15,25 +16,45 @@ module.exports = class usuarioController {
       });
     } else if (!email.includes("@")) {
       return res.status(400).json({ error: "Email inválido. Deve conter @" });
-    }
+    } else {
+      // Construção da query INSERT
 
-    // Verifica se já existe um usuário com o mesmo NIF
-    const usuarioExistente = usuarios.find((usuario) => usuario.NIF === NIF);
-    if (usuarioExistente) {
-      return res.status(400).json({ error: "NIF já cadastrado" });
-    }
+      const query = `INSERT INTO usuario (nome_usuario,email,NIF,senha) VALUES(
+      '${nome_usuario}',
+      '${email}',
+      '${NIF}',
+      '${senha}')`;
 
-    // Cria e adiciona novo usuário
-    id_usuario = id_usuario + 1;
+      // Executando a query criada
 
-    // Cria e adiciona novo usuário
-    const novoUsuario = { NIF, email, senha, nome_usuario, id_usuario };
-    usuarios.push(novoUsuario);
-
-    return res
-      .status(201)
-      .json({ message: "Usuário criado com sucesso", usuario: novoUsuario });
-  }
+      try {
+        connect.query(query, function (err) {
+          if (err) {
+            console.log(err);
+            console.log(err.code);
+            if (err.code === "ER_DUP_ENTRY") {
+              return res
+                .status(400)
+                .json({ error: "O NIF já está vinculado a outro usuário" });
+            } // if
+            else {
+              return res
+                .status(500)
+                .json({ error: "Erro Interno do Servidor" });
+            } // else
+          } // if
+          else {
+            return res.status(201).json({
+              message: "Usuário Criado com Sucesso",
+            });
+          } // else
+        }); // connect
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Erro Interno de Servidor" });
+      } // catch
+    } // else
+  } // createUsuarios
 
   static async getAllUsuarios(req, res) {
     return res
@@ -52,7 +73,9 @@ module.exports = class usuarioController {
     }
     // procura indice do user no array 'usuarios' pelo NIF
     const usuarioId = req.params.id_usuario;
-    const usuarioIndex = usuarios.findIndex((usuario) => usuario.id_usuario == usuarioId);
+    const usuarioIndex = usuarios.findIndex(
+      (usuario) => usuario.id_usuario == usuarioId
+    );
     // se não for encontrado o 'userindex' equivale a -1
     if (usuarioIndex == -1) {
       return res.status(400).json({ error: "Usuário não encontrado" });
@@ -66,7 +89,9 @@ module.exports = class usuarioController {
 
   static async deleteUsuario(req, res) {
     const usuarioId = req.params.id_usuario;
-    const usuarioIndex = usuarios.findIndex((usuario) => usuario.id_usuario == usuarioId);
+    const usuarioIndex = usuarios.findIndex(
+      (usuario) => usuario.id_usuario == usuarioId
+    );
     // se não for encontrado o 'usuarioIndex' equivale a -1
     if (usuarioIndex === -1) {
       return res.status(400).json({ error: "Usuário não encontrado" });
