@@ -87,7 +87,7 @@ document
       //captura qualquer erro que ocorra durante o processo de requisição/ resposta
       .catch((error) => {
         // exibe alerta no (front) com erro processado
-        alert("Erro no cadastro: " + error.message);
+        alert("Erro no Login: " + error.message);
         console.error("Erro:", error.message);
       }); // --- fechamento 'catch(error)'
   });
