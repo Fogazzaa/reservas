@@ -18,8 +18,30 @@ body {
 
 header {
   background-color: #c41212;
-  padding: 2.8%;
+  padding: 1.1%;
   border-bottom: 3px solid whitesmoke;
+}
+
+.header-inicial {
+  background-color: #c41212;
+  padding: 3%;
+  border-bottom: 3px solid whitesmoke;
+}
+
+header .botao-home{
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
+header .botao-home button{
+  background-color: transparent;
+  border: transparent;
+}
+
+header .botao-home button img{
+  width: 50px;
+  height: auto;
 }
 
 header .botao-login button {
@@ -119,10 +141,10 @@ main #cadastro {
 
 main #cadastro .logo img {
   position: absolute;
-  top: 35.5%;
+  top: 32.5%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 190px;
+  width: 200px;
   background-color: white;
   padding: 5px;
   border-radius: 20px;
@@ -139,8 +161,8 @@ main #cadastro #formulario-cadastro {
   height: 100%;
   padding: 25px;
   padding-inline: 30px;
-  padding-block: 25px;
-  margin-top: 50%;
+  padding-block: 18px;
+  margin-top: 40%;
   padding-top: 90px;
 }
 
@@ -196,18 +218,20 @@ main #cadastro #formulario-cadastro .botoes {
 }
 
 main #cadastro #formulario-cadastro .botoes .cadastre-se input {
+  width: 120%;
+  height: 150%;
   border-style: none;
   background-color: #ff2424;
   border-radius: 15px;
   border-color: transparent;
-  padding: 15%;
+  padding: 13px;
   color: #ffffff;
   font-size: medium;
   margin-top: 8px;
   font-family: "Trebuchet MS", sans-serif;
 }
 
-main #cadastro #formulario-cadastro .botoes .login input {
+main #cadastro #formulario-cadastro .botoes .login button {
   border-style: none;
   background-color: transparent;
   border-radius: 15px;
@@ -238,10 +262,10 @@ main #login {
 
 main #login .logo img {
   position: absolute;
-  top: 35.5%;
+  top: 38%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 190px;
+  width: 200px;
   background-color: white;
   padding: 5px;
   border-radius: 20px;
@@ -258,9 +282,9 @@ main #login #formulario-login {
   height: 100%;
   padding: 25px;
   padding-inline: 30px;
-  padding-block: 25px;
-  margin-top: 50%;
-  padding-top: 90px;
+  padding-block: 15px;
+  margin-top: 55%;
+  padding-top: 100px;
 }
 
 main #login #formulario-login .usuario input {
@@ -285,7 +309,7 @@ main #login #formulario-login .senha input {
   font-family: "Trebuchet MS", sans-serif;
 }
 
-main #cadastro #formulario-cadastro .botoes {
+main #cadastro #formulario-login .botoes {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -293,6 +317,7 @@ main #cadastro #formulario-cadastro .botoes {
 }
 
 main #login #formulario-login .botoes .login input {
+  width: 100%;
   border-style: none;
   background-color: #ff2424;
   border-radius: 15px;
@@ -304,16 +329,17 @@ main #login #formulario-login .botoes .login input {
   font-family: "Trebuchet MS", sans-serif;
 }
 
-main #login #formulario-login .botoes .cadastre-se input {
+main #login #formulario-login .botoes .cadastre-se button {
   border-style: none;
   background-color: transparent;
   border-radius: 15px;
   border-color: transparent;
-  padding: 15%;
+  padding: 0%;
   color: #980000;
   text-decoration: underline;
   font-size: medium;
-  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-top: 12px;
   font-family: "Trebuchet MS", sans-serif;
 }
 
