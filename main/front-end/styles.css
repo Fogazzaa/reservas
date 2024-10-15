@@ -6,13 +6,13 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-image: url("./img/fundo.png"); 
-  background-size: cover; 
+  background-image: url("./img/fundo.png");
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center; 
-  background-attachment: fixed; 
-  color: whitesmoke; 
-  height: 100%; 
+  background-position: center center;
+  background-attachment: fixed;
+  color: whitesmoke;
+  height: 100%;
   margin: 0;
 }
 
@@ -122,9 +122,9 @@ main #cadastro .logo img {
   top: 35.5%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 170px;
+  width: 190px;
   background-color: white;
-  padding: 10px;
+  padding: 5px;
   border-radius: 20px;
 }
 
@@ -241,9 +241,9 @@ main #login .logo img {
   top: 35.5%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 170px;
+  width: 190px;
   background-color: white;
-  padding: 10px;
+  padding: 5px;
   border-radius: 20px;
 }
 
@@ -323,4 +323,214 @@ main #login #formulario-login .botoes .login input:hover {
 
 main #login #formulario-login .botoes .cadastre-se input:hover {
   color: #973030;
+}
+
+/* --- principal --- */
+
+.logo img {
+  position: absolute;
+  top: 10%;
+  left: 11.8%;
+  transform: translate(-50%, -50%);
+  width: 190px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+.campos {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  max-height: 700px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+.campos .usuario {
+  padding: 15px 15px;
+  background-color: #ff9797;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 25px;
+}
+
+.campos .barraesquerda .usuario img {
+  width: 24%;
+  height: auto;
+}
+
+.campos .barraesquerda .usuario p {
+  font-size: 16.5px;
+  width: 20%;
+  margin-left: 8px;
+  margin-top: 5px;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.campos .barraesquerda .usuario p:nth-of-type(2) {
+  font-size: 10px;
+  width: 100%;
+  color: whitesmoke;
+  font-weight: bold;
+  margin-left: 17%;
+}
+
+.campos .salasreservadas {
+  padding: 15px 15px;
+  background-color: #ff9797;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 25px;
+}
+
+.campos .barraesquerda .salasreservadas img {
+  width: 24%;
+  height: 24%;
+}
+
+.campos .barraesquerda .salasreservadas p {
+  font-size: 16px;
+  width: 20%;
+  margin-left: 8px;
+  margin-top: 5px;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.barraesquerda,
+.meio,
+.barradireita {
+  background-color: #ff7f7f;
+  border-radius: 40px;
+  padding: 20px;
+  margin: 10px;
+}
+.barraesquerda {
+  flex: 1;
+  max-width: 200px;
+  margin-top: 120px;
+  background-color: #ffb8b8;
+  border: solid #FF6666;
+  border-width: 8px;
+}
+.meio {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  background-color: #ffb8b8;
+  border: solid #FF6666;
+  border-width: 8px;
+}
+.barradireita {
+  flex: 1;
+  max-width: 300px;
+  margin-top: 50px;
+  background-color: #ffb8b8;
+  border: solid #FF6666;
+  border-width: 8px;
+}
+.salas {
+  background-color: #eb8796;
+  border-radius: 30px;
+  padding: 20px 10px;
+  margin: 10px 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.salas div span {
+  font-size: 17px;
+  background-color: #d64141;
+  border-radius: 15px;
+  padding: 12px 12px;
+  margin: 5px;
+  width: 100%;
+  height: 100%;
+  text-align: start;
+  font-weight: bold;
+}
+
+.salas h2 {
+  margin: 0 0 10px 0;
+  background-color: #ff6666;
+  border-radius: 15px;
+  padding: 5px 5px;
+  margin: 5px;
+  width: 100%;
+  font-size: 20px;
+}
+
+.salas div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dias {
+  background-color: #eb8796;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.dias div span {
+  background-color: #d64141;
+  border-radius: 15px;
+  padding: 10px 20px;
+  margin: 5px;
+  font-weight: bold;
+}
+
+.dias h2 {
+  margin: 0 0 10px 0;
+  background-color: #ff6666;
+  border-radius: 15px;
+  padding: 5px 5px;
+  margin: 5px;
+  width: 100%;
+}
+
+.dias div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.horarios {
+  background-color: #eb8796;
+  border-radius: 30px;
+  padding: 20px;
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.horarios div span {
+  background-color: #d64141;
+  border-radius: 15px;
+  padding: 10px 20px;
+  margin: 5px;
+  font-weight: bold;
+}
+
+.horarios h2 {
+  margin: 0 0 10px 0;
+  background-color: #ff6666;
+  border-radius: 15px;
+  padding: 5px 5px;
+  margin: 5px;
+  width: 100%;
+}
+
+.horarios div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
