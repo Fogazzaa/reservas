@@ -33,7 +33,7 @@ module.exports = class usuarioController {
             if (err.code === "ER_DUP_ENTRY") {
               return res
                 .status(400)
-                .json({ error: "O NIF já está vinculado a outro usuário" });
+                .json({ error: "O NIF ou email já está vinculado a outro usuário" });
             } // if
             else {
               return res
@@ -43,7 +43,7 @@ module.exports = class usuarioController {
           } // if
           else {
             return res.status(201).json({
-              message: "Usuário Criado com Sucesso - controller",
+              message: "Usuário Criado com Sucesso!",
             });
           } // else
         }); // connect
@@ -55,14 +55,14 @@ module.exports = class usuarioController {
   } // createUsuarios
 
   static async loginUsuario(req, res) {
-    const { senha, usuario } = req.body;
+    const { senha, email } = req.body;
 
-    if (!senha || !usuario) {
+    if (!senha || !email) {
       return res
         .status(400)
         .json({ error: "Todos os campos devem ser preenchidos" });
     } else {
-      const query = `SELECT * FROM usuario WHERE email = '${usuario}'`;
+      const query = `SELECT * FROM usuario WHERE email = '${email}'`;
 
       try {
         // Executando a query
@@ -82,7 +82,7 @@ module.exports = class usuarioController {
           // Verifica se a senha está correta
           if (usuario.senha === senha) {
             return res.status(200).json({
-              message: "Login realizado com sucesso",
+              message: "Login realizado com sucesso!",
             });
           } else {
             return res.status(401).json({ error: "Senha incorreta" });

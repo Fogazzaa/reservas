@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("formulario-login") //  seleciona o elemento com o id indicado no <form> 'formulario-registro'
     .addEventListener("submit", function (event) {
       event.preventDefault(); // previne o comportamento padrão do formulário, ou seja, impede que ele seja enviado e recarregue a página
-      const usuario = document.getElementById("usuario").value; // capturar os valores dos campos do formulário pelo id
+      const email = document.getElementById("email").value; // capturar os valores dos campos do formulário pelo id
       const senha = document.getElementById("senha").value;
 
       fetch("http://localhost:5000/reservas/v1/login", {
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
           "Content-Type": "application/json",
         },
         // transforma os dados do formulário em uma string json para serem enviados no corpo da requisição
-        body: JSON.stringify({ usuario, senha }),
+        body: JSON.stringify({ email, senha }),
       })
         .then((response) => {
           // tratamento da resposta do servidor / api

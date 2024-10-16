@@ -289,7 +289,7 @@ main #login #formulario-login {
   padding-top: 100px;
 }
 
-main #login #formulario-login .usuario input {
+main #login #formulario-login .email input {
   border-style: none;
   margin-bottom: 10px;
   border-radius: 15px;
