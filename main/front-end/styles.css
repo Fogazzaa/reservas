@@ -374,7 +374,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
 }
 
 .campos .usuario {
-  padding: 15px 15px;
+  padding: 9px 9px;
   background-color: #ff9797;
   display: flex;
   flex-wrap: wrap;
@@ -382,12 +382,12 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
 }
 
 .campos .barraesquerda .usuario img {
-  width: 24%;
+  width: 20%;
   height: auto;
 }
 
 .campos .barraesquerda .usuario p {
-  font-size: 15px;
+  font-size: 13px;
   width: 20%;
   margin-left: 8px;
   margin-top: 5px;
@@ -404,7 +404,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
 }
 
 .campos .salasreservadas {
-  padding: 15px 15px;
+  padding: 10px 10px;
   background-color: #ff9797;
   display: flex;
   flex-wrap: wrap;
@@ -412,12 +412,12 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
 }
 
 .campos .barraesquerda .salasreservadas img {
-  width: 24%;
+  width: 20%;
   height: 24%;
 }
 
 .campos .barraesquerda .salasreservadas p {
-  font-size: 15px;
+  font-size: 13px;
   width: 20%;
   margin-left: 8px;
   margin-top: 5px;
