@@ -141,7 +141,7 @@ main #cadastro {
 
 main #cadastro .logo img {
   position: absolute;
-  top: 32.5%;
+  top: 26.5%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200px;
@@ -162,7 +162,7 @@ main #cadastro #formulario-cadastro {
   padding: 25px;
   padding-inline: 30px;
   padding-block: 18px;
-  margin-top: 40%;
+  margin-top: 8%;
   padding-top: 90px;
 }
 
@@ -283,7 +283,7 @@ main #login #formulario-login {
   padding: 25px;
   padding-inline: 30px;
   padding-block: 15px;
-  margin-top: 55%;
+  margin-top: 30%;
   padding-top: 100px;
 }
 
@@ -356,7 +356,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
 .logo img {
   position: absolute;
   top: 10%;
-  left: 11.8%;
+  left: 8.8%;
   transform: translate(-50%, -50%);
   width: 190px;
   background-color: white;
@@ -369,7 +369,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   justify-content: space-between;
   width: 100%;
   max-width: 1400px;
-  max-height: 680px;
+  max-height: 520px;
   font-family: "Trebuchet MS", sans-serif;
 }
 
@@ -387,7 +387,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
 }
 
 .campos .barraesquerda .usuario p {
-  font-size: 16.5px;
+  font-size: 15px;
   width: 20%;
   margin-left: 8px;
   margin-top: 5px;
@@ -417,7 +417,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
 }
 
 .campos .barraesquerda .salasreservadas p {
-  font-size: 16px;
+  font-size: 15px;
   width: 20%;
   margin-left: 8px;
   margin-top: 5px;
@@ -470,10 +470,10 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
 }
 
 .salas div span {
-  font-size: 17px;
+  font-size: 10px;
   background-color: #d64141;
   border-radius: 15px;
-  padding: 12px 12px;
+  padding: 8px 8px;
   margin: 5px;
   width: 100%;
   height: 100%;
@@ -485,10 +485,10 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   margin: 0 0 10px 0;
   background-color: #ff6666;
   border-radius: 15px;
-  padding: 5px 5px;
+  padding: 3px 3px;
   margin: 5px;
   width: 100%;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .salas div {
@@ -512,6 +512,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   padding: 10px 20px;
   margin: 5px;
   font-weight: bold;
+  font-size: 10px;
 }
 
 .dias h2 {
@@ -521,6 +522,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   padding: 5px 5px;
   margin: 5px;
   width: 100%;
+  font-size: 16px;
 }
 
 .dias div {
@@ -544,6 +546,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   padding: 10px 20px;
   margin: 5px;
   font-weight: bold;
+  font-size: 10px;
 }
 
 .horarios h2 {
@@ -553,6 +556,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   padding: 5px 5px;
   margin: 5px;
   width: 100%;
+  font-size: 16px;
 }
 
 .horarios div {
