@@ -22,12 +22,6 @@ header {
   border-bottom: 3px solid whitesmoke;
 }
 
-.header-inicial {
-  background-color: #c41212;
-  padding: 3%;
-  border-bottom: 3px solid whitesmoke;
-}
-
 header .botao-home{
   display: flex;
   align-items: end;
@@ -48,66 +42,35 @@ header .botao-login button {
   background-color: rgb(255, 0, 0);
   color: whitesmoke;
   border-color: transparent;
-  padding: 0.5%;
-  border-radius: 5px;
+  padding: 0.8%;
+  border-radius: 7px;
   position: absolute;
-  right: 1%;
-  top: 4%;
+  right: 2%;
+  top: 3%;
   align-items: center;
   font-weight: bold;
   font-size: small;
 }
 
-header .botao-inicial-login button {
-  background-color: rgb(255, 0, 0);
-  color: whitesmoke;
-  border-color: transparent;
-  padding: 0.5%;
-  border-radius: 5px;
-  position: absolute;
-  right: 8%;
-  top: 4%;
-  font-weight: bold;
-  font-size: small;
-}
-
-header .botao-inicial-cadastre-se button {
-  background-color: rgb(255, 0, 0);
-  color: whitesmoke;
-  border-color: transparent;
-  padding: 0.5%;
-  border-radius: 5px;
-  position: absolute;
-  right: 5%;
-  top: 4%;
-  font-weight: bold;
-  font-size: small;
-}
-
-header .botao-cadastre-se-login button {
-  background-color: rgb(255, 0, 0);
-  color: whitesmoke;
-  border-color: transparent;
-  padding: 0.5%;
-  border-radius: 5px;
-  position: absolute;
-  right: 1.2%;
-  top: 4%;
-  font-weight: bold;
-  font-size: small;
-}
 
 header .botao-cadastre-se-inicial button {
   background-color: rgb(255, 0, 0);
   color: whitesmoke;
   border-color: transparent;
-  padding: 0.5%;
-  border-radius: 5px;
+  padding: 0.8% ;
+  border-radius: 7px;
   position: absolute;
-  right: 5%;
-  top: 4%;
+  right: 8%;
+  top: 3%;
   font-weight: bold;
   font-size: small;
+  
+}
+header .logo{
+  position: relative;
+  top: 1px;
+  width: auto;
+  border-radius: 20px;
 }
 
 main {
@@ -122,6 +85,9 @@ footer {
   background-color: #980000;
   height: 65px;
   width: 100%;
+  border-top: 3px solid whitesmoke;
+
+
 }
 
 footer .desenvolvido p {
@@ -130,6 +96,40 @@ footer .desenvolvido p {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* --- inicial --- */
+
+.header-inicial {
+  background-color: #c41212;
+  padding: 3%;
+  border-bottom: 3px solid whitesmoke;
+}
+
+main .fundo-inicial img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 40%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+main .texto-inicial h1{
+  font-size: 80px;
+  margin-right: 40%;
+  margin-top: 2%;
+  margin-bottom: 8%;
+  margin-left: 10%;
+}
+
+
 
 /* --- cadastro --- */
 
@@ -218,8 +218,7 @@ main #cadastro #formulario-cadastro .botoes {
 }
 
 main #cadastro #formulario-cadastro .botoes .cadastre-se input {
-  width: 120%;
-  height: 150%;
+  right: 50%;
   border-style: none;
   background-color: #ff2424;
   border-radius: 15px;
@@ -232,6 +231,9 @@ main #cadastro #formulario-cadastro .botoes .cadastre-se input {
 }
 
 main #cadastro #formulario-cadastro .botoes .login button {
+  display: flex;
+  right: 20%;
+  position: relative;
   border-style: none;
   background-color: transparent;
   border-radius: 15px;
@@ -262,7 +264,7 @@ main #login {
 
 main #login .logo img {
   position: absolute;
-  top: 38%;
+  top: 36%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200px;
@@ -283,7 +285,7 @@ main #login #formulario-login {
   padding: 25px;
   padding-inline: 30px;
   padding-block: 15px;
-  margin-top: 30%;
+  margin-top: 28%;
   padding-top: 100px;
 }
 
