@@ -22,18 +22,18 @@ header {
   border-bottom: 3px solid whitesmoke;
 }
 
-header .botao-home{
+header .botao-home {
   display: flex;
   align-items: end;
   justify-content: end;
 }
 
-header .botao-home button{
+header .botao-home button {
   background-color: transparent;
   border: transparent;
 }
 
-header .botao-home button img{
+header .botao-home button img {
   width: 50px;
   height: auto;
 }
@@ -52,21 +52,19 @@ header .botao-login button {
   font-size: small;
 }
 
-
 header .botao-cadastre-se-inicial button {
   background-color: rgb(255, 0, 0);
   color: whitesmoke;
   border-color: transparent;
-  padding: 0.8% ;
+  padding: 0.8%;
   border-radius: 7px;
   position: absolute;
   right: 8%;
   top: 3%;
   font-weight: bold;
   font-size: small;
-  
 }
-header .logo{
+header .logo {
   position: relative;
   top: 1px;
   width: auto;
@@ -86,8 +84,6 @@ footer {
   height: 65px;
   width: 100%;
   border-top: 3px solid whitesmoke;
-
-
 }
 
 footer .desenvolvido p {
@@ -105,7 +101,7 @@ footer .desenvolvido p {
   border-bottom: 3px solid whitesmoke;
 }
 
-main .fundo-inicial img{
+main .fundo-inicial img {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -121,15 +117,13 @@ main .fundo-inicial img{
   margin: 0;
 }
 
-main .texto-inicial h1{
+main .texto-inicial h1 {
   font-size: 80px;
   margin-right: 40%;
   margin-top: 2%;
   margin-bottom: 8%;
   margin-left: 10%;
 }
-
-
 
 /* --- cadastro --- */
 
@@ -139,9 +133,9 @@ main #cadastro {
   align-items: center;
 }
 
-main #cadastro .logo img {
-  position: absolute;
-  top: 26.5%;
+main #cadastro #formulario-cadastro .logo img {
+  position: relative;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200px;
@@ -162,8 +156,8 @@ main #cadastro #formulario-cadastro {
   padding: 25px;
   padding-inline: 30px;
   padding-block: 18px;
-  margin-top: 8%;
-  padding-top: 90px;
+  margin-top: 30%;
+  padding-top: 70px;
 }
 
 main #cadastro #formulario-cadastro .nome_usuario input {
@@ -262,9 +256,8 @@ main #login {
   align-items: center;
 }
 
-main #login .logo img {
-  position: absolute;
-  top: 36%;
+main #login #formulario-login .logo img {
+  position: relative;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200px;
@@ -285,8 +278,8 @@ main #login #formulario-login {
   padding: 25px;
   padding-inline: 30px;
   padding-block: 15px;
-  margin-top: 28%;
-  padding-top: 100px;
+  margin-top: 45%;
+  padding-top: 70px;
 }
 
 main #login #formulario-login .email input {
@@ -375,7 +368,8 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   font-family: "Trebuchet MS", sans-serif;
 }
 
-.campos .usuario {
+.campos .usuario button{
+  border: solid #d64141;
   padding: 9px 9px;
   background-color: #ff9797;
   display: flex;
@@ -383,12 +377,12 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   border-radius: 25px;
 }
 
-.campos .barraesquerda .usuario img {
+.campos .barraesquerda .usuario button img {
   width: 20%;
   height: auto;
 }
 
-.campos .barraesquerda .usuario p {
+.campos .barraesquerda .usuario button p {
   font-size: 13px;
   width: 20%;
   margin-left: 8px;
@@ -397,7 +391,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   font-weight: bold;
 }
 
-.campos .barraesquerda .usuario p:nth-of-type(2) {
+.campos .barraesquerda .usuario button p:nth-of-type(2) {
   font-size: 10px;
   width: 100%;
   color: whitesmoke;
@@ -405,7 +399,8 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   margin-left: 17%;
 }
 
-.campos .salasreservadas {
+.campos .salasreservadas button{
+  border: solid #d64141;
   padding: 10px 10px;
   background-color: #ff9797;
   display: flex;
@@ -413,12 +408,12 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   border-radius: 25px;
 }
 
-.campos .barraesquerda .salasreservadas img {
+.campos .barraesquerda .salasreservadas button img {
   width: 20%;
   height: 24%;
 }
 
-.campos .barraesquerda .salasreservadas p {
+.campos .barraesquerda .salasreservadas button p {
   font-size: 13px;
   width: 20%;
   margin-left: 8px;
@@ -440,7 +435,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   max-width: 200px;
   margin-top: 120px;
   background-color: #ffb8b8;
-  border: solid #FF6666;
+  border: solid #ff6666;
   border-width: 8px;
 }
 .meio {
@@ -450,7 +445,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   align-items: center;
   margin-top: 50px;
   background-color: #ffb8b8;
-  border: solid #FF6666;
+  border: solid #ff6666;
   border-width: 8px;
 }
 .barradireita {
@@ -458,7 +453,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   max-width: 300px;
   margin-top: 50px;
   background-color: #ffb8b8;
-  border: solid #FF6666;
+  border: solid #ff6666;
   border-width: 8px;
 }
 .salas {

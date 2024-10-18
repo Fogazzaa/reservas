@@ -33,7 +33,9 @@ module.exports = class usuarioController {
             if (err.code === "ER_DUP_ENTRY") {
               return res
                 .status(400)
-                .json({ error: "O NIF ou email já está vinculado a outro usuário" });
+                .json({
+                  error: "O NIF ou email já está vinculado a outro usuário",
+                });
             } // if
             else {
               return res
