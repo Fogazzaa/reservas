@@ -155,9 +155,9 @@ main #cadastro #formulario-cadastro {
   height: 100%;
   padding: 25px;
   padding-inline: 30px;
-  padding-block: 18px;
-  margin-top: 30%;
-  padding-top: 70px;
+  padding-block: 12px;
+  margin-top: 2%;
+  padding-top: 60px;
 }
 
 main #cadastro #formulario-cadastro .nome_usuario input {
@@ -278,7 +278,7 @@ main #login #formulario-login {
   padding: 25px;
   padding-inline: 30px;
   padding-block: 15px;
-  margin-top: 45%;
+  margin-top: 20%;
   padding-top: 70px;
 }
 
@@ -467,10 +467,10 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
 }
 
 .salas div span {
-  font-size: 10px;
+  font-size: 11px;
   background-color: #d64141;
   border-radius: 15px;
-  padding: 8px 8px;
+  padding: 16px 8px;
   margin: 5px;
   width: 100%;
   height: 100%;
@@ -482,8 +482,8 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   margin: 0 0 10px 0;
   background-color: #ff6666;
   border-radius: 15px;
-  padding: 3px 3px;
-  margin: 5px;
+  padding: 8px 3px;
+  margin: px;
   width: 100%;
   font-size: 16px;
 }
@@ -516,7 +516,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   margin: 0 0 10px 0;
   background-color: #ff6666;
   border-radius: 15px;
-  padding: 5px 5px;
+  padding: 8px 5px;
   margin: 5px;
   width: 100%;
   font-size: 16px;
@@ -550,7 +550,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   margin: 0 0 10px 0;
   background-color: #ff6666;
   border-radius: 15px;
-  padding: 5px 5px;
+  padding: 8px 5px;
   margin: 5px;
   width: 100%;
   font-size: 16px;
