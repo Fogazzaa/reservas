@@ -13,7 +13,7 @@ module.exports = class usuarioController {
       return res.status(400).json({ error: "Todos os campos devem ser preenchidos" });
 
       // Valida se o NIF é numérico e tem 7 dígitos
-    } else if (isNaN(NIF) || NIF.length === 7) { //verificar se o valor do NIF é um número válido
+    } else if (isNaN(NIF) || NIF.length !== 7) { //verificar se o valor do NIF é um número válido
       return res.status(400).json({error: "NIF inválido. Deve conter exatamente 7 dígitos numéricos",});
 
       // Valida se o email contém o caractere "@"
@@ -21,7 +21,7 @@ module.exports = class usuarioController {
       return res.status(400).json({ error: "Email inválido. Deve conter @" });
     } else {
       // Construção da query INSERT para adicionar o usuário ao banco de dados
-      const query = `INSERT INTO usuario (nome_usuario,email,nif,senha) VALUES(
+      const query = `INSERT INTO usuario (nome_usuario,email,NIF,senha) VALUES(
       '${nome_usuario}',
       '${email}',
       '${NIF}',
@@ -35,7 +35,7 @@ module.exports = class usuarioController {
             console.log(err); // imprime o erro
             console.log(err.code); // imprime o código do erro
             if (err.code === "ER_DUP_ENTRY") { // Verifica se o erro é por chave duplicada
-              return res.status(400).json({error: "O nif ou email já está vinculado a outro usuário",});
+              return res.status(400).json({error: "O NIF ou e-mail já está vinculado a outro usuário",});
             } else {
               return res.status(500).json({ error: "Erro Interno do Servidor" });
             }
@@ -81,7 +81,7 @@ module.exports = class usuarioController {
           if (usuario.senha === senha) {
             return res.status(200).json({message: "Login realizado com sucesso!",});
           } else {
-            return res.status(401).json({ error: "Senha incorreta" });
+            return res.status(401).json({ error: "E-mail ou Senha incorretos" });
           }
         });
       } catch (error) { //captura e trata erros
