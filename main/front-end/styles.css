@@ -78,6 +78,7 @@ main {
 }
 
 footer {
+  font-family: 'Trebuchet MS', sans-serif;
   position: absolute;
   bottom: 0%;
   background-color: #980000;
@@ -342,10 +343,6 @@ main #login #formulario-login .botoes .login input:hover {
   background-color: #ff5353;
 }
 
-main #login #formulario-login .botoes .cadastre-se input:hover {
-  color: #973030;
-}
-
 /* --- principal --- */
 
 .logo img {
@@ -368,7 +365,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   font-family: "Trebuchet MS", sans-serif;
 }
 
-.campos .usuario button{
+.campos .usuario button {
   border: solid #d64141;
   padding: 9px 9px;
   background-color: #ff9797;
@@ -399,7 +396,7 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   margin-left: 17%;
 }
 
-.campos .salasreservadas button{
+.campos .salasreservadas button {
   border: solid #d64141;
   padding: 10px 10px;
   background-color: #ff9797;
@@ -560,4 +557,207 @@ main #login #formulario-login .botoes .cadastre-se input:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+/* --- perfil --- */
+
+main #perfil #formulario-perfil .logo img {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+main #perfil #formulario-perfil {
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 25px;
+  width: 100%;
+  height: 100%;
+  padding-inline: 150px;
+  padding-block: 18px;
+  margin-top: 10%;
+  padding-top: 70px;
+}
+
+main #perfil #formulario-perfil .nome_usuario input {
+  background-color: #dbdbdb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-inline: 10px;
+  padding-right: 100px;
+  padding-block: 15px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #perfil #formulario-perfil .email input {
+  background-color: #dbdbdb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-inline: 10px;
+  padding-right: 100px;
+  padding-block: 15px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #perfil #formulario-perfil .NIF input {
+  background-color: #dbdbdb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-inline: 10px;
+  padding-right: 100px;
+  padding-right: 100px;
+  padding-block: 15px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #perfil #formulario-perfil .senha input {
+  background-color: #dbdbdb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-inline: 10px;
+  padding-right: 100px;
+  padding-block: 15px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #perfil #formulario-perfil .botoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+main #perfil #formulario-perfil .botoes .editar button {
+  right: 50%;
+  border-style: none;
+  background-color: transparent;
+  border-radius: 15px;
+  border-color: transparent;
+  padding: 13px;
+  color: #b11010;
+  font-size: medium;
+  margin-top: 8px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+/* --- atualizar - perfil --- */
+
+main #atualizar-perfil #formulario-atualizar-perfil .logo img {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+main #atualizar-perfil #formulario-atualizar-perfil {
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 25px;
+  width: 100%;
+  height: 100%;
+  padding-inline: 150px;
+  padding-block: 18px;
+  margin-top: 10%;
+  padding-top: 70px;
+}
+
+main #atualizar-perfil #formulario-atualizar-perfil .nome_usuario input {
+  background-color: #dbdbdb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-inline: 10px;
+  padding-right: 100px;
+  padding-block: 15px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #atualizar-perfil #formulario-atualizar-perfil .email input {
+  background-color: #dbdbdb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-inline: 10px;
+  padding-right: 100px;
+  padding-block: 15px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #atualizar-perfil #formulario-atualizar-perfil .NIF input {
+  background-color: #dbdbdb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-inline: 10px;
+  padding-right: 100px;
+  padding-right: 100px;
+  padding-block: 15px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #atualizar-perfil #formulario-atualizar-perfil .senha input {
+  background-color: #dbdbdb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-inline: 10px;
+  padding-right: 100px;
+  padding-block: 15px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #atualizar-perfil #formulario-atualizar-perfil .botoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+main #atualizar-perfil #formulario-atualizar-perfil .botoes .atualizar input {
+  right: 50%;
+  border-style: none;
+  background-color: #ff2424;
+  border-radius: 15px;
+  border-color: transparent;
+  padding: 13px;
+  color: #ffffff;
+  font-size: medium;
+  margin-top: 8px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main
+  #atualizar-perfil
+  #formulario-atualizar-perfil
+  .botoes
+  .atualizar
+  input:hover {
+  background-color: #ff5353;
 }

@@ -31,11 +31,9 @@ module.exports = class usuarioController {
             console.log(err);
             console.log(err.code);
             if (err.code === "ER_DUP_ENTRY") {
-              return res
-                .status(400)
-                .json({
-                  error: "O NIF ou email já está vinculado a outro usuário",
-                });
+              return res.status(400).json({
+                error: "O NIF ou email já está vinculado a outro usuário",
+              });
             } // if
             else {
               return res
@@ -87,7 +85,7 @@ module.exports = class usuarioController {
               message: "Login realizado com sucesso!",
             });
           } else {
-            return res.status(401).json({ error: "Senha incorreta" });
+            return res.status(401).json({ error: "Senha ou E-mail incorreto" });
           }
         });
       } catch (error) {
