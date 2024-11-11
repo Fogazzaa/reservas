@@ -13,12 +13,5 @@ router.delete("/usuario/:id_usuario", usuarioController.deleteUsuario); // http:
 router.get("/agendamento", agendamentoController.createAgendamento); // http://localhost:5000/reservas/agendamento
 router.post("/agendamento", agendamentoController.createAgendamento); // http://localhost:5000/reservas/agendamento
 
-// {
-//     "nome_usuario":"1",
-//     "NIF": 1111111,
-//     "email":"1@1",
-//     "senha":"1111"
-// }
-
 module.exports = router
 //Exportândo a instância de express configurada, para que seja acessada em outros arquivos
