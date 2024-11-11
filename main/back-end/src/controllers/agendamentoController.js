@@ -22,24 +22,33 @@ module.exports = class AgendamentoController {
     // Verifica o status da sala (disponibilidade)
     const querySala = "SELECT status FROM sala WHERE id_sala = ?";
     const valuesSala = [fkid_sala];
-    const queryHorario = "SELECT horario_inicio and horario_fim FROM agendamento WHERE fkid_sala = ?";
+    const queryHorario =
+      "SELECT horario_inicio and horario_fim FROM agendamento WHERE fkid_sala = ?";
     const valuesHorario = [fkid_sala];
 
     try {
       // Verifica se a sala está disponível
-      const [resultadosQ] = await connect.promise().query(querySala, valuesSala);
-      const [resultadosH] = await connect.promise().query(queryHorario, valuesHorario);
+      const [resultadosQ] = await connect
+        .promise()
+        .query(querySala, valuesSala);
+      const [resultadosH] = await connect
+        .promise()
+        .query(queryHorario, valuesHorario);
 
       if (resultadosQ.length === 0) {
         return res.status(404).json({ error: "Sala não encontrada" });
       }
 
       if (resultadosH[0].horario_inicio !== horario_inicio) {
-        return res.status(400).json({ error: "A sala escolhida está em uso (Horario)" });
+        return res
+          .status(400)
+          .json({ error: "A sala escolhida está em uso (Horario)" });
       }
 
       if (resultadosH[0].horario_fim !== horario_fim) {
-        return res.status(400).json({ error: "A sala escolhida está em uso (Horario)" });
+        return res
+          .status(400)
+          .json({ error: "A sala escolhida está em uso (Horario)" });
       }
 
       // Se a sala não estiver disponível, retorna erro
@@ -58,7 +67,6 @@ module.exports = class AgendamentoController {
         tipo,
       ];
 
-     
       // Realiza o agendamento (inserção)
       await connect.promise().query(queryInsert, valuesInsert);
 
@@ -70,6 +78,5 @@ module.exports = class AgendamentoController {
       }
       return res.status(500).json({ error: "Erro Interno do Servidor" });
     }
-    
   }
-}
+};

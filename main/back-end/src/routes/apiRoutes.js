@@ -10,8 +10,8 @@ router.put("/usuario/:id_usuario", usuarioController.updateUsuario); // http://l
 router.delete("/usuario/:id_usuario", usuarioController.deleteUsuario); // http://localhost:5000/reservas/v1/usuario/id_usuario
 
 
-router.get("/agendamento", agendamentoController.createAgendamento);
-router.post("/agendamento", agendamentoController.createAgendamento);
+router.get("/agendamento", agendamentoController.createAgendamento); // http://localhost:5000/reservas/agendamento
+router.post("/agendamento", agendamentoController.createAgendamento); // http://localhost:5000/reservas/agendamento
 
 // {
 //     "nome_usuario":"1",
