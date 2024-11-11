@@ -1,10 +1,10 @@
-\connect alunods@localhost:3306 
+\connect alunods@localhost:3306
  password: senai@604
 
 create database rs; 
 use rs;
 create table if not exists usuario(
-		 id_usuario int primary key auto_increment,
+     id_usuario int primary key auto_increment,
      nome_usuario varchar(255) not null, 
      email varchar(255) unique not null,
      NIF char(7) unique not null,
@@ -13,7 +13,7 @@ create table if not exists usuario(
 
 create table if not exists sala(
      id_sala int primary key auto_increment,
-		 nome varchar(255) not null,
+     nome varchar(255) not null,
      descricao text, 
      bloco varchar(255) not null, 
      tipo varchar(255) not null,
@@ -25,8 +25,8 @@ create table if not exists agendamento(
      id_agendamento int primary key auto_increment,
      fkid_sala int not null,
      fkid_usuario int not null,
-     horario_inicio time not null, 
-     horario_fim time not null,
+     horario_inicio datetime not null, 
+     horario_fim datetime not null,
      tipo varchar(255) not null,
      foreign key (fkid_sala) references sala(id_sala),
      foreign key (fkid_usuario) references usuario(id_usuario)
