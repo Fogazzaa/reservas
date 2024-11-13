@@ -124,7 +124,7 @@ INSERT INTO sala (nome, descricao, bloco, tipo, status, capacidade) VALUES
 ('OFICINA DE MARCENARIA', 'Funcionamento: Seg. a Sex., 8h-17h. EPI: Luvas e óculos. Recursos: Ferramentas de marcenaria.', 'Oficina', 'Oficina', 1, 16),
 ('OFICINA DE LIXAMENTO', 'Funcionamento: Seg. a Sex., 8h-17h. EPI: Óculos e protetor auditivo. Recursos: Lixadeiras e polidoras.', 'Oficina', 'Oficina', 1, 16);
 
-INSERT INTO agendamento (tipo, horario_inicio, horario_fim, fkid_usuario, fkid_sala) VALUES
+INSERT INTO reserva (tipo, horario_inicio, horario_fim, fk_id_usuario, fk_id_sala) VALUES
 ('Sala de Aula', '09:00:00', '12:00:00', 1, 12),
 ('Laboratório', '14:00:00', '18:00:00', 2, 19),
 ('Oficina', '08:00:00', '12:00:00', 3, 30),

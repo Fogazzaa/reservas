@@ -21,10 +21,10 @@ create table if not exists sala(
      capacidade int not null
  );
 
-create table if not exists agendamento(
+create table if not exists reserva(
      id_agendamento int primary key auto_increment,
-     fkid_sala int not null,
-     fkid_usuario int not null,
+     fk_id_sala int not null,
+     fk_id_usuario int not null,
      horario_inicio datetime not null, 
      horario_fim datetime not null,
      tipo varchar(255) not null,
