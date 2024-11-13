@@ -10,8 +10,8 @@ router.put("/usuario/:id_usuario", usuarioController.updateUsuario); // http://l
 router.delete("/usuario/:id_usuario", usuarioController.deleteUsuario); // http://localhost:5000/reservas/v1/usuario/id_usuario
 
 
-router.get("/reserva", reservaController.createReserva); // http://localhost:5000/reservas/reserva
-router.post("/reserva", reservaController.createReserva); // http://localhost:5000/reservas/reserva
+router.get("/reserva", reservaController.createReserva); // http://localhost:5000/reservas/v1/reserva
+router.post("/reserva", reservaController.createReserva); // http://localhost:5000/reservas/v1/reserva
 
 module.exports = router
 //Exportândo a instância de express configurada, para que seja acessada em outros arquivos

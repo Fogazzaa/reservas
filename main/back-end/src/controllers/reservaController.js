@@ -19,41 +19,28 @@ module.exports = class AgendamentoController {
         .json({ error: "Todos os campos devem ser preenchidos" });
     }
 
-    // Verifica o status da sala (disponibilidade)
-    const querySala = "SELECT status FROM sala WHERE id_sala = ?";
-    const valuesSala = [fk_id_sala];
+    // A consulta SQL agora verifica se já existe uma reserva que se sobreponha
     const queryHorario =
-      "SELECT horario_inicio and horario_fim FROM reserva WHERE fkid_sala = ?";
-    const valuesHorario = [fk_id_sala];
+      `SELECT horario_inicio, horario_fim FROM reserva WHERE fk_id_sala = ? AND (
+        (horario_inicio < ? AND horario_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
+        (horario_inicio < ? AND horario_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
+        (horario_inicio >= ? AND horario_inicio < ?) OR  -- Novo horário começa dentro de um horário já reservado
+        (horario_fim > ? AND horario_fim <= ?) -- Novo horário termina dentro de um horário já reservado
+      )`;
+
+    const valuesHorario = [fk_id_sala, horario_inicio, horario_inicio, horario_inicio, horario_fim, horario_inicio, horario_fim, horario_inicio, horario_fim];
 
     try {
-      // Verifica se a sala está disponível
-      const [resultadosQ] = await connect
-        .promise()
-        .query(querySala, valuesSala);
+      // Verifica se já existe alguma reserva conflitante no horário
       const [resultadosH] = await connect
         .promise()
         .query(queryHorario, valuesHorario);
 
-      if (resultadosQ.length === 0) {
-        return res.status(404).json({ error: "Sala não encontrada" });
-      }
-
-      if (resultadosH[0].horario_inicio !== horario_inicio) {
+      // Se houver qualquer reserva que se sobreponha
+      if (resultadosH.length > 0) {
         return res
           .status(400)
-          .json({ error: "A sala escolhida está em uso (Horario)" });
-      }
-
-      if (resultadosH[0].horario_fim !== horario_fim) {
-        return res
-          .status(400)
-          .json({ error: "A sala escolhida está em uso (Horario)" });
-      }
-
-      // Se a sala não estiver disponível, retorna erro
-      if (resultadosQ[0].status !== 1) {
-        return res.status(400).json({ error: "A sala escolhida está em uso" });
+          .json({ error: "A sala escolhida já está reservada neste horário" });
       }
 
       // Construção da query INSERT para agendar a sala
