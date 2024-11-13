@@ -3,10 +3,10 @@ const connect = require("../db/connect"); // Importa o módulo de conexão com o
 module.exports = class usuarioController {
   // Estrutura os campos do corpo da requisição
   static async createUsuarios(req, res) {
-    const { NIF, email, senha, nome_usuario } = req.body;
+    const { NIF, email, senha, nome } = req.body;
 
     // Valida se todos os campos obrigatórios estão preenchidos
-    if (!NIF || !email || !senha || !nome_usuario) {
+    if (!NIF || !email || !senha || !nome) {
       return res.status(400).json({ error: "Todos os campos devem ser preenchidos" });
     }
 
@@ -21,8 +21,8 @@ module.exports = class usuarioController {
     }
 
     // Construção da query INSERT para adicionar o usuário ao banco de dados
-    const query = `INSERT INTO usuario (nome_usuario, email, NIF, senha) VALUES (?, ?, ?, ?)`;
-    const values = [nome_usuario, email, NIF, senha];
+    const query = `INSERT INTO usuario (nome_, email, NIF, senha) VALUES (?, ?, ?, ?)`;
+    const values = [nome, email, NIF, senha];
 
     try {
       connect.query(query, values, function (err) {
@@ -101,17 +101,17 @@ module.exports = class usuarioController {
 
   // Método para atualizar dados de um usuário
   static async updateUsuario(req, res) {
-    const { NIF, email, senha, nome_usuario } = req.body;
+    const { NIF, email, senha, nome } = req.body;
     const usuarioId = req.params.id_usuario;
 
     // Valida se todos os campos obrigatórios estão preenchidos
-    if (!NIF || !email || !senha || !nome_usuario) {
+    if (!NIF || !email || !senha || !nome) {
       return res.status(400).json({ error: "Todos os campos devem ser preenchidos" });
     }
 
     // Query para atualizar os dados do usuário
-    const query = `UPDATE usuario SET NIF = ?, email = ?, senha = ?, nome_usuario = ? WHERE id_usuario = ?`;
-    const values = [NIF, email, senha, nome_usuario, usuarioId];
+    const query = `UPDATE usuario SET NIF = ?, email = ?, senha = ?, nome = ? WHERE id_usuario = ?`;
+    const values = [NIF, email, senha, nome, usuarioId];
 
     try {
       connect.query(query, values, function (err, results) {
