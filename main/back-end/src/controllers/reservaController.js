@@ -1,15 +1,15 @@
 const connect = require("../db/connect"); // Importa o módulo de conexão com o banco de dados
 
 module.exports = class AgendamentoController {
-  static async createAgendamento(req, res) {
+  static async createReserva(req, res) {
     // Extrai os dados do corpo da requisição
-    const { fkid_usuario, fkid_sala, horario_inicio, horario_fim, tipo } =
+    const { fk_id_usuario, fk_id_sala, horario_inicio, horario_fim, tipo } =
       req.body;
 
     // Valida se todos os campos obrigatórios estão preenchidos
     if (
-      !fkid_usuario ||
-      !fkid_sala ||
+      !fk_id_usuario ||
+      !fk_id_sala ||
       !horario_inicio ||
       !horario_fim ||
       !tipo
@@ -21,10 +21,10 @@ module.exports = class AgendamentoController {
 
     // Verifica o status da sala (disponibilidade)
     const querySala = "SELECT status FROM sala WHERE id_sala = ?";
-    const valuesSala = [fkid_sala];
+    const valuesSala = [fk_id_sala];
     const queryHorario =
-      "SELECT horario_inicio and horario_fim FROM agendamento WHERE fkid_sala = ?";
-    const valuesHorario = [fkid_sala];
+      "SELECT horario_inicio and horario_fim FROM reserva WHERE fkid_sala = ?";
+    const valuesHorario = [fk_id_sala];
 
     try {
       // Verifica se a sala está disponível
@@ -57,11 +57,11 @@ module.exports = class AgendamentoController {
       }
 
       // Construção da query INSERT para agendar a sala
-      const queryInsert = `INSERT INTO agendamento (fkid_usuario, fkid_sala, horario_inicio, horario_fim, tipo)
+      const queryInsert = `INSERT INTO reserva (fk_id_usuario, fk_id_sala, horario_inicio, horario_fim, tipo)
                           VALUES (?, ?, ?, ?, ?)`;
       const valuesInsert = [
-        fkid_usuario,
-        fkid_sala,
+        fk_id_usuario,
+        fk_id_sala,
         horario_inicio,
         horario_fim,
         tipo,

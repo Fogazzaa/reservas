@@ -1,6 +1,6 @@
 const router = require('express').Router();//importando o módolo express
 
-const agendamentoController = require('../controllers/agendamentoController');
+const reservaController = require('../controllers/reservaController');
 const usuarioController = require("../controllers/usuarioController");
 
 router.post("/cadastro", usuarioController.createUsuarios); // http://localhost:5000/reservas/v1/cadastro
@@ -10,8 +10,8 @@ router.put("/usuario/:id_usuario", usuarioController.updateUsuario); // http://l
 router.delete("/usuario/:id_usuario", usuarioController.deleteUsuario); // http://localhost:5000/reservas/v1/usuario/id_usuario
 
 
-router.get("/agendamento", agendamentoController.createAgendamento); // http://localhost:5000/reservas/agendamento
-router.post("/agendamento", agendamentoController.createAgendamento); // http://localhost:5000/reservas/agendamento
+router.get("/reserva", reservaController.createReserva); // http://localhost:5000/reservas/reserva
+router.post("/reserva", reservaController.createReserva); // http://localhost:5000/reservas/reserva
 
 module.exports = router
 //Exportândo a instância de express configurada, para que seja acessada em outros arquivos
