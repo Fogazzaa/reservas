@@ -28,6 +28,6 @@ create table if not exists reserva(
      horario_inicio datetime not null, 
      horario_fim datetime not null,
      tipo varchar(255) not null,
-     foreign key (fkid_sala) references sala(id_sala),
-     foreign key (fkid_usuario) references usuario(id_usuario)
+     foreign key (fk_id_sala) references sala(id_sala),
+     foreign key (fk_id_usuario) references usuario(id_usuario)
  );
