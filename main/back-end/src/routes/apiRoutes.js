@@ -13,5 +13,6 @@ router.delete("/usuario/:id_usuario", usuarioController.deleteUsuario); // http:
 router.get("/reserva", reservaController.createReserva); // http://localhost:5000/reservas/v1/reserva
 router.post("/reserva", reservaController.createReserva); // http://localhost:5000/reservas/v1/reserva
 
-module.exports = router
+module.exports = router;
+
 //Exportândo a instância de express configurada, para que seja acessada em outros arquivos

@@ -53,7 +53,7 @@ module.exports = class AgendamentoController {
 
       // Construção da query INSERT para agendar a sala
       const queryInsert = `INSERT INTO reserva (fk_id_usuario, fk_id_sala, datahora_inicio, datahora_fim)
-                          VALUES (?, ?, ?, ?, ?)`;
+                          VALUES (?, ?, ?, ?)`;
       const valuesInsert = [
         fk_id_usuario,
         fk_id_sala,
