@@ -21,7 +21,7 @@ module.exports = class usuarioController {
     }
 
     // Construção da query INSERT para adicionar o usuário ao banco de dados
-    const query = `INSERT INTO usuario (nome_, email, NIF, senha) VALUES (?, ?, ?, ?)`;
+    const query = `INSERT INTO usuario (nome, email, NIF, senha) VALUES (?, ?, ?, ?)`;
     const values = [nome, email, NIF, senha];
 
     try {

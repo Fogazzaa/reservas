@@ -4,7 +4,7 @@
 curl --location 'http://localhost:5000/reservas/v1/cadastro' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "nome_usuario": "Gustavo Almeida",
+    "nome": "Gustavo Almeida",
     "email":"gustavo.almeida@example.com",
     "NIF":"5439871",
     "senha":"senha123"
@@ -35,7 +35,7 @@ curl --location 'http://localhost:5000/reservas/v1/login' \
 curl --location --request PUT 'http://localhost:5000/reservas/v1/usuario/1' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "nome_usuario": "Renata Souza",
+    "nome": "Renata Souza",
     "email":"renata.souza@example.com",
     "senha":"senha456"
 }'
