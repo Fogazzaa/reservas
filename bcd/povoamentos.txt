@@ -62,9 +62,9 @@ INSERT INTO sala (nome, descricao, bloco, tipo, capacidade) VALUES
 ('OFICINA DE LIXAMENTO', 'Funcionamento: Seg. a Sex., 8h-17h. EPI: Óculos e protetor auditivo. Recursos: Lixadeiras e polidoras.', 'Oficina', 'Oficina', 16);
 
 
-INSERT INTO reserva (tipo, datahora_inicio, datahora_fim, fk_id_usuario, fk_id_sala) VALUES
-('Sala de Aula', '2024-11-13 09:00:00', '2024-11-13 12:00:00', 1, 12),
-('Laboratório', '2024-11-13 14:00:00', '2024-11-13 18:00:00', 2, 19),
-('Oficina', '2024-11-13 08:00:00', '2024-11-13 12:00:00', 3, 30),
-('Oficina', '2024-11-13 13:00:00', '2024-11-13 17:00:00', 4, 21),
-('Oficina', '2024-11-13 09:00:00', '2024-11-13 13:00:00', 5, 29);
+INSERT INTO reserva (datahora_inicio, datahora_fim, fk_id_usuario, fk_id_sala) VALUES
+('2024-11-13 09:00:00', '2024-11-13 12:00:00', 1, 12),
+('2024-11-13 14:00:00', '2024-11-13 18:00:00', 2, 19),
+('2024-11-13 08:00:00', '2024-11-13 12:00:00', 3, 30),
+('2024-11-13 13:00:00', '2024-11-13 17:00:00', 4, 21),
+('2024-11-13 09:00:00', '2024-11-13 13:00:00', 5, 29);

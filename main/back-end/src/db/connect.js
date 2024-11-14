@@ -10,8 +10,3 @@ const pool = mysql.createPool({
 })
 
 module.exports = pool;
-
-// CREATE USER 'alunods'@'localhost' IDENTIFIED BY 'senai@604';
-// GRANT ALL PRIVILEGES ON *.* TO 'alunods'@'localhost';
-// FLUSH PRIVILEGES;
-
