@@ -66,10 +66,6 @@ module.exports = class AgendamentoController {
 
       return res.status(201).json({ message: "Sala reservada com sucesso!" });
     } catch (err) {
-      console.error(err);
-      if (err.code === "ER_DUP_ENTRY") {
-        return res.status(400).json({ error: "A sala escolhida está em uso" });
-      }
       return res.status(500).json({ error: "Erro Interno do Servidor" });
     }
   }
