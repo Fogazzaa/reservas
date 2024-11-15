@@ -13,6 +13,12 @@ module.exports = class AgendamentoController {
         .json({ error: "Todos os campos devem ser preenchidos" });
     }
 
+    const queryUsuario = `SELECT * FROM usuario WHERE id_usuario = ?`;
+    const valuesUsuario = [fk_id_usuario];
+
+    const querySala = `SELECT * FROM sala WHERE id_sala = ?`;
+    const valuesSala = [fk_id_sala];
+
     // A consulta SQL agora verifica se já existe uma reserva que se sobreponha
     const queryHorario = `SELECT datahora_inicio, datahora_fim FROM reserva WHERE fk_id_sala = ? AND (
         (datahora_inicio < ? AND datahora_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
@@ -41,10 +47,30 @@ module.exports = class AgendamentoController {
         .promise()
         .query(queryHorario, valuesHorario);
 
+      const [resultadosU] = await connect
+        .promise()
+        .query(queryUsuario, valuesUsuario);
+
+      const [resultadosS] = await connect
+        .promise()
+        .query(querySala, valuesSala);
+
+      if (resultadosU.length === 0) {
+        return res.status(404).json({ error: "Usuário não encontrado" });
+      }
+
+      if (resultadosS.length === 0) {
+        return res.status(404).json({ error: "Sala não encontrada" });
+      }
+
+      if (new Date(datahora_fim) < new Date(datahora_inicio)) {
+        return res.status(400).json({ error: "Data ou Hora da Inválida" });
+      }
+
       if (new Date(datahora_fim) - new Date(datahora_inicio) > limiteHora) {
         return res
           .status(400)
-          .json({ error: "O tempo de reserva excede o limite (1h)" });
+          .json({ error: "O tempo de Reserva excede o limite (1h)" });
       }
 
       // Se houver qualquer reserva que se sobreponha
