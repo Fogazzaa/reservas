@@ -57,6 +57,6 @@ curl --location --request GET 'http://localhost:5000/reservas/v1/reserva' \
 --data '{
     "fk_id_usuario":"1",
     "fk_id_sala":"1", 
-    "datahora_inicio":"2024-11-11 12:00:00", 
-    "datahora_fim":"2024-11-11 13:00:00"
+    "datahora_inicio":"2024-01-01 00:00:00", 
+    "datahora_fim":"2024-01-01 01:00:00"
 }'
