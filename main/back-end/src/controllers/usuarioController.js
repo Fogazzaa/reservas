@@ -7,12 +7,16 @@ module.exports = class usuarioController {
 
     // Valida se todos os campos obrigatórios estão preenchidos
     if (!NIF || !email || !senha || !nome) {
-      return res.status(400).json({ error: "Todos os campos devem ser preenchidos" });
+      return res
+        .status(400)
+        .json({ error: "Todos os campos devem ser preenchidos" });
     }
 
     // Valida se o NIF é numérico e tem 7 dígitos
     if (isNaN(NIF) || NIF.length !== 7) {
-      return res.status(400).json({ error: "NIF inválido. Deve conter exatamente 7 dígitos numéricos" });
+      return res.status(400).json({
+        error: "NIF inválido. Deve conter exatamente 7 dígitos numéricos",
+      });
     }
 
     // Valida se o email contém o caractere "@"
@@ -29,7 +33,9 @@ module.exports = class usuarioController {
         if (err) {
           console.error(err);
           if (err.code === "ER_DUP_ENTRY") {
-            return res.status(400).json({ error: "O NIF ou email já está vinculado a outro usuário" });
+            return res.status(400).json({
+              error: "O NIF ou email já está vinculado a outro usuário",
+            });
           }
           return res.status(500).json({ error: "Erro Interno do Servidor" });
         }
@@ -47,7 +53,9 @@ module.exports = class usuarioController {
 
     // Valida se todos os campos obrigatórios estão devidamente preenchidos
     if (!senha || !email) {
-      return res.status(400).json({ error: "Todos os campos devem ser preenchidos" });
+      return res
+        .status(400)
+        .json({ error: "Todos os campos devem ser preenchidos" });
     }
 
     // Consulta para verificar se o email existe no banco de dados
@@ -70,7 +78,9 @@ module.exports = class usuarioController {
 
         // Verifica se a senha está correta
         if (usuario.senha === senha) {
-          return res.status(200).json({ message: "Login realizado com sucesso!" });
+          return res
+            .status(200)
+            .json({ message: "Login realizado com sucesso!" });
         } else {
           return res.status(401).json({ error: "Senha ou E-mail incorreto" });
         }
@@ -91,7 +101,9 @@ module.exports = class usuarioController {
           console.error(err);
           return res.status(500).json({ error: "Erro Interno do Servidor" });
         }
-        return res.status(200).json({ message: "Obtendo todos os usuários", usuarios: results });
+        return res
+          .status(200)
+          .json({ message: "Obtendo todos os usuários", usuarios: results });
       });
     } catch (error) {
       console.error(error);
@@ -101,22 +113,34 @@ module.exports = class usuarioController {
 
   // Método para atualizar dados de um usuário
   static async updateUsuario(req, res) {
-    const { NIF, email, senha, nome } = req.body;
+    const { email, senha, nome } = req.body;
     const usuarioId = req.params.id_usuario;
 
     // Valida se todos os campos obrigatórios estão preenchidos
-    if (!NIF || !email || !senha || !nome) {
-      return res.status(400).json({ error: "Todos os campos devem ser preenchidos" });
+    if (!email || !senha || !nome) {
+      return res
+        .status(400)
+        .json({ error: "Todos os campos devem ser preenchidos" });
+    }
+
+    // Valida se o email contém o caractere "@"
+    if (!email.includes("@")) {
+      return res.status(400).json({ error: "Email inválido. Deve conter @" });
     }
 
     // Query para atualizar os dados do usuário
-    const query = `UPDATE usuario SET NIF = ?, email = ?, senha = ?, nome = ? WHERE id_usuario = ?`;
-    const values = [NIF, email, senha, nome, usuarioId];
+    const query = `UPDATE usuario SET email = ?, senha = ?, nome = ? WHERE id_usuario = ?`;
+    const values = [email, senha, nome, usuarioId];
 
     try {
       connect.query(query, values, function (err, results) {
         if (err) {
           console.error(err);
+          if (err.code === "ER_DUP_ENTRY") {
+            return res.status(400).json({
+              error: "O email já está vinculado a outro usuário",
+            });
+          }
           return res.status(500).json({ error: "Erro interno no servidor" });
         }
 
@@ -124,7 +148,9 @@ module.exports = class usuarioController {
         if (results.affectedRows === 0) {
           return res.status(404).json({ error: "Usuário não encontrado" });
         }
-        return res.status(200).json({ message: "Usuário atualizado com sucesso" });
+        return res
+          .status(200)
+          .json({ message: "Usuário atualizado com sucesso" });
       });
     } catch (error) {
       console.error(error);
@@ -149,7 +175,9 @@ module.exports = class usuarioController {
         if (results.affectedRows === 0) {
           return res.status(404).json({ error: "Usuario não encontrado" });
         }
-        return res.status(200).json({ message: "Usuario excluído com sucesso" });
+        return res
+          .status(200)
+          .json({ message: "Usuario excluído com sucesso" });
       });
     } catch (error) {
       console.error(error);
