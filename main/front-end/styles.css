@@ -161,7 +161,7 @@ main #cadastro #formulario-cadastro {
   padding-top: 60px;
 }
 
-main #cadastro #formulario-cadastro .nome_usuario input {
+main #cadastro #formulario-cadastro .nome input {
   border-style: none;
   margin-bottom: 10px;
   border-radius: 15px;

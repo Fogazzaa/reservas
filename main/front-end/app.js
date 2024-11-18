@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .addEventListener("submit", function (event) {
         // adiciona o ouvinte do evento 'submit'
         event.preventDefault(); // previne o comportamento padrão do formulário, ou seja, impede que ele seja enviado e recarregue a página
-        const nome_usuario = document.getElementById("nome_usuario").value; // capturar os valores dos campos do formulário pelo id
+        const nome = document.getElementById("nome").value; // capturar os valores dos campos do formulário pelo id
         const NIF = document.getElementById("NIF").value;
         const email = document.getElementById("email").value;
         const senha = document.getElementById("senha").value;
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "Content-Type": "application/json",
           },
           // transforma os dados do formulário em uma string json para serem enviados no corpo da requisição
-          body: JSON.stringify({ nome_usuario, NIF, senha, email }),
+          body: JSON.stringify({ nome, NIF, senha, email }),
         })
           .then((response) => {
             // tratamento da resposta do servidor / api
