@@ -66,10 +66,6 @@ module.exports = class AgendamentoController {
             return res.status(400).json({ error: "Data ou Hora da Inválida" });
           }
 
-          if (new datahora_fim() === new Date(datahora_inicio)) {
-            return res.status(400).json({ error: "Data ou Hora da Inválida" });
-          }
-
           const limiteHora = 60 * 60 * 1000; // 1 hora em milissegundos
           if (new Date(datahora_fim) - new Date(datahora_inicio) > limiteHora) {
             return res
