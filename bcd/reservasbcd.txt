@@ -13,7 +13,7 @@ create table if not exists usuario(
 
 create table if not exists sala(
      id_sala int primary key auto_increment,
-     nome varchar(255) not null,
+     nome varchar(255) unique not null,
      descricao text, 
      bloco varchar(255) not null, 
      tipo varchar(255) not null,

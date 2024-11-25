@@ -22,7 +22,7 @@ module.exports = class salaController {
           console.error(err);
           if (err.code === "ER_DUP_ENTRY") {
             return res.status(400).json({
-              error: "O nome já está vinculado a outro usuário",
+              error: "O nome da sala já existe",
             });
           }
           return res.status(500).json({ error: "Erro Interno do Servidor" });
@@ -77,7 +77,7 @@ module.exports = class salaController {
           console.error(err);
           if (err.code === "ER_DUP_ENTRY") {
             return res.status(400).json({
-              error: "O email já está vinculado a outro usuário",
+              error: "O nome da sala já existe",
             });
           }
           return res.status(500).json({ error: "Erro interno no servidor" });
