@@ -62,7 +62,11 @@ module.exports = class AgendamentoController {
             return res.status(404).json({ error: "Sala não encontrada" });
           }
 
-          if (new Date(datahora_fim) < new Date(datahora_inicio)) {
+          if (new Date(datahora_fim).getTime() < new Date(datahora_inicio).getTime()) {
+            return res.status(400).json({ error: "Data ou Hora da Inválida" });
+          }
+
+          if (new Date(datahora_fim).getTime() === new Date(datahora_inicio).getTime()) {
             return res.status(400).json({ error: "Data ou Hora da Inválida" });
           }
 
