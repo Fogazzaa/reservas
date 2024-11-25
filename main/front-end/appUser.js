@@ -1,7 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () {
-    document
-      .getElementById("formulario-cadastro") //  seleciona o elemento com o id indicado no <form> 'formulario-registro'
-      .addEventListener("submit", function (event) {
+
+document.addEventListener("DOMContentLoaded").getElementById("formulario-cadastro").addEventListener("submit", createUser);
+document.addEventListener("DOMContentLoaded").getElementById("formulario-login").addEventListener("submit", loginUser)
+
+  function createUser(event) {
         // adiciona o ouvinte do evento 'submit'
         event.preventDefault(); // previne o comportamento padrão do formulário, ou seja, impede que ele seja enviado e recarregue a página
         const nome = document.getElementById("nome").value; // capturar os valores dos campos do formulário pelo id
@@ -48,13 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Erro no cadastro: " + error.message);
             console.error("Erro:", error.message);
           }); // --- fechamento 'catch(error)'
-      });
-  });
+      }
   
-  document.addEventListener("DOMContentLoaded", function () {
-    document
-      .getElementById("formulario-login") //  seleciona o elemento com o id indicado no <form> 'formulario-registro'
-      .addEventListener("submit", function (event) {
+ function loginUser(event) {
         event.preventDefault(); // previne o comportamento padrão do formulário, ou seja, impede que ele seja enviado e recarregue a página
         const email = document.getElementById("email").value; // capturar os valores dos campos do formulário pelo id
         const senha = document.getElementById("senha").value;
@@ -93,5 +90,4 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Erro no Login: " + error.message);
             console.error("Erro:", error.message);
           }); // --- fechamento 'catch(error)'
-      });
-  });
+      }
