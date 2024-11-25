@@ -1,7 +1,7 @@
 const connect = require("../db/connect"); // Importa o módulo de conexão com o banco de dados
 
 module.exports = class AgendamentoController {
-  static async createReserva(req, res) {
+  static createReservas(req, res) {
     // Extrai os dados do corpo da requisição
     const { fk_id_usuario, fk_id_sala, datahora_inicio, datahora_fim } =
       req.body;
@@ -39,86 +39,92 @@ module.exports = class AgendamentoController {
       datahora_fim,
     ];
 
-    try {
-      const limiteHora = 60 * 60 * 1000; // 1 hora em milissegundos
-
-      // Verifica se já existe alguma reserva conflitante no horário
-      const [resultadosH] = await connect
-        .promise()
-        .query(queryHorario, valuesHorario);
-
-      const [resultadosU] = await connect
-        .promise()
-        .query(queryUsuario, valuesUsuario);
-
-      const [resultadosS] = await connect
-        .promise()
-        .query(querySala, valuesSala);
-
-      if (resultadosU.length === 0) {
-        return res.status(404).json({ error: "Usuário não encontrado" });
+    connect.query(queryHorario, valuesHorario, (err, resultadosH) => {
+      if (err) {
+        return res.status(500).json({ error: "Erro ao verificar horário" });
       }
 
-      if (resultadosS.length === 0) {
-        return res.status(404).json({ error: "Sala não encontrada" });
-      }
+      connect.query(queryUsuario, valuesUsuario, (err, resultadosU) => {
+        if (err) {
+          return res.status(500).json({ error: "Erro ao buscar usuário" });
+        }
 
-      if (new Date(datahora_fim) < new Date(datahora_inicio)) {
-        return res.status(400).json({ error: "Data ou Hora da Inválida" });
-      }
+        connect.query(querySala, valuesSala, (err, resultadosS) => {
+          if (err) {
+            return res.status(500).json({ error: "Erro ao buscar sala" });
+          }
 
-      if (new Date(datahora_fim) - new Date(datahora_inicio) > limiteHora) {
-        return res
-          .status(400)
-          .json({ error: "O tempo de Reserva excede o limite (1h)" });
-      }
+          if (resultadosU.length === 0) {
+            return res.status(404).json({ error: "Usuário não encontrado" });
+          }
 
-      // Se houver qualquer reserva que se sobreponha
-      if (resultadosH.length > 0) {
-        return res
-          .status(400)
-          .json({ error: "A sala escolhida já está reservada neste horário" });
-      }
+          if (resultadosS.length === 0) {
+            return res.status(404).json({ error: "Sala não encontrada" });
+          }
 
-      // Construção da query INSERT para agendar a sala
-      const queryInsert = `INSERT INTO reserva (fk_id_usuario, fk_id_sala, datahora_inicio, datahora_fim)
-                          VALUES (?, ?, ?, ?)`;
-      const valuesInsert = [
-        fk_id_usuario,
-        fk_id_sala,
-        datahora_inicio,
-        datahora_fim,
-      ];
+          if (new Date(datahora_fim) < new Date(datahora_inicio)) {
+            return res.status(400).json({ error: "Data ou Hora da Inválida" });
+          }
 
-      // Realiza o agendamento (inserção)
-      await connect.promise().query(queryInsert, valuesInsert);
+          if (new datahora_fim() === new Date(datahora_inicio)) {
+            return res.status(400).json({ error: "Data ou Hora da Inválida" });
+          }
 
-      return res.status(201).json({ message: "Sala reservada com sucesso!" });
-    } catch (err) {
-      return res.status(500).json({ error: "Erro Interno do Servidor" });
-    }
+          const limiteHora = 60 * 60 * 1000; // 1 hora em milissegundos
+          if (new Date(datahora_fim) - new Date(datahora_inicio) > limiteHora) {
+            return res
+              .status(400)
+              .json({ error: "O tempo de Reserva excede o limite (1h)" });
+          }
+
+          // Se houver qualquer reserva que se sobreponha
+          if (resultadosH.length > 0) {
+            return res
+              .status(400)
+              .json({
+                error: "A sala escolhida já está reservada neste horário",
+              });
+          }
+
+          const queryInsert = `INSERT INTO reserva (fk_id_usuario, fk_id_sala, datahora_inicio, datahora_fim)
+                              VALUES (?, ?, ?, ?)`;
+          const valuesInsert = [
+            fk_id_usuario,
+            fk_id_sala,
+            datahora_inicio,
+            datahora_fim,
+          ];
+
+          // Realiza o agendamento (inserção)
+          connect.query(queryInsert, valuesInsert, (err, results) => {
+            if (err) {
+              return res.status(500).json({ error: "Erro ao criar reserva" });
+            }
+
+            return res
+              .status(201)
+              .json({ message: "Sala reservada com sucesso!" });
+          });
+        });
+      });
+    });
   }
 
-  static async getAllReservas(req, res) {
+  static getAllReservas(req, res) {
     const query = `SELECT * FROM reserva`;
 
-    try {
-      connect.query(query, function (err, results) {
-        if (err) {
-          console.error(err);
-          return res.status(500).json({ error: "Erro Interno do Servidor" });
-        }
-        return res
-          .status(200)
-          .json({ message: "Obtendo todas as reservas", reservas: results });
-      });
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ error: "Erro Interno do Servidor" });
-    }
+    connect.query(query, (err, results) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: "Erro Interno do Servidor" });
+      }
+      return res
+        .status(200)
+        .json({ message: "Obtendo todas as reservas", reservas: results });
+    });
   }
 
-  static async updateReserva(req, res) {
+  static updateReserva(req, res) {
     const { datahora_inicio, datahora_fim } = req.body;
     const reservaId = req.params.id_reserva;
 
@@ -150,20 +156,18 @@ module.exports = class AgendamentoController {
 
     // Query para atualizar os dados do usuário
     const queryUpdate = `UPDATE reserva SET datahora_inicio = ?, datahora_fim = ? WHERE id_reserva = ?`;
-    const valuesUpdate = [datahora_inicio, datahora_fim, reservaId]
+    const valuesUpdate = [datahora_inicio, datahora_fim, reservaId];
 
-    try {
-      const limiteHora = 60 * 60 * 1000; // 1 hora em milissegundos
-
-      // Verifica se já existe alguma reserva conflitante no horário
-      const [resultadosH] = await connect
-        .promise()
-        .query(queryHorario, valuesHorario);
+    connect.query(queryHorario, valuesHorario, (err, resultadosH) => {
+      if (err) {
+        return res.status(500).json({ error: "Erro ao verificar horário" });
+      }
 
       if (new Date(datahora_fim) < new Date(datahora_inicio)) {
         return res.status(400).json({ error: "Data ou Hora da Inválida" });
       }
 
+      const limiteHora = 60 * 60 * 1000; // 1 hora em milissegundos
       if (new Date(datahora_fim) - new Date(datahora_inicio) > limiteHora) {
         return res
           .status(400)
@@ -177,38 +181,34 @@ module.exports = class AgendamentoController {
           .json({ error: "A sala escolhida já está reservada neste horário" });
       }
 
-      // Realiza o agendamento (inserção)
-      await connect.promise().query(queryUpdate, valuesUpdate);
+      connect.query(queryUpdate, valuesUpdate, (err, results) => {
+        if (err) {
+          return res.status(500).json({ error: "Erro ao atualizar reserva" });
+        }
 
-      return res.status(201).json({ message: "Sala atualizada com sucesso!" });
-    } catch (err) {
-      return res.status(500).json({ error: "Erro Interno do Servidor" });
-    }
+        return res
+          .status(201)
+          .json({ message: "Sala atualizada com sucesso!" });
+      });
+    });
   }
 
-  static async deleteReserva(req, res) {
+  static deleteReserva(req, res) {
     const reservaId = req.params.id_reserva;
     const query = `DELETE FROM reserva WHERE id_reserva = ?`;
     const values = [reservaId];
 
-    try {
-      connect.query(query, values, function (err, results) {
-        if (err) {
-          console.error(err);
-          return res.status(500).json({ error: "Erro interno no servidor" });
-        }
+    connect.query(query, values, (err, results) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: "Erro interno no servidor" });
+      }
 
-        // Verifica se o usuário foi encontrado e excluído
-        if (results.affectedRows === 0) {
-          return res.status(404).json({ error: "Reserva não encontrada" });
-        }
-        return res
-          .status(200)
-          .json({ message: "Reserva excluída com sucesso" });
-      });
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ error: "Erro interno do servidor" });
-    }
+      // Verifica se o usuário foi encontrado e excluído
+      if (results.affectedRows === 0) {
+        return res.status(404).json({ error: "Reserva não encontrada" });
+      }
+      return res.status(200).json({ message: "Reserva excluída com sucesso" });
+    });
   }
-}
+};

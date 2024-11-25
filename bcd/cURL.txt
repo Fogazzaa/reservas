@@ -50,7 +50,7 @@ curl --location --request DELETE 'http://localhost:5000/reservas/v1/usuario/1' \
 
 -------------------------------------------------------------------------------
 
- - RESERVA:
+ - RESERVA - POST:
 
 curl --location --request GET 'http://localhost:5000/reservas/v1/reserva' \
 --header 'Content-Type: application/json' \
@@ -60,3 +60,71 @@ curl --location --request GET 'http://localhost:5000/reservas/v1/reserva' \
     "datahora_inicio":"2024-01-01 00:00:00", 
     "datahora_fim":"2024-01-01 01:00:00"
 }'
+
+-------------------------------------------------------------------------------
+
+ - RESERVA - GET:
+
+curl --location 'http://localhost:5000/reservas/v1/reservas'
+
+-------------------------------------------------------------------------------
+
+ - RESERVA - PUT:
+
+curl --location --request PUT 'http://localhost:5000/reservas/v1/reserva/1' \
+--header 'Content-Type: application/json' \
+--data '{ 
+    "datahora_inicio":"2024-01-01 01:00:00", 
+    "datahora_fim":"2024-01-01 02:00:00"
+}'
+
+
+-------------------------------------------------------------------------------
+
+ - RESERVA - DELETE:
+
+curl --location --request DELETE 'http://localhost:5000/reservas/v1/reserva/1' \
+--header 'Content-Type: application/json' \
+--data ''
+
+-------------------------------------------------------------------------------
+
+ - SALA - POST:
+
+curl --location 'http://localhost:5000/reservas/v1/sala' \
+--header 'Content-Type: application/json' \
+--data '{
+    "nome":"SALA TESTE",
+    "descricao":"DESCRICAO",
+    "bloco":"A",
+    "tipo":"OFICINA",
+    "capacidade":"20"
+}'
+
+-------------------------------------------------------------------------------
+
+ - SALA - GET:
+
+curl --location 'http://localhost:5000/reservas/v1/sala' \
+--data ''
+
+-------------------------------------------------------------------------------
+
+ - SALA - PUT:	
+
+curl --location --request PUT 'http://localhost:5000/reservas/v1/sala/1' \
+--header 'Content-Type: application/json' \
+--data '{
+    "nome":"SALA TESTE 2",
+    "descricao":"DESCRICAO 2",
+    "bloco":"B",
+    "tipo":"OFICINA",
+    "capacidade":"25"
+}'
+
+-------------------------------------------------------------------------------
+
+ - SALA - DELETE:	
+
+curl --location --request DELETE 'http://localhost:5000/reservas/v1/sala/1' \
+--data ''
