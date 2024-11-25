@@ -21,7 +21,7 @@ create table if not exists sala(
  );
 
 create table if not exists reserva(
-     id_agendamento int primary key auto_increment,
+     id_reserva int primary key auto_increment,
      fk_id_sala int not null,
      fk_id_usuario int not null,
      datahora_inicio datetime not null, 

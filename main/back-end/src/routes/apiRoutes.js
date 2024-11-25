@@ -12,6 +12,9 @@ router.delete("/usuario/:id_usuario", usuarioController.deleteUsuario); // http:
 
 router.get("/reserva", reservaController.createReserva); // http://localhost:5000/reservas/v1/reserva
 router.post("/reserva", reservaController.createReserva); // http://localhost:5000/reservas/v1/reserva
+router.get("/reservas", reservaController.getAllReservas); // http://localhost:5000/reservas/v1/reservas
+router.put("/reserva/:id_reserva", reservaController.updateReserva); // http://localhost:5000/reservas/v1/reserva/id_reserva
+router.delete("/reserva/:id_reserva", reservaController.deleteReserva); // http://localhost:5000/reservas/v1/reserva/id_reserva
 
 module.exports = router;
 
