@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", getAllSalasTabela);
 
 // Função que busca as informações das salas e preenche a tabela.
 function getAllSalasTabela() {
-
   // Realiza uma requisição GET para a URL
   fetch("http://10.89.240.94:5000/reservas/v1/sala", {
     method: "GET",
@@ -11,18 +10,21 @@ function getAllSalasTabela() {
       "Content-Type": "application/JSON",
     },
   })
-    .then((response) => {  // Trata a resposta da requisição
-      if (response.ok) {   // Se for bem-sucedida
-        return response.json();  //converte a resposta para formato JSON
+    .then((response) => {
+      // Trata a resposta da requisição
+      if (response.ok) {
+        // Se for bem-sucedida
+        return response.json(); //converte a resposta para formato JSON
       }
-      return response.json().then((err) => {   // Caso contrário, lança um erro
+      return response.json().then((err) => {
+        // Caso contrário, lança um erro
         throw new Error(err.error);
       });
     })
 
-     // Após obter os dados em JSON, preenche a tabela
+    // Após obter os dados em JSON, preenche a tabela
     .then((data) => {
-      const salaLista = document.getElementById("sala-list-tabela");  // Obtém o elemento da tabela onde os dados das salas estão
+      const salaLista = document.getElementById("sala-list-tabela"); // Obtém o elemento da tabela onde os dados das salas estão
       salaLista.innerHTML = ""; // Limpa a lista antes de Adicionar novos itens
       // Verifica se há usuario retornados e os adiciona a tabela
       data.salas.forEach((sala) => {
@@ -32,7 +34,7 @@ function getAllSalasTabela() {
         // Cria e adiciona a célula para o nome da sala
         const tdNome = document.createElement("td");
         tdNome.textContent = sala.nome; // Atribui o nome
-        tr.appendChild(tdNome);  // Adiciona a célula à linha
+        tr.appendChild(tdNome); // Adiciona a célula à linha
 
         // Cria e adiciona a célula para a descrição da sala
         const tdDescricao = document.createElement("td");

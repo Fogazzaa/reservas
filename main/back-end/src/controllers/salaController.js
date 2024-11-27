@@ -55,49 +55,78 @@ module.exports = class salaController {
     }
   }
 
-  static async getSalaReservadas(req, res) {
-    // Consultas SQL para obter as salas reservadas e todas as salas
-    const queryReserva = `SELECT fk_id_sala FROM reserva`;
-    const querySala = `SELECT id_sala FROM sala`;
-
+  static async getSalaDisponiveisHorario(req, res) {
+    const { datahora_inicio, datahora_fim } = req.body; // Pegando as datas do corpo da requisição
+  
+    const queryHorario = `
+      SELECT datahora_inicio, datahora_fim 
+      FROM reserva 
+      WHERE fk_id_sala = ? AND (
+        (datahora_inicio < ? AND datahora_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
+        (datahora_inicio < ? AND datahora_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
+        (datahora_inicio >= ? AND datahora_inicio < ?) OR  -- Novo horário começa dentro de um horário já reservado
+        (datahora_fim > ? AND datahora_fim <= ?) -- Novo horário termina dentro de um horário já reservado )`;
+  
+    const querySalasDisponiveis = `
+      SELECT s.id_sala, s.nome, s.descricao, s.bloco, s.tipo, s.capacidade
+      FROM sala s
+    `;
+  
     try {
-      // Realizando as consultas no banco de dados
-      connect.query(queryReserva, (err, salasReservadasRows) => {
-        if (err) {
-          console.error(err);
-          return res
-            .status(500)
-            .json({ message: "Erro ao obter as salas reservadas" });
-        }
-
-        connect.query(querySala, (err, salasRows) => {
+      // 1. Obter todas as salas
+      const salasDisponiveis = await new Promise((resolve, reject) => {
+        connect.query(querySalasDisponiveis, (err, result) => {
           if (err) {
             console.error(err);
-            return res
-              .status(500)
-              .json({ message: "Erro ao obter as salas disponíveis" });
+            return reject({ message: "Erro ao obter as salas disponíveis" });
           }
-
-          // Extraindo os IDs das salas reservadas e todas as salas
-          const salasReservadas = salasReservadasRows.map(
-            (row) => row.fk_id_sala
-          );
-          const todasSalas = salasRows.map((row) => row.id_sala);
-
-          // Filtrando as salas reservadas
-          const salasSomenteReservadas = todasSalas.filter((sala) =>
-            salasReservadas.includes(sala)
-          );
-
-          // Enviando a resposta
-          res.status(200).json(salasSomenteReservadas);
+          resolve(result);
         });
       });
+  
+      // 2. Filtrar as salas que não têm conflito de horário
+      const salasDisponiveisFinal = [];
+  
+      for (const sala of salasDisponiveis) {
+        const reservaConflito = await new Promise((resolve, reject) => {
+          connect.query(queryHorario, [
+            sala.id_sala,         // ID da sala para verificar as reservas
+            datahora_inicio,      // Data de início do novo horário
+            datahora_inicio,      // Verificar se o novo horário começa antes e termina depois da reserva existente
+            datahora_inicio,      // Novo horário começa antes e termina depois da reserva existente
+            datahora_fim,         // Novo horário termina após o horário de reserva
+            datahora_inicio,      // Novo horário começa durante o horário da reserva
+            datahora_fim,         // Novo horário termina durante o horário da reserva
+            datahora_inicio,      // Novo horário começa durante o horário da reserva
+            datahora_fim,         // Novo horário termina durante o horário da reserva
+          ], (err, rows) => {
+            if (err) {
+              console.error(err);
+              return reject({ message: "Erro ao verificar conflitos de reserva" });
+            }
+            resolve(rows.length > 0); // Se houver alguma reserva que conflite, retorna true
+          });
+        });
+  
+        // Se não houver conflito de horário, adiciona a sala à lista final
+        if (!reservaConflito) {
+          salasDisponiveisFinal.push(sala);
+        }
+      }
+  
+      // Caso não haja salas disponíveis
+      if (salasDisponiveisFinal.length === 0) {
+        return res.status(404).json({ message: "Não há salas disponíveis para o horário solicitado" });
+      }
+  
+      // Retornar as salas disponíveis
+      return res.status(200).json(salasDisponiveisFinal);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "Erro ao obter as salas" });
+      return res.status(500).json({ message: "Erro ao obter as salas disponíveis" });
     }
   }
+  
 
   static async getSaladisponiveis(req, res) {
     // Consultas SQL para obter as salas reservadas e todas as salas
@@ -147,7 +176,19 @@ module.exports = class salaController {
   static async getSaladisponiveisHorario(req, res) {
     // Consultas SQL para obter as salas reservadas e todas as salas
     const queryReserva = `SELECT fk_id_sala FROM reserva`;
-    const queryRHorario = `SELECT data_hora and data_fim FROM reserva`;
+    const queryRHorario = `SELECT s.id_sala, s.nome, s.descricao, s.bloco, s.tipo, s.capacidade
+    FROM sala s
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM reserva r
+        WHERE r.fk_id_sala = s.id_sala
+        AND (
+            (r.datahora_inicio < ? AND r.datahora_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
+            (r.datahora_inicio < ? AND r.datahora_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
+            (r.datahora_inicio >= ? AND r.datahora_inicio < ?) OR  -- Novo horário começa dentro de um horário já reservado
+            (r.datahora_fim > ? AND r.datahora_fim <= ?) -- Novo horário termina dentro de um horário já reservado
+        )
+    );`;
     const querySala = `SELECT id_sala FROM sala`;
 
     try {
@@ -245,12 +286,10 @@ module.exports = class salaController {
       connect.query(query, values, function (err, results) {
         if (err) {
           if (err.code === "ER_ROW_IS_REFERENCED_2") {
-            return res
-              .status(400)
-              .json({
-                error:
-                  "A sala está vinculada a uma reserva, e não pode ser excluida",
-              });
+            return res.status(400).json({
+              error:
+                "A sala está vinculada a uma reserva, e não pode ser excluida",
+            });
           }
           console.error(err);
           return res.status(500).json({ error: "Erro interno no servidor" });

@@ -348,11 +348,11 @@ main #login #formulario-login .botoes .login input:hover {
 .logo img {
   position: absolute;  /* -- posição absoluta em relação ao seu elemento mais próximo -- */
   top: 10%;  /* -- Posiciona a imagem 10% abaixo do topo -- */
-  left: 8.8%;  /* -- Posiciona a imagem à direita do lado esquerdo do elemento -- */
+  left: 8.14%;  /* -- Posiciona a imagem à direita do lado esquerdo do elemento -- */
   transform: translate(-50%, -50%);  /* -- deslocar a imagem de seu centro posicionando nessas coordenadas -- */
-  width: 190px;    /* -- largura -- */
+  width: 180px;    /* -- largura -- */
   background-color: white;    /* -- fundo-- */
-  padding: 5px;   /* -- preenchimento ao redor da imagem -- */
+  padding: 6px;   /* -- preenchimento ao redor da imagem -- */
   border-radius: 20px;   /* -- bordas arredondadas -- */
 }
 
@@ -367,12 +367,11 @@ main #login #formulario-login .botoes .login input:hover {
 }
 
 .campos .usuario button {
-  padding: 9px 9px; /* Define o espaçamento com 9px em cada lado */
+  padding: 9px 12px; /* Define o espaçamento com 9px em cada lado */
   background-color: rgba(187, 187, 187, 1);  /* -- fundo-- */
   display: flex; /*permite o posicionamento flexível dos elementos*/
   flex-wrap: wrap; /* Permite que os elementos sejam distribuídos nas linhas, caso não caibam em uma linha*/
   border-radius: 25px;  /* -- bordas arredondadas -- */
-  
 }
 
 .campos .barraesquerda .usuario button img {
@@ -394,7 +393,7 @@ main #login #formulario-login .botoes .login input:hover {
   width: 100%;
   color: whitesmoke;
   font-weight: bold;  /*fonte com (negrito)*/
-  margin-left: 17%;  /* Adiciona um espaço à esquerda*/
+  margin-left: 2%;  /* Adiciona um espaço à esquerda*/
 }
 
 .campos .salasreservadas button {
@@ -424,7 +423,7 @@ main #login #formulario-login .botoes .login input:hover {
 .barradireita {
   background-color: rgba(187, 187, 187, 1);
   border-radius: 40px; /*borda*/
-  padding: 20px;
+  padding: 10px;
   margin: 10px; /*margem*/
 }
 .barraesquerda {
@@ -448,7 +447,7 @@ main #login #formulario-login .botoes .login input:hover {
     border-width: 8px;  /*Espessura da borda em 8px*/
     padding: 33px; /*Define o espaçamento*/
     width: 150px;  /*Define a largura*/
-    height: 455px; /*Define a altura*/
+    height: 460px; /*Define a altura*/
   }
   
 }
@@ -463,7 +462,7 @@ main #login #formulario-login .botoes .login input:hover {
 .salas {
   background-color: rgba(237, 237, 237, 1);
   border-radius: 30px;
-  padding: 30px 10px;
+  padding: 50px 30px;
   margin: 10px 0;
   width: 100%;
   height: 100%;
@@ -474,7 +473,7 @@ main #login #formulario-login .botoes .login input:hover {
   font-size: 10px; /*tamanho da fonte*/
   background-color: rgba(187, 187, 187, 1);
   border-radius: 15px;
-  padding: 16px 8px;
+  padding: 14px 8px;
   margin: 5px;
   width: 100%;
   height: 100%;
@@ -483,10 +482,10 @@ main #login #formulario-login .botoes .login input:hover {
 }
 
 .salas h2 {
-  margin: 0 0 10px 0;
+  margin: 0 2 10px 0;
   background-color: rgba(148, 148, 148, 1);
   border-radius: 15px;
-  padding: 8px 3px;
+  padding: 8px 0px;
   margin: px;
   width: 100%;
   font-size: 16px;
@@ -501,7 +500,7 @@ main #login #formulario-login .botoes .login input:hover {
 .dias {
   background-color: rgba(237, 237, 237, 1);
   border-radius: 30px;
-  padding: 10px;
+  padding: 2px;
   margin: 10px 0;
   width: 100%;
   text-align: center;
@@ -513,7 +512,7 @@ main #login #formulario-login .botoes .login input:hover {
   padding: 10px 20px;
   margin: 5px;
   font-weight: bold;  /*negrito*/
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .dias h2 {
@@ -534,11 +533,18 @@ main #login #formulario-login .botoes .login input:hover {
 
 main table{
   width: 100%; /* Largura total da tabela */
-  margin-top: -3px; /* Espaçamento superior */
+  margin-top: -4px; /* Espaçamento superior */
   border: 1px solid rgb(221, 221, 221); /* Borda cinza clara */
   padding: 8px; /* Espaçamento interno */
   text-align: center; /* Alinhamento à esquerda */
   background-color: rgba(148, 148, 148, 1); /* Cor de fundo para cabeçalho */
+  color: white; /* Cor do texto no cabeçalho */
+  border-radius: 40px;
+  border-spacing: 3px; /* Espaçamento entre as células */
+}
+
+th { /*para colorir as celulas do meio*/
+  background-color: #786c7d; /* Cor de fundo para cabeçalho */
   color: white; /* Cor do texto no cabeçalho */
   border-radius: 40px;
 }
@@ -546,7 +552,7 @@ main table{
 .horarios {
   background-color: rgba(240, 240, 240, 1);
   border-radius: 30px;
-  padding: 2px;
+  padding: 0px;
   margin: 10px 0;
   width: 100%;
   text-align: center;
@@ -558,7 +564,7 @@ main table{
   padding: 10px 20px;
   margin: 5px;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .horarios h2 {
