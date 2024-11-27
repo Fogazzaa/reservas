@@ -21,10 +21,10 @@ module.exports = class AgendamentoController {
 
     // A consulta SQL agora verifica se já existe uma reserva que se sobreponha
     const queryHorario = `SELECT datahora_inicio, datahora_fim FROM reserva WHERE fk_id_sala = ? AND (
-        (datahora_inicio < ? AND datahora_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
-        (datahora_inicio < ? AND datahora_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
-        (datahora_inicio >= ? AND datahora_inicio < ?) OR  -- Novo horário começa dentro de um horário já reservado
-        (datahora_fim > ? AND datahora_fim <= ?) -- Novo horário termina dentro de um horário já reservado
+        (datahora_inicio < ? AND datahora_fim > ?) OR  
+        (datahora_inicio < ? AND datahora_fim > ?) OR  
+        (datahora_inicio >= ? AND datahora_inicio < ?) OR  
+        (datahora_fim > ? AND datahora_fim <= ?) 
       )`;
 
     const valuesHorario = [
@@ -67,24 +67,20 @@ module.exports = class AgendamentoController {
             new Date(datahora_inicio).getHours() < 8 ||
             new Date(datahora_inicio).getHours() >= 21
           ) {
-            return res
-              .status(400)
-              .json({
-                error:
-                  "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
-              });
+            return res.status(400).json({
+              error:
+                "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
+            });
           }
 
           if (
             new Date(datahora_fim).getHours() < 8 ||
             new Date(datahora_fim).getHours() >= 21
           ) {
-            return res
-              .status(400)
-              .json({
-                error:
-                  "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
-              });
+            return res.status(400).json({
+              error:
+                "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
+            });
           }
 
           if (
@@ -113,6 +109,16 @@ module.exports = class AgendamentoController {
             return res
               .status(400)
               .json({ error: "O tempo de Reserva excede o limite (1h)" });
+          }
+
+          // Verifica se o tempo da reserva é exatamente 50 minutos (3000000 milissegundos)
+          const tempoReserva =
+            new Date(datahora_fim) - new Date(datahora_inicio);
+          if (tempoReserva !== 50 * 60 * 1000) {
+            // 50 minutos em milissegundos
+            return res
+              .status(400)
+              .json({ error: "A reserva deve ter exatamente 50 minutos" });
           }
 
           // Se houver qualquer reserva que se sobreponha
@@ -208,24 +214,20 @@ module.exports = class AgendamentoController {
         new Date(datahora_inicio).getHours() < 8 ||
         new Date(datahora_inicio).getHours() >= 21
       ) {
-        return res
-          .status(400)
-          .json({
-            error:
-              "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
-          });
+        return res.status(400).json({
+          error:
+            "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
+        });
       }
 
       if (
         new Date(datahora_fim).getHours() < 8 ||
         new Date(datahora_fim).getHours() >= 21
       ) {
-        return res
-          .status(400)
-          .json({
-            error:
-              "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
-          });
+        return res.status(400).json({
+          error:
+            "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
+        });
       }
 
       const limiteHora = 60 * 60 * 1000; // 1 hora em milissegundos
