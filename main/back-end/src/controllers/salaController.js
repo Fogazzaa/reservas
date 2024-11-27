@@ -90,7 +90,7 @@ module.exports = class salaController {
           );
 
           // Enviando a resposta
-          res.status(200).json(salasSomenteReservadas);
+          res.status(200).json(salasSomenteReservadas, horar);
         });
       });
     } catch (error) {
