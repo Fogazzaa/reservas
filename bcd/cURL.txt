@@ -57,8 +57,8 @@ curl --location --request GET 'http://10.89.240.94:5000/reservas/v1/reserva' \
 --data '{
     "fk_id_usuario":"1",
     "fk_id_sala":"1", 
-    "datahora_inicio":"2024-12-31 00:00:00", 
-    "datahora_fim":"2024-12-31 01:00:00"
+    "datahora_inicio":"2024-12-31 08:00:00", 
+    "datahora_fim":"2024-12-31 09:00:00"
 }'
 
 -------------------------------------------------------------------------------
