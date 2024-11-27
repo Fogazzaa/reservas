@@ -21,10 +21,10 @@ module.exports = class AgendamentoController {
 
     // A consulta SQL agora verifica se já existe uma reserva que se sobreponha
     const queryHorario = `SELECT datahora_inicio, datahora_fim FROM reserva WHERE fk_id_sala = ? AND (
-        (datahora_inicio < ? AND datahora_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
-        (datahora_inicio < ? AND datahora_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
-        (datahora_inicio >= ? AND datahora_inicio < ?) OR  -- Novo horário começa dentro de um horário já reservado
-        (datahora_fim > ? AND datahora_fim <= ?) -- Novo horário termina dentro de um horário já reservado
+        (datahora_inicio < ? AND datahora_fim > ?) OR  
+        (datahora_inicio < ? AND datahora_fim > ?) OR  
+        (datahora_inicio >= ? AND datahora_inicio < ?) OR  
+        (datahora_fim > ? AND datahora_fim <= ?) 
       )`;
 
     const valuesHorario = [
@@ -61,37 +61,87 @@ module.exports = class AgendamentoController {
           if (resultadosS.length === 0) {
             return res.status(404).json({ error: "Sala não encontrada" });
           }
- 
-          if(new Date(datahora_fim) < new Date() || new Date(datahora_inicio) < new Date()){
-            return res.status(400).json({ error: "Data ou Horario Inválidos" });
+
+          // Verifica se a reserva está dentro do horário permitido (8:00 - 21:00)
+          if (
+            new Date(datahora_inicio).getHours() < 8 ||
+            new Date(datahora_inicio).getHours() >= 21
+          ) {
+            return res.status(400).json({
+              error:
+                "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
+            });
           }
 
-          if (new Date(datahora_fim).getTime() < new Date(datahora_inicio).getTime()) {
+          if (
+            new Date(datahora_fim).getHours() < 8 ||
+            new Date(datahora_fim).getHours() >= 21
+          ) {
+            return res.status(400).json({
+              error:
+                "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
+            });
+          }
+
+          if (
+            new Date(datahora_fim) < new Date() ||
+            new Date(datahora_inicio) < new Date()
+          ) {
+            return res.status(400).json({ error: "Data ou Horário Inválidos" });
+          }
+
+          if (
+            new Date(datahora_fim).getTime() <
+            new Date(datahora_inicio).getTime()
+          ) {
             return res.status(400).json({ error: "Data ou Hora Inválida" });
           }
 
-          if (new Date(datahora_fim).getTime() === new Date(datahora_inicio).getTime()) {
+          if (
+            new Date(datahora_fim).getTime() ===
+            new Date(datahora_inicio).getTime()
+          ) {
             return res.status(400).json({ error: "Data ou Hora Inválida" });
           }
 
-          const limiteHora = 60 * 60 * 1000; // 1 hora em milissegundos
+          const limiteHora = 50 * 60 * 1000; // 1 hora em milissegundos
           if (new Date(datahora_fim) - new Date(datahora_inicio) > limiteHora) {
             return res
               .status(400)
-              .json({ error: "O tempo de Reserva excede o limite (1h)" });
+              .json({ error: "O tempo de Reserva excede o limite (50min)" });
           }
 
-          // Se houver qualquer reserva que se sobreponha
-          if (resultadosH.length > 0) {
+          // Verifica se o tempo da reserva é exatamente 50 minutos (3000000 milissegundos)
+          const tempoReserva =
+            new Date(datahora_fim) - new Date(datahora_inicio);
+          if (tempoReserva !== 50 * 60 * 1000) {
+            // 50 minutos em milissegundos
             return res
               .status(400)
-              .json({
-                error: "A sala escolhida já está reservada neste horário",
-              });
+              .json({ error: "A reserva deve ter exatamente 50 minutos" });
+          }
+
+          // Se houver qualquer reserva que se sobreponha, sugere o primeiro horário disponível
+          if (resultadosH.length > 0) {
+            // Ordena os horários de reserva para verificar o próximo horário livre
+            const reservasOrdenadas = resultadosH.sort(
+              (a, b) => new Date(a.datahora_fim) - new Date(b.datahora_fim)
+            );
+
+            // Considerando o horário de término da última reserva
+            const proximoHorario = new Date(reservasOrdenadas[0].datahora_fim);
+            proximoHorario.setHours(proximoHorario.getHours() - 3); // Adiciona 10 minutos de intervalo
+
+            return res.status(400).json({
+              error: `A sala já está reservada neste horário. O primeiro horário disponível é ${proximoHorario
+                .toISOString()
+                .replace("T", " ")
+                .substring(0, 19)}`,
+            });
           }
 
           const queryInsert = `INSERT INTO reserva (fk_id_usuario, fk_id_sala, datahora_inicio, datahora_fim)
-                              VALUES (?, ?, ?, ?)`;
+                                     VALUES (?, ?, ?, ?)`;
           const valuesInsert = [
             fk_id_usuario,
             fk_id_sala,
@@ -169,6 +219,27 @@ module.exports = class AgendamentoController {
 
       if (new Date(datahora_fim) < new Date(datahora_inicio)) {
         return res.status(400).json({ error: "Data ou Hora da Inválida" });
+      }
+
+      // Verifica se a reserva está dentro do horário permitido (8:00 - 21:00)
+      if (
+        new Date(datahora_inicio).getHours() < 8 ||
+        new Date(datahora_inicio).getHours() >= 21
+      ) {
+        return res.status(400).json({
+          error:
+            "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
+        });
+      }
+
+      if (
+        new Date(datahora_fim).getHours() < 8 ||
+        new Date(datahora_fim).getHours() >= 21
+      ) {
+        return res.status(400).json({
+          error:
+            "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
+        });
       }
 
       const limiteHora = 60 * 60 * 1000; // 1 hora em milissegundos

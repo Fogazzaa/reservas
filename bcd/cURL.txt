@@ -57,8 +57,8 @@ curl --location --request GET 'http://10.89.240.94:5000/reservas/v1/reserva' \
 --data '{
     "fk_id_usuario":"1",
     "fk_id_sala":"1", 
-    "datahora_inicio":"2024-01-01 00:00:00", 
-    "datahora_fim":"2024-01-01 01:00:00"
+    "datahora_inicio":"2024-12-31 08:00:00", 
+    "datahora_fim":"2024-12-31 09:00:00"
 }'
 
 -------------------------------------------------------------------------------
@@ -74,8 +74,8 @@ curl --location 'http://10.89.240.94:5000/reservas/v1/reservas'
 curl --location --request PUT 'http://10.89.240.94:5000/reservas/v1/reserva/1' \
 --header 'Content-Type: application/json' \
 --data '{ 
-    "datahora_inicio":"2024-01-01 01:00:00", 
-    "datahora_fim":"2024-01-01 02:00:00"
+    "datahora_inicio":"2024-12-31 09:00:00", 
+    "datahora_fim":"2024-12-31 10:00:00"
 }'
 
 
@@ -133,11 +133,22 @@ curl --location --request DELETE 'http://10.89.240.94:5000/reservas/v1/sala/1' \
 
  - SALAS HORARIO -GET
 
-curl --location --request GET 'http://10.89.240.94:5000/reservas/v1/salasDisponivelHorario' \
+curl --location --request GET 'http://10.89.240.94:5000/reservas/v1/salasdisponivelhorario' \
 --header 'Content-Type: application/json' \
 --data '{
-    "datahora_inicio":"2024-12-12 00:00:00",
-    "datahora_fim":"2024-12-12 01:00:00"
+    "data_inicio":"2024-12-28 08:00:00",
+    "data_fim":"2024-12-31 09:00:00"
+}'
+
+-------------------------------------------------------------------------------
+
+ - SALAS DIAS - GET
+
+curl --location --request GET 'http://10.89.240.94:5000/reservas/v1/salasdisponiveldia' \
+--header 'Content-Type: application/json' \
+--data '{
+    "data_inicio":"2024-12-28 08:00:00",
+    "data_fim":"2024-12-31 09:00:00"
 }'
 
 -------------------------------------------------------------------------------

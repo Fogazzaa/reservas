@@ -55,21 +55,37 @@ module.exports = class salaController {
     }
   }
 
-  static async getSalaDisponiveisHorario(req, res) {
+  static async getSalasDisponiveisHorario(req, res) {
     const { datahora_inicio, datahora_fim } = req.body; // Pegando as datas do corpo da requisição
   
-    const queryHorario = `
-      SELECT datahora_inicio, datahora_fim 
+    // Validação de dados
+    if (!datahora_inicio || !datahora_fim) {
+      return res
+        .status(400)
+        .json({ error: "Todos os campos devem ser preenchidos" });
+    }
+  
+    // Validação adicional: Verificar se a data de início é anterior à data de fim
+    if (new Date(datahora_inicio) >= new Date(datahora_fim)) {
+      return res.status(400).json({ error: "A data de início deve ser anterior à data de fim" });
+    }
+  
+    // Consulta para verificar salas sem conflito de horário
+    const querySalasDisponiveis = `
+      SELECT s.id_sala, s.nome, s.descricao, s.bloco, s.tipo, s.capacidade
+      FROM sala s
+    `;
+  
+    // Consulta para verificar se há conflitos de reserva
+    const queryHorarioConflito = `
+      SELECT 1
       FROM reserva 
       WHERE fk_id_sala = ? AND (
         (datahora_inicio < ? AND datahora_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
         (datahora_inicio < ? AND datahora_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
         (datahora_inicio >= ? AND datahora_inicio < ?) OR  -- Novo horário começa dentro de um horário já reservado
-        (datahora_fim > ? AND datahora_fim <= ?) -- Novo horário termina dentro de um horário já reservado )`;
-  
-    const querySalasDisponiveis = `
-      SELECT s.id_sala, s.nome, s.descricao, s.bloco, s.tipo, s.capacidade
-      FROM sala s
+        (datahora_fim > ? AND datahora_fim <= ?) -- Novo horário termina dentro de um horário já reservado
+      )
     `;
   
     try {
@@ -84,32 +100,33 @@ module.exports = class salaController {
         });
       });
   
-      // 2. Filtrar as salas que não têm conflito de horário
+      // 2. Verificar se há conflitos para cada sala
       const salasDisponiveisFinal = [];
   
       for (const sala of salasDisponiveis) {
-        const reservaConflito = await new Promise((resolve, reject) => {
-          connect.query(queryHorario, [
-            sala.id_sala,         // ID da sala para verificar as reservas
-            datahora_inicio,      // Data de início do novo horário
-            datahora_inicio,      // Verificar se o novo horário começa antes e termina depois da reserva existente
-            datahora_inicio,      // Novo horário começa antes e termina depois da reserva existente
-            datahora_fim,         // Novo horário termina após o horário de reserva
-            datahora_inicio,      // Novo horário começa durante o horário da reserva
-            datahora_fim,         // Novo horário termina durante o horário da reserva
-            datahora_inicio,      // Novo horário começa durante o horário da reserva
-            datahora_fim,         // Novo horário termina durante o horário da reserva
+        // Verificar se existe algum conflito de horário para esta sala
+        const conflito = await new Promise((resolve, reject) => {
+          connect.query(queryHorarioConflito, [
+            sala.id_sala,        // ID da sala
+            datahora_inicio,     // Data de início do novo horário
+            datahora_inicio,     // Verificar se o novo horário começa antes e termina depois da reserva existente
+            datahora_inicio,     // Novo horário começa antes e termina depois da reserva existente
+            datahora_fim,        // Novo horário termina após a reserva
+            datahora_inicio,     // Novo horário começa durante o horário da reserva
+            datahora_fim,        // Novo horário termina durante o horário da reserva
+            datahora_inicio,     // Novo horário começa durante o horário da reserva
+            datahora_fim         // Novo horário termina durante o horário da reserva
           ], (err, rows) => {
             if (err) {
               console.error(err);
               return reject({ message: "Erro ao verificar conflitos de reserva" });
             }
-            resolve(rows.length > 0); // Se houver alguma reserva que conflite, retorna true
+            resolve(rows.length > 0); // Se encontrar algum conflito, resolve com true
           });
         });
   
-        // Se não houver conflito de horário, adiciona a sala à lista final
-        if (!reservaConflito) {
+        // Se não houver conflito, a sala está disponível
+        if (!conflito) {
           salasDisponiveisFinal.push(sala);
         }
       }
@@ -117,6 +134,95 @@ module.exports = class salaController {
       // Caso não haja salas disponíveis
       if (salasDisponiveisFinal.length === 0) {
         return res.status(404).json({ message: "Não há salas disponíveis para o horário solicitado" });
+      }
+  
+      // Retornar as salas disponíveis
+      return res.status(200).json(salasDisponiveisFinal);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: "Erro ao obter as salas disponíveis" });
+    }
+  }  
+
+  static async getSalasDisponiveisDia(req, res) {
+    const { data_inicio, data_fim } = req.body; // Pegando as datas de início e fim do corpo da requisição
+  
+    // Validação de dados
+    if (!data_inicio || !data_fim) {
+      return res
+        .status(400)
+        .json({ error: "Todos os campos devem ser preenchidos" });
+    }
+  
+    // Validação adicional: Verificar se a data de início é anterior à data de fim
+    if (new Date(data_inicio) >= new Date(data_fim)) {
+      return res.status(400).json({ error: "A data de início deve ser anterior à data de fim" });
+    }
+  
+    // Consulta para verificar salas sem conflito de data
+    const querySalasDisponiveis = `
+      SELECT s.id_sala, s.nome, s.descricao, s.bloco, s.tipo, s.capacidade
+      FROM sala s
+    `;
+  
+    // Consulta para verificar se há conflitos de reserva para o intervalo de dias
+    const queryConflitoReserva = `
+      SELECT 1
+      FROM reserva
+      WHERE fk_id_sala = ? AND (
+        (datahora_inicio < ? AND datahora_fim > ?) OR -- Novo período começa antes e termina depois da reserva existente
+        (datahora_inicio < ? AND datahora_fim > ?) OR -- Novo período começa antes e termina depois da reserva existente
+        (datahora_inicio >= ? AND datahora_inicio < ?) OR -- Novo período começa durante uma reserva existente
+        (datahora_fim > ? AND datahora_fim <= ?) -- Novo período termina durante uma reserva existente
+      )
+    `;
+  
+    try {
+      // 1. Obter todas as salas
+      const salasDisponiveis = await new Promise((resolve, reject) => {
+        connect.query(querySalasDisponiveis, (err, result) => {
+          if (err) {
+            console.error(err);
+            return reject({ message: "Erro ao obter as salas disponíveis" });
+          }
+          resolve(result);
+        });
+      });
+  
+      // 2. Verificar se há conflitos para cada sala
+      const salasDisponiveisFinal = [];
+  
+      for (const sala of salasDisponiveis) {
+        // Verificar se existe algum conflito de reserva para esta sala dentro do intervalo de dias
+        const conflito = await new Promise((resolve, reject) => {
+          connect.query(queryConflitoReserva, [
+            sala.id_sala,         // ID da sala
+            data_inicio,          // Data de início do novo período
+            data_inicio,          // Verificar se o novo período começa antes e termina depois da reserva existente
+            data_fim,             // Data de fim do novo período
+            data_fim,             // Verificar se o novo período começa antes e termina depois da reserva existente
+            data_inicio,          // Novo período começa durante uma reserva existente
+            data_fim,             // Novo período termina durante uma reserva existente
+            data_inicio,          // Novo período começa durante uma reserva existente
+            data_fim              // Novo período termina durante uma reserva existente
+          ], (err, rows) => {
+            if (err) {
+              console.error(err);
+              return reject({ message: "Erro ao verificar conflitos de reserva" });
+            }
+            resolve(rows.length > 0); // Se encontrar algum conflito, resolve com true
+          });
+        });
+  
+        // Se não houver conflito, a sala está disponível
+        if (!conflito) {
+          salasDisponiveisFinal.push(sala);
+        }
+      }
+  
+      // Caso não haja salas disponíveis
+      if (salasDisponiveisFinal.length === 0) {
+        return res.status(404).json({ message: "Não há salas disponíveis para o período solicitado" });
       }
   
       // Retornar as salas disponíveis
@@ -156,69 +262,6 @@ module.exports = class salaController {
           const salasReservadas = salasReservadasRows.map(
             (row) => row.fk_id_sala
           );
-
-          // Filtrando as salas disponiveis
-          const salasSomenteDisponiveis = salasDisponiveis.filter(
-            (sala) => !salasReservadas.includes(sala)
-          );
-
-          const salasOrdenadas = salasSomenteDisponiveis.sort((a, b) => a - b);
-          // Enviando a resposta
-          res.status(200).json(salasOrdenadas);
-        });
-      });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Erro ao obter as salas" });
-    }
-  }
-
-  static async getSaladisponiveisHorario(req, res) {
-    // Consultas SQL para obter as salas reservadas e todas as salas
-    const queryReserva = `SELECT fk_id_sala FROM reserva`;
-    const queryRHorario = `SELECT s.id_sala, s.nome, s.descricao, s.bloco, s.tipo, s.capacidade
-    FROM sala s
-    WHERE NOT EXISTS (
-        SELECT 1
-        FROM reserva r
-        WHERE r.fk_id_sala = s.id_sala
-        AND (
-            (r.datahora_inicio < ? AND r.datahora_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
-            (r.datahora_inicio < ? AND r.datahora_fim > ?) OR  -- Novo horário começa antes e termina depois da reserva existente
-            (r.datahora_inicio >= ? AND r.datahora_inicio < ?) OR  -- Novo horário começa dentro de um horário já reservado
-            (r.datahora_fim > ? AND r.datahora_fim <= ?) -- Novo horário termina dentro de um horário já reservado
-        )
-    );`;
-    const querySala = `SELECT id_sala FROM sala`;
-
-    try {
-      // Realizando as consultas no banco de dados
-      connect.query(querySala, (err, salasDisponiveisRows) => {
-        if (err) {
-          console.error(err);
-          return res
-            .status(500)
-            .json({ message: "Erro ao obter as salas reservadas" });
-        }
-
-        connect.query(queryReserva, (err, salasReservadasRows) => {
-          if (err) {
-            console.error(err);
-            return res.status(500).json({ message: "Erro ao obter as salas " });
-          }
-
-          // Extraindo os IDs das salas reservadas e todas as salas
-          const salasDisponiveis = salasDisponiveisRows.map(
-            (row) => row.id_sala
-          );
-          const salasReservadas = salasReservadasRows.map(
-            (row) => row.fk_id_sala
-          );
-
-          if (err) {
-            console.error(err);
-            return res.status(500).json({ message: "Erro ao obter as salas " });
-          }
 
           // Filtrando as salas disponiveis
           const salasSomenteDisponiveis = salasDisponiveis.filter(
