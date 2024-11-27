@@ -36,7 +36,7 @@ module.exports = class salaController {
   }
 
   // Método para obter todos os usuários
-  static async getAllSalas(req, res) {
+  static async getAllSalasTabela(req, res) {
     const query = `SELECT * FROM sala`;
 
     try {
