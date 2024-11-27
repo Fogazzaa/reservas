@@ -61,16 +61,50 @@ module.exports = class AgendamentoController {
           if (resultadosS.length === 0) {
             return res.status(404).json({ error: "Sala não encontrada" });
           }
- 
-          if(new Date(datahora_fim) < new Date() || new Date(datahora_inicio) < new Date()){
-            return res.status(400).json({ error: "Data ou Horario Inválidos" });
+
+          // Verifica se a reserva está dentro do horário permitido (8:00 - 21:00)
+          if (
+            new Date(datahora_inicio).getHours() < 8 ||
+            new Date(datahora_inicio).getHours() >= 21
+          ) {
+            return res
+              .status(400)
+              .json({
+                error:
+                  "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
+              });
           }
 
-          if (new Date(datahora_fim).getTime() < new Date(datahora_inicio).getTime()) {
+          if (
+            new Date(datahora_fim).getHours() < 8 ||
+            new Date(datahora_fim).getHours() >= 21
+          ) {
+            return res
+              .status(400)
+              .json({
+                error:
+                  "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
+              });
+          }
+
+          if (
+            new Date(datahora_fim) < new Date() ||
+            new Date(datahora_inicio) < new Date()
+          ) {
+            return res.status(400).json({ error: "Data ou Horário Inválidos" });
+          }
+
+          if (
+            new Date(datahora_fim).getTime() <
+            new Date(datahora_inicio).getTime()
+          ) {
             return res.status(400).json({ error: "Data ou Hora Inválida" });
           }
 
-          if (new Date(datahora_fim).getTime() === new Date(datahora_inicio).getTime()) {
+          if (
+            new Date(datahora_fim).getTime() ===
+            new Date(datahora_inicio).getTime()
+          ) {
             return res.status(400).json({ error: "Data ou Hora Inválida" });
           }
 
@@ -83,15 +117,13 @@ module.exports = class AgendamentoController {
 
           // Se houver qualquer reserva que se sobreponha
           if (resultadosH.length > 0) {
-            return res
-              .status(400)
-              .json({
-                error: "A sala escolhida já está reservada neste horário",
-              });
+            return res.status(400).json({
+              error: "A sala escolhida já está reservada neste horário",
+            });
           }
 
           const queryInsert = `INSERT INTO reserva (fk_id_usuario, fk_id_sala, datahora_inicio, datahora_fim)
-                              VALUES (?, ?, ?, ?)`;
+                                     VALUES (?, ?, ?, ?)`;
           const valuesInsert = [
             fk_id_usuario,
             fk_id_sala,
@@ -169,6 +201,31 @@ module.exports = class AgendamentoController {
 
       if (new Date(datahora_fim) < new Date(datahora_inicio)) {
         return res.status(400).json({ error: "Data ou Hora da Inválida" });
+      }
+
+      // Verifica se a reserva está dentro do horário permitido (8:00 - 21:00)
+      if (
+        new Date(datahora_inicio).getHours() < 8 ||
+        new Date(datahora_inicio).getHours() >= 21
+      ) {
+        return res
+          .status(400)
+          .json({
+            error:
+              "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
+          });
+      }
+
+      if (
+        new Date(datahora_fim).getHours() < 8 ||
+        new Date(datahora_fim).getHours() >= 21
+      ) {
+        return res
+          .status(400)
+          .json({
+            error:
+              "A reserva deve ser feita no horário de funcionamento do SENAI. Entre 8:00 e 21:00",
+          });
       }
 
       const limiteHora = 60 * 60 * 1000; // 1 hora em milissegundos

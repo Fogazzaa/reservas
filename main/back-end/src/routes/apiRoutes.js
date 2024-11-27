@@ -21,7 +21,8 @@ router.post("/sala", salaController.createSalas); // http://localhost:5000/reser
 router.get("/sala", salaController.getAllSalasTabela); // http://localhost:5000/reservas/v1/sala
 router.put("/sala/:id_sala", salaController.updateSala); // http://localhost:5000/reservas/v1/sala/id_sala
 router.delete("/sala/:id_sala", salaController.deleteSala); // http://localhost:5000/reservas/v1/sala/id_sala
-router.get("/salasDisponivelHorario", salaController.getSalasDisponiveisHorario);//http://localhost:5000/reservas/v1/salasDisponivelHorario
+router.get("/salasdisponivelhorario", salaController.getSalasDisponiveisHorario);//http://localhost:5000/reservas/v1/salasdisponivelhorario
+router.get("/salasdisponiveldia", salaController.getSalasDisponiveisDia);//http://localhost:5000/reservas/v1/salasdisponiveldia
 router.get("/salasDisponivel", salaController.getSaladisponiveis);//http://localhost:5000/reservas/v1/salasDisponivel
 
 
