@@ -61,13 +61,17 @@ module.exports = class AgendamentoController {
           if (resultadosS.length === 0) {
             return res.status(404).json({ error: "Sala não encontrada" });
           }
+ 
+          if(new Date(datahora_fim) < new Date() || new Date(datahora_inicio) < new Date()){
+            return res.status(400).json({ error: "Data ou Horario Inválidos" });
+          }
 
           if (new Date(datahora_fim).getTime() < new Date(datahora_inicio).getTime()) {
-            return res.status(400).json({ error: "Data ou Hora da Inválida" });
+            return res.status(400).json({ error: "Data ou Hora Inválida" });
           }
 
           if (new Date(datahora_fim).getTime() === new Date(datahora_inicio).getTime()) {
-            return res.status(400).json({ error: "Data ou Hora da Inválida" });
+            return res.status(400).json({ error: "Data ou Hora Inválida" });
           }
 
           const limiteHora = 60 * 60 * 1000; // 1 hora em milissegundos

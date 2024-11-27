@@ -128,3 +128,21 @@ curl --location --request PUT 'http://10.89.240.94:5000/reservas/v1/sala/1' \
 
 curl --location --request DELETE 'http://10.89.240.94:5000/reservas/v1/sala/1' \
 --data ''
+
+-------------------------------------------------------------------------------
+
+ - SALAS HORARIO -GET
+
+curl --location --request GET 'http://10.89.240.94:5000/reservas/v1/salasDisponivelHorario' \
+--header 'Content-Type: application/json' \
+--data '{
+    "datahora_inicio":"2024-12-12 00:00:00",
+    "datahora_fim":"2024-12-12 01:00:00"
+}'
+
+-------------------------------------------------------------------------------
+
+ - SALAS DISPONIVEIS - GET
+
+curl --location 'http://10.89.240.94:5000/reservas/v1/salasDisponivel' \
+--data ''
