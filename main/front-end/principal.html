@@ -1,39 +1,71 @@
 <!DOCTYPE html>
+<!-- Define o tipo de documento como HTML5. -->
 
 <html lang="pt-BR">
+  <!-- Define o idioma da página como Português do Brasil. -->
   <head>
     <meta charset="UTF-8" />
+    <!-- Define a codificação de caracteres para UTF-8, garantindo que caracteres especiais sejam exibidos corretamente. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Garante que a página seja responsiva em dispositivos móveis, ajustando a largura da tela conforme o dispositivo. -->
     <title>principal</title>
+    <!-- Define o título da página que aparece na aba do navegador. -->
     <link rel="stylesheet" href="./styles.css" />
+    <!-- Conecta o arquivo CSS externo para estilizar a página. -->
     <link rel="icon" href="./img/iconesenai.png" type="image/x-icon" />
+    <!-- Define o ícone que aparece na aba do navegador. -->
   </head>
+  
   <body>
     <main>
+      <!-- Início da área principal da página. -->
+      
       <div class="logo">
+        <!-- Contêiner para o logotipo da página. -->
         <img src="./img/logo.png" alt="logo SENAI SP" />
+        <!-- Exibe o logotipo da instituição. -->
       </div>
+
       <div class="campos">
+        <!-- Contêiner para os campos de navegação e conteúdo principal. -->
+
         <div class="barraesquerda">
+          <!-- Barra lateral esquerda com links de navegação. -->
+
           <div class="usuario">
+            <!-- Seção do usuário com ícone e informações. -->
             <button onclick="window.location.href='./perfil.html';">
+              <!-- Botão que redireciona para a página de perfil do usuário. -->
               <img src="./img/iconeeperfil.png" alt="iconeperfil" />
+              <!-- Exibe o ícone do perfil do usuário. -->
               <p>usuário</p>
+              <!-- Exibe o nome do usuário. -->
               <p>descrição/informação</p>
+              <!-- Exibe uma descrição ou informações sobre o usuário. -->
             </button>
           </div>
+          
           <br />
+          
           <div class="salasreservadas">
+            <!-- Seção de salas reservadas com ícone e botão. -->
             <button onclick="window.location.href='./salasreservadas.html';">
+              <!-- Botão que redireciona para a página de salas reservadas. -->
               <img src="./img/iconesala.png" alt="iconesala" />
+              <!-- Exibe o ícone de sala. -->
               <p>salas reservadas</p>
+              <!-- Texto indicando a opção de salas reservadas. -->
             </button>
           </div>
         </div>
+
         <div class="meio">
+          <!-- Seção central para o conteúdo principal. -->
           <div class="horarios">
+            <!-- Exibe a tabela de horários disponíveis para salas. -->
 
             <table id="sala-tabela">
+              <!-- Tabela que exibe os dados das salas. -->
               <thead>
                 <th>Nome</th>
                 <th>Descrição</th>
@@ -42,36 +74,41 @@
                 <th>Capacidade</th>
               </thead>
               <tbody id="sala-list-tabela">
+                <!-- Corpo da tabela onde os dados serão listados dinamicamente. -->
                 <td></td>
               </tbody>
             </table>
-            
+
             <section class="horarios">
+              <!-- Seção que exibe os horários disponíveis. -->
               <h2>Horários Disponíveis</h2>
               <div>
-              <span> 7:30 </span>
-              <span> 8:15 </span>
-              <span> 9:00 </span>
-              <span> 10:00 </span>
-              <span> 10:45 </span>
-              <span> 12:30 </span>
-              <span> 13:25 </span>
-              <span> 14:10 </span>
-              <span> 15:00 </span>
-              <span> 15:45 </span>
-              <span> 16:30 </span>
-              <span> 17:25 </span>
-              <span> 18:10 </span>
-              <span> 18:55 </span>
-              <span> 19:40 </span>
-              <span> 20:25 </span>
+                <!-- Lista de horários disponíveis. -->
+                <span> 7:30 </span>
+                <span> 8:15 </span>
+                <span> 9:00 </span>
+                <span> 10:00 </span>
+                <span> 10:45 </span>
+                <span> 12:30 </span>
+                <span> 13:25 </span>  <!--agrupa o conteúdo dentro de uma linha-->
+                <span> 14:10 </span>
+                <span> 15:00 </span>
+                <span> 15:45 </span>
+                <span> 16:30 </span>
+                <span> 17:25 </span>
+                <span> 18:10 </span>
+                <span> 18:55 </span>
+                <span> 19:40 </span>
+                <span> 20:25 </span>
               </div>
             </section>
           </div>
-          
+
           <div class="dias">
+            <!-- Seção que exibe os dias disponíveis para reservas. -->
             <h2>Dias Disponíveis</h2>
-            <div>
+            <div>  <!--Usado para agrupamento de conteúdo-->
+              <!-- Lista de datas disponíveis. -->
               <span> 15/10 </span>
               <span> 16/10 </span>
               <span> 17/10 </span>
@@ -80,7 +117,7 @@
               <span> 21/10 </span>
               <span> 22/10 </span>
               <span> 23/10 </span>
-              <span> 24/10 </span>
+              <span> 24/10 </span>   <!--agrupa o conteúdo dentro de uma linha-->
               <span> 25/10 </span>
               <span> 26/10 </span>
               <span> 28/10 </span>
@@ -91,10 +128,14 @@
             </div>
           </div>
         </div>
+
         <div class="barradireita">
+          <!-- Barra lateral direita com informações sobre salas. -->
           <div class="salas">
+            <!-- Seção que lista as salas disponíveis. -->
             <h2>Salas Disponíveis</h2>
             <div>
+              <!-- Lista de salas com capacidade. -->
               <span> A1 - CONVERSORES (16) </span>
               <span> A2 - ELETRÔNICA (16) </span>
               <span> A3 - CLP (16) </span>
@@ -106,15 +147,18 @@
         </div>
       </div>
     </main>
+
     <footer>
+      <!-- Seção de rodapé da página. -->
       <div class="desenvolvido">
+        <!--Créditos de desenvolvimento.-->
         <p>
           &copy; Desenvolvido por: Vinicius Fogaça, Maria Júlia e Maria Clara
         </p>
       </div>
     </footer>
-      </div>
-    </footer>
-    <script src="./appSala.js"></script>
+
+    <script src="./appSala.js"></script> <!--carrega um arquivo externo chamado scripts.js-->
   </body>
 </html>
+

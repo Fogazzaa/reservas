@@ -84,7 +84,7 @@ footer {
   background-color: #980000;
   height: 40px;
   width: 100%; 
-  border-top: 3px solid whitesmoke;
+  border-top: 2px solid whitesmoke;
 }
 
 footer .desenvolvido p {
@@ -348,60 +348,61 @@ main #login #formulario-login .botoes .login input:hover {
 .logo img {
   position: absolute;  /* -- posição absoluta em relação ao seu elemento mais próximo -- */
   top: 10%;  /* -- Posiciona a imagem 10% abaixo do topo -- */
-  left: 8.8%;  /* -- Posiciona a imagem 8.8% à direita do lado esquerdo do elemento -- */
+  left: 8.8%;  /* -- Posiciona a imagem à direita do lado esquerdo do elemento -- */
   transform: translate(-50%, -50%);  /* -- deslocar a imagem de seu centro posicionando nessas coordenadas -- */
   width: 190px;    /* -- largura -- */
-  background-color: white;    /* -- fundo branco na imagem -- */
+  background-color: white;    /* -- fundo-- */
   padding: 5px;   /* -- preenchimento ao redor da imagem -- */
   border-radius: 20px;   /* -- bordas arredondadas -- */
 }
 
 .campos {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  max-width: 1400px;
-  max-height: 520px;
-  font-family: "Trebuchet MS", sans-serif;
-  background-color: rgba(214, 214, 214, 1);
+  display: flex;  /*permite o posicionamento flexível dos elementos*/
+  justify-content: space-around;  /*espaçamento igual entre os itens*/
+  width: 100%;  /* -- largura -- */
+  max-width: 1400px;  /*largura máxima*/
+  max-height: 520px;  /*altura máxima*/
+  font-family: "Trebuchet MS", sans-serif;  /* -- fonte-- */
+  background-color: rgba(214, 214, 214, 1);  /* -- fundo-- */
 }
 
 .campos .usuario button {
-  padding: 9px 9px;
-  background-color:rgba(187, 187, 187, 1);
-  display: flex;
-  flex-wrap: wrap;
-  border-radius: 25px;
+  padding: 9px 9px; /* Define o espaçamento com 9px em cada lado */
+  background-color: rgba(187, 187, 187, 1);  /* -- fundo-- */
+  display: flex; /*permite o posicionamento flexível dos elementos*/
+  flex-wrap: wrap; /* Permite que os elementos sejam distribuídos nas linhas, caso não caibam em uma linha*/
+  border-radius: 25px;  /* -- bordas arredondadas -- */
+  
 }
 
 .campos .barraesquerda .usuario button img {
-  width: 20%;
-  height: auto;
+  width: 20%;  /* -- largura -- */
+  height: auto;  /*altura*/
 }
 
 .campos .barraesquerda .usuario button p {
-  font-size: 13px;
-  width: 20%;
-  margin-left: 8px;
-  margin-top: 5px;
-  color: whitesmoke;
-  font-weight: bold;
+  font-size: 13px;  /*tamanho da fonte*/
+  width: 20%;  /* -- largura -- */
+  margin-left: 8px;  /* Adiciona um espaço à esquerda*/
+  margin-top: 5px;  /*Adiciona um espaço acima do elemento*/
+  color: whitesmoke; /*cor do texto*/
+  font-weight: bold;  /*fonte com (negrito)*/
 }
 
 .campos .barraesquerda .usuario button p:nth-of-type(2) {
-  font-size: 10px;
+  font-size: 10px;  /*tamanho da fonte*/
   width: 100%;
   color: whitesmoke;
-  font-weight: bold;
-  margin-left: 17%;
+  font-weight: bold;  /*fonte com (negrito)*/
+  margin-left: 17%;  /* Adiciona um espaço à esquerda*/
 }
 
 .campos .salasreservadas button {
-  padding: 10px 10px;
+  padding: 10px 10px;  /* Define o espaçamento com 9px em cada lado */
   background-color: rgba(187, 187, 187, 1);
-  display: flex;
+  display: flex;  /*permite o posicionamento flexível dos elementos*/
   flex-wrap: wrap;
-  border-radius: 25px;
+  border-radius: 25px;  /*bordas*/
 }
 
 .campos .barraesquerda .salasreservadas button img {
@@ -412,70 +413,73 @@ main #login #formulario-login .botoes .login input:hover {
 .campos .barraesquerda .salasreservadas button p {
   font-size: 13px;
   width: 20%;
-  margin-left: 8px;
-  margin-top: 5px;
-  color: whitesmoke;
-  font-weight: bold;
+  margin-left: 8px;  /* Adiciona um espaço à esquerda*/
+  margin-top: 5px;  /*Adiciona um espaço acima do elemento*/
+  color: whitesmoke; /*cor do texto*/
+  font-weight: bold; /*negrito*/
 }
 
 .barraesquerda,
 .meio,
 .barradireita {
   background-color: rgba(187, 187, 187, 1);
-  border-radius: 40px;
+  border-radius: 40px; /*borda*/
   padding: 20px;
-  margin: 10px;
+  margin: 10px; /*margem*/
 }
 .barraesquerda {
-  flex: 1;
+  flex: 1;  /*crescimento flexível dividirá igual os espaços*/
   max-width: 200px;
-  margin-top: 120px;
+  margin-top: 120px;   /*Adiciona um espaço acima do elemento*/
   background-color: rgba(237, 237, 237, 1);
-  border: solid rgba(148, 148, 148, 1);
-  border-width: 8px;
-  height: 390px;
+  border: solid rgba(148, 148, 148, 1);  /* Aplica uma borda sólida*/
+  border-width: 8px;  /* Espessura da borda*/
+  height: 390px;  /*altura*/
 }
 .meio {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-  background-color: rgba(240, 240, 240, 1);
-  border: solid rgba(148, 148, 148, 1);
-  border-width: 8px;
-  padding: 33px;
-  width: 100px;   /* Largura do retângulo */
-  height: 455px;  /* Altura do retângulo */
+  .meio {
+    flex: 1;  /*Este elemento ocupa o dobro do espaço*/
+    display: flex; /*permite o posicionamento flexível dos elementos*/
+    flex-direction: column;  /* Os itens internos serão dispostos em uma coluna*/
+    align-items: center; /* Centraliza os itens na horizontal*/
+    margin-top: 50px; /* Adiciona um espaçamento acima*/
+    background-color: rgba(240, 240, 240, 1);
+    border: solid rgba(148, 148, 148, 1); /* Adiciona uma borda*/
+    border-width: 8px;  /*Espessura da borda em 8px*/
+    padding: 33px; /*Define o espaçamento*/
+    width: 150px;  /*Define a largura*/
+    height: 455px; /*Define a altura*/
+  }
+  
 }
 .barradireita {
-  flex: 1;
-  max-width: 200px;
-  margin-top: -25px;
+  flex: 1;  /*crescimento flexível dividirá igual os espaços*/
+  max-width: 200px;  /*largura máxima*/
+  margin-top: -76px;  /* Adiciona um espaçamento acima*/
   background-color: rgba(240, 240, 240, 1);
   border: solid rgba(148, 148, 148, 1);
-  border-width: 8px;
+  border-width: 8px;  /*Espessura da borda em 8px*/
 }
 .salas {
   background-color: rgba(237, 237, 237, 1);
   border-radius: 30px;
-  padding: 20px 10px;
+  padding: 30px 10px;
   margin: 10px 0;
   width: 100%;
   height: 100%;
-  text-align: center;
+  text-align: center;   /*Alinha o texto*/
 }
 
 .salas div span {
-  font-size: 10px; 
+  font-size: 10px; /*tamanho da fonte*/
   background-color: rgba(187, 187, 187, 1);
   border-radius: 15px;
   padding: 16px 8px;
   margin: 5px;
   width: 100%;
   height: 100%;
-  text-align:center;
-  font-weight:bold;
+  text-align:center;  /*Alinha o texto*/
+  font-weight:bold; /*negrito*/
 }
 
 .salas h2 {
@@ -489,9 +493,9 @@ main #login #formulario-login .botoes .login input:hover {
 }
 
 .salas div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: flex;  /*permite o posicionamento flexível dos elementos*/
+  flex-wrap: wrap;  /*Permite que os itens se quebrem em várias linhas*/
+  justify-content: center;  /*Alinha os itens*/
 }
 
 .dias {
@@ -508,7 +512,7 @@ main #login #formulario-login .botoes .login input:hover {
   border-radius: 15px;
   padding: 10px 20px;
   margin: 5px;
-  font-weight: bold;
+  font-weight: bold;  /*negrito*/
   font-size: 10px;
 }
 
@@ -523,9 +527,20 @@ main #login #formulario-login .botoes .login input:hover {
 }
 
 .dias div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: flex;  /*permite o posicionamento flexível dos elementos*/
+  flex-wrap: wrap;  /*Permite que os itens se quebrem em várias linhas*/
+  justify-content: center;  /*Alinha os itens*/
+}
+
+main table{
+  width: 100%; /* Largura total da tabela */
+  margin-top: -3px; /* Espaçamento superior */
+  border: 1px solid rgb(221, 221, 221); /* Borda cinza clara */
+  padding: 8px; /* Espaçamento interno */
+  text-align: center; /* Alinhamento à esquerda */
+  background-color: rgba(148, 148, 148, 1); /* Cor de fundo para cabeçalho */
+  color: white; /* Cor do texto no cabeçalho */
+  border-radius: 40px;
 }
 
 .horarios {
@@ -557,9 +572,9 @@ main #login #formulario-login .botoes .login input:hover {
 }
 
 .horarios div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: flex;  /*permite o posicionamento flexível dos elementos*/
+  flex-wrap: wrap;  /*Permite que os itens se quebrem em várias linhas*/
+  justify-content: center;  /*Alinha os itens*/
 }
 
 /* --- perfil --- */
