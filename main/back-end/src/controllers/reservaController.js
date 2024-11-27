@@ -104,11 +104,11 @@ module.exports = class AgendamentoController {
             return res.status(400).json({ error: "Data ou Hora Inválida" });
           }
 
-          const limiteHora = 60 * 60 * 1000; // 1 hora em milissegundos
+          const limiteHora = 50 * 60 * 1000; // 1 hora em milissegundos
           if (new Date(datahora_fim) - new Date(datahora_inicio) > limiteHora) {
             return res
               .status(400)
-              .json({ error: "O tempo de Reserva excede o limite (1h)" });
+              .json({ error: "O tempo de Reserva excede o limite (50min)" });
           }
 
           // Verifica se o tempo da reserva é exatamente 50 minutos (3000000 milissegundos)
@@ -121,10 +121,22 @@ module.exports = class AgendamentoController {
               .json({ error: "A reserva deve ter exatamente 50 minutos" });
           }
 
-          // Se houver qualquer reserva que se sobreponha
+          // Se houver qualquer reserva que se sobreponha, sugere o primeiro horário disponível
           if (resultadosH.length > 0) {
+            // Ordena os horários de reserva para verificar o próximo horário livre
+            const reservasOrdenadas = resultadosH.sort(
+              (a, b) => new Date(a.datahora_fim) - new Date(b.datahora_fim)
+            );
+
+            // Considerando o horário de término da última reserva
+            const proximoHorario = new Date(reservasOrdenadas[0].datahora_fim);
+            proximoHorario.setHours(proximoHorario.getHours() - 3); // Adiciona 10 minutos de intervalo
+
             return res.status(400).json({
-              error: "A sala escolhida já está reservada neste horário",
+              error: `A sala já está reservada neste horário. O primeiro horário disponível é ${proximoHorario
+                .toISOString()
+                .replace("T", " ")
+                .substring(0, 19)}`,
             });
           }
 
