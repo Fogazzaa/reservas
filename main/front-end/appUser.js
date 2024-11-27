@@ -21,7 +21,7 @@ function createUser(event) {
 
   // requisição http para o endpoint de cadastro de usuário
 
-  fetch("http://localhost:5000/reservas/v1/cadastro", {
+  fetch("http://10.89.240.94:5000/reservas/v1/cadastro", {
     // realiza uma chamada HTTP para o servidor (a rota definida)
     method: "POST",
     headers: {
@@ -65,7 +65,7 @@ function loginUser(event) {
   const email = document.getElementById("email-login").value; // capturar os valores dos campos do formulário pelo id
   const senha = document.getElementById("senha-login").value;
 
-  fetch("http://localhost:5000/reservas/v1/login", {
+  fetch("http://10.89.240.94:5000/reservas/v1/login", {
     // realiza uma chamada HTTP para o servidor (a rota definida)
     method: "POST",
     headers: {

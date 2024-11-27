@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", getAllSalasTabela);
 
 function getAllSalasTabela() {
-  fetch("http://localhost:5000/reservas/v1/sala", {
+  fetch("http://10.89.240.94:5000/reservas/v1/sala", {
     method: "GET",
     headers: {
       "Content-Type": "application/JSON",
