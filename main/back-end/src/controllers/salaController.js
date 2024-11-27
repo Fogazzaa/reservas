@@ -55,6 +55,146 @@ module.exports = class salaController {
     }
   }
 
+  static async getSalaReservadas(req, res) {
+    // Consultas SQL para obter as salas reservadas e todas as salas
+    const queryReserva = `SELECT fk_id_sala FROM reserva`;
+    const querySala = `SELECT id_sala FROM sala`;
+
+    try {
+      // Realizando as consultas no banco de dados
+      connect.query(queryReserva, (err, salasReservadasRows) => {
+        if (err) {
+          console.error(err);
+          return res
+            .status(500)
+            .json({ message: "Erro ao obter as salas reservadas" });
+        }
+
+        connect.query(querySala, (err, salasRows) => {
+          if (err) {
+            console.error(err);
+            return res
+              .status(500)
+              .json({ message: "Erro ao obter as salas disponíveis" });
+          }
+
+          // Extraindo os IDs das salas reservadas e todas as salas
+          const salasReservadas = salasReservadasRows.map(
+            (row) => row.fk_id_sala
+          );
+          const todasSalas = salasRows.map((row) => row.id_sala);
+
+          // Filtrando as salas reservadas
+          const salasSomenteReservadas = todasSalas.filter((sala) =>
+            salasReservadas.includes(sala)
+          );
+
+          // Enviando a resposta
+          res.status(200).json(salasSomenteReservadas);
+        });
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Erro ao obter as salas" });
+    }
+  }
+
+  static async getSaladisponiveis(req, res) {
+    // Consultas SQL para obter as salas reservadas e todas as salas
+    const queryReserva = `SELECT fk_id_sala FROM reserva`;
+    const querySala = `SELECT id_sala FROM sala`;
+
+    try {
+      // Realizando as consultas no banco de dados
+      connect.query(querySala, (err, salasDisponiveisRows) => {
+        if (err) {
+          console.error(err);
+          return res
+            .status(500)
+            .json({ message: "Erro ao obter as salas reservadas" });
+        }
+
+        connect.query(queryReserva, (err, salasReservadasRows) => {
+          if (err) {
+            console.error(err);
+            return res.status(500).json({ message: "Erro ao obter as salas " });
+          }
+
+          // Extraindo os IDs das salas reservadas e todas as salas
+          const salasDisponiveis = salasDisponiveisRows.map(
+            (row) => row.id_sala
+          );
+          const salasReservadas = salasReservadasRows.map(
+            (row) => row.fk_id_sala
+          );
+
+          // Filtrando as salas disponiveis
+          const salasSomenteDisponiveis = salasDisponiveis.filter(
+            (sala) => !salasReservadas.includes(sala)
+          );
+
+          const salasOrdenadas = salasSomenteDisponiveis.sort((a, b) => a - b);
+          // Enviando a resposta
+          res.status(200).json(salasOrdenadas);
+        });
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Erro ao obter as salas" });
+    }
+  }
+
+  static async getSaladisponiveisHorario(req, res) {
+    // Consultas SQL para obter as salas reservadas e todas as salas
+    const queryReserva = `SELECT fk_id_sala FROM reserva`;
+    const queryRHorario = `SELECT data_hora and data_fim FROM reserva`;
+    const querySala = `SELECT id_sala FROM sala`;
+
+    try {
+      // Realizando as consultas no banco de dados
+      connect.query(querySala, (err, salasDisponiveisRows) => {
+        if (err) {
+          console.error(err);
+          return res
+            .status(500)
+            .json({ message: "Erro ao obter as salas reservadas" });
+        }
+
+        connect.query(queryReserva, (err, salasReservadasRows) => {
+          if (err) {
+            console.error(err);
+            return res.status(500).json({ message: "Erro ao obter as salas " });
+          }
+
+          // Extraindo os IDs das salas reservadas e todas as salas
+          const salasDisponiveis = salasDisponiveisRows.map(
+            (row) => row.id_sala
+          );
+          const salasReservadas = salasReservadasRows.map(
+            (row) => row.fk_id_sala
+          );
+
+          if (err) {
+            console.error(err);
+            return res.status(500).json({ message: "Erro ao obter as salas " });
+          }
+
+          // Filtrando as salas disponiveis
+          const salasSomenteDisponiveis = salasDisponiveis.filter(
+            (sala) => !salasReservadas.includes(sala)
+          );
+
+          const salasOrdenadas = salasSomenteDisponiveis.sort((a, b) => a - b);
+          // Enviando a resposta
+          res.status(200).json(salasOrdenadas);
+        });
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Erro ao obter as salas" });
+    }
+  }
+
   // Método para atualizar dados de um usuário
   static async updateSala(req, res) {
     const { nome, descricao, bloco, tipo, capacidade } = req.body;
@@ -87,9 +227,7 @@ module.exports = class salaController {
         if (results.affectedRows === 0) {
           return res.status(404).json({ error: "Sala não encontrada" });
         }
-        return res
-          .status(200)
-          .json({ message: "Sala atualizada com sucesso" });
+        return res.status(200).json({ message: "Sala atualizada com sucesso" });
       });
     } catch (error) {
       console.error(error);
@@ -107,7 +245,12 @@ module.exports = class salaController {
       connect.query(query, values, function (err, results) {
         if (err) {
           if (err.code === "ER_ROW_IS_REFERENCED_2") {
-            return res.status(400).json({error: "A sala está vinculada a uma reserva, e não pode ser excluida",});
+            return res
+              .status(400)
+              .json({
+                error:
+                  "A sala está vinculada a uma reserva, e não pode ser excluida",
+              });
           }
           console.error(err);
           return res.status(500).json({ error: "Erro interno no servidor" });
@@ -117,9 +260,7 @@ module.exports = class salaController {
         if (results.affectedRows === 0) {
           return res.status(404).json({ error: "Sala não encontrada" });
         }
-        return res
-          .status(200)
-          .json({ message: "Sala excluída com sucesso" });
+        return res.status(200).json({ message: "Sala excluída com sucesso" });
       });
     } catch (error) {
       console.error(error);
