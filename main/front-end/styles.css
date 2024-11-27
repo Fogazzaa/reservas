@@ -82,8 +82,8 @@ footer {
   position: absolute;
   bottom: 0%;
   background-color: #980000;
-  height: 65px;
-  width: 100%;
+  height: 40px;
+  width: 100%; 
   border-top: 3px solid whitesmoke;
 }
 
@@ -346,29 +346,29 @@ main #login #formulario-login .botoes .login input:hover {
 /* --- principal --- */
 
 .logo img {
-  position: absolute;
-  top: 10%;
-  left: 8.8%;
-  transform: translate(-50%, -50%);
-  width: 190px;
-  background-color: white;
-  padding: 5px;
-  border-radius: 20px;
+  position: absolute;  /* -- posição absoluta em relação ao seu elemento mais próximo -- */
+  top: 10%;  /* -- Posiciona a imagem 10% abaixo do topo -- */
+  left: 8.8%;  /* -- Posiciona a imagem 8.8% à direita do lado esquerdo do elemento -- */
+  transform: translate(-50%, -50%);  /* -- deslocar a imagem de seu centro posicionando nessas coordenadas -- */
+  width: 190px;    /* -- largura -- */
+  background-color: white;    /* -- fundo branco na imagem -- */
+  padding: 5px;   /* -- preenchimento ao redor da imagem -- */
+  border-radius: 20px;   /* -- bordas arredondadas -- */
 }
 
 .campos {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
   max-width: 1400px;
   max-height: 520px;
   font-family: "Trebuchet MS", sans-serif;
+  background-color: rgba(214, 214, 214, 1);
 }
 
 .campos .usuario button {
-  border: solid #d64141;
   padding: 9px 9px;
-  background-color: #ff9797;
+  background-color:rgba(187, 187, 187, 1);
   display: flex;
   flex-wrap: wrap;
   border-radius: 25px;
@@ -397,9 +397,8 @@ main #login #formulario-login .botoes .login input:hover {
 }
 
 .campos .salasreservadas button {
-  border: solid #d64141;
   padding: 10px 10px;
-  background-color: #ff9797;
+  background-color: rgba(187, 187, 187, 1);
   display: flex;
   flex-wrap: wrap;
   border-radius: 25px;
@@ -422,7 +421,7 @@ main #login #formulario-login .botoes .login input:hover {
 .barraesquerda,
 .meio,
 .barradireita {
-  background-color: #ff7f7f;
+  background-color: rgba(187, 187, 187, 1);
   border-radius: 40px;
   padding: 20px;
   margin: 10px;
@@ -431,9 +430,10 @@ main #login #formulario-login .botoes .login input:hover {
   flex: 1;
   max-width: 200px;
   margin-top: 120px;
-  background-color: #ffb8b8;
-  border: solid #ff6666;
+  background-color: rgba(237, 237, 237, 1);
+  border: solid rgba(148, 148, 148, 1);
   border-width: 8px;
+  height: 390px;
 }
 .meio {
   flex: 2;
@@ -441,20 +441,23 @@ main #login #formulario-login .botoes .login input:hover {
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
-  background-color: #ffb8b8;
-  border: solid #ff6666;
+  background-color: rgba(240, 240, 240, 1);
+  border: solid rgba(148, 148, 148, 1);
   border-width: 8px;
+  padding: 33px;
+  width: 100px;   /* Largura do retângulo */
+  height: 455px;  /* Altura do retângulo */
 }
 .barradireita {
   flex: 1;
-  max-width: 300px;
-  margin-top: 50px;
-  background-color: #ffb8b8;
-  border: solid #ff6666;
+  max-width: 200px;
+  margin-top: -25px;
+  background-color: rgba(240, 240, 240, 1);
+  border: solid rgba(148, 148, 148, 1);
   border-width: 8px;
 }
 .salas {
-  background-color: #eb8796;
+  background-color: rgba(237, 237, 237, 1);
   border-radius: 30px;
   padding: 20px 10px;
   margin: 10px 0;
@@ -464,20 +467,20 @@ main #login #formulario-login .botoes .login input:hover {
 }
 
 .salas div span {
-  font-size: 11px;
-  background-color: #d64141;
+  font-size: 10px; 
+  background-color: rgba(187, 187, 187, 1);
   border-radius: 15px;
   padding: 16px 8px;
   margin: 5px;
   width: 100%;
   height: 100%;
-  text-align: start;
-  font-weight: bold;
+  text-align:center;
+  font-weight:bold;
 }
 
 .salas h2 {
   margin: 0 0 10px 0;
-  background-color: #ff6666;
+  background-color: rgba(148, 148, 148, 1);
   border-radius: 15px;
   padding: 8px 3px;
   margin: px;
@@ -492,16 +495,16 @@ main #login #formulario-login .botoes .login input:hover {
 }
 
 .dias {
-  background-color: #eb8796;
+  background-color: rgba(237, 237, 237, 1);
   border-radius: 30px;
-  padding: 20px;
+  padding: 10px;
   margin: 10px 0;
   width: 100%;
   text-align: center;
 }
 
 .dias div span {
-  background-color: #d64141;
+  background-color: rgba(187, 187, 187, 1);
   border-radius: 15px;
   padding: 10px 20px;
   margin: 5px;
@@ -511,7 +514,7 @@ main #login #formulario-login .botoes .login input:hover {
 
 .dias h2 {
   margin: 0 0 10px 0;
-  background-color: #ff6666;
+  background-color: rgba(148, 148, 148, 1);
   border-radius: 15px;
   padding: 8px 5px;
   margin: 5px;
@@ -526,16 +529,16 @@ main #login #formulario-login .botoes .login input:hover {
 }
 
 .horarios {
-  background-color: #eb8796;
+  background-color: rgba(240, 240, 240, 1);
   border-radius: 30px;
-  padding: 20px;
+  padding: 10px;
   margin: 10px 0;
   width: 100%;
   text-align: center;
 }
 
 .horarios div span {
-  background-color: #d64141;
+  background-color: rgba(187, 187, 187, 1);
   border-radius: 15px;
   padding: 10px 20px;
   margin: 5px;
@@ -545,7 +548,7 @@ main #login #formulario-login .botoes .login input:hover {
 
 .horarios h2 {
   margin: 0 0 10px 0;
-  background-color: #ff6666;
+  background-color: rgba(148, 148, 148, 1);
   border-radius: 15px;
   padding: 8px 5px;
   margin: 5px;
