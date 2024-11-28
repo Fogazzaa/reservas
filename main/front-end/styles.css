@@ -12,11 +12,12 @@ body {
   background-position: center center;
   background-attachment: fixed;
   color: whitesmoke;
-  height: 100%;
+  height: 100vh;
   margin: 0;
 }
 
 header {
+  height: 10vh;
   background-color: #c41212;
   padding: 1.1%;
   border-bottom: 3px solid whitesmoke;
@@ -75,15 +76,16 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 82vh;
 }
 
 footer {
-  font-family: 'Trebuchet MS', sans-serif;
+  font-family: "Trebuchet MS", sans-serif;
   position: absolute;
-  bottom: 0%;
+  bottom: 0;
   background-color: #980000;
-  height: 40px;
-  width: 100%; 
+  height: 8vh;
+  width: 100%;
   border-top: 2px solid whitesmoke;
 }
 
@@ -100,6 +102,17 @@ footer .desenvolvido p {
   background-color: #c41212;
   padding: 3%;
   border-bottom: 3px solid whitesmoke;
+}
+
+.logo-inicial img {
+  position: relative;
+  top: 40%;
+  left: 6%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  background-color: white;
+  padding: 6px;
+  border-radius: 20px;
 }
 
 main .fundo-inicial img {
@@ -345,242 +358,104 @@ main #login #formulario-login .botoes .login input:hover {
 
 /* --- principal --- */
 
-.logo img {
-  position: absolute;  /* -- posição absoluta em relação ao seu elemento mais próximo -- */
-  top: 10%;  /* -- Posiciona a imagem 10% abaixo do topo -- */
-  left: 8.14%;  /* -- Posiciona a imagem à direita do lado esquerdo do elemento -- */
-  transform: translate(-50%, -50%);  /* -- deslocar a imagem de seu centro posicionando nessas coordenadas -- */
-  width: 180px;    /* -- largura -- */
-  background-color: white;    /* -- fundo-- */
-  padding: 6px;   /* -- preenchimento ao redor da imagem -- */
-  border-radius: 20px;   /* -- bordas arredondadas -- */
+.logo-principal img {
+  position: relative;
+  top: 50%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  background-color: white;
+  padding: 6px;
+  border-radius: 20px;
 }
 
-.campos {
-  display: flex;  /*permite o posicionamento flexível dos elementos*/
-  justify-content: space-around;  /*espaçamento igual entre os itens*/
-  width: 100%;  /* -- largura -- */
-  max-width: 1400px;  /*largura máxima*/
-  max-height: 520px;  /*altura máxima*/
-  font-family: "Trebuchet MS", sans-serif;  /* -- fonte-- */
-  background-color: rgba(214, 214, 214, 1);  /* -- fundo-- */
-}
-
-.campos .usuario button {
-  padding: 9px 12px; /* Define o espaçamento com 9px em cada lado */
-  background-color: rgba(187, 187, 187, 1);  /* -- fundo-- */
-  display: flex; /*permite o posicionamento flexível dos elementos*/
-  flex-wrap: wrap; /* Permite que os elementos sejam distribuídos nas linhas, caso não caibam em uma linha*/
-  border-radius: 25px;  /* -- bordas arredondadas -- */
-}
-
-.campos .barraesquerda .usuario button img {
-  width: 20%;  /* -- largura -- */
-  height: auto;  /*altura*/
-}
-
-.campos .barraesquerda .usuario button p {
-  font-size: 13px;  /*tamanho da fonte*/
-  width: 20%;  /* -- largura -- */
-  margin-left: 8px;  /* Adiciona um espaço à esquerda*/
-  margin-top: 5px;  /*Adiciona um espaço acima do elemento*/
-  color: whitesmoke; /*cor do texto*/
-  font-weight: bold;  /*fonte com (negrito)*/
-}
-
-.campos .barraesquerda .usuario button p:nth-of-type(2) {
-  font-size: 10px;  /*tamanho da fonte*/
-  width: 100%;
+.body-principal {
+  font-family: Arial, sans-serif;
+  background-color: #d6d6d6;
   color: whitesmoke;
-  font-weight: bold;  /*fonte com (negrito)*/
-  margin-left: 2%;  /* Adiciona um espaço à esquerda*/
+  height: 100%;
 }
 
-.campos .salasreservadas button {
-  padding: 10px 10px;  /* Define o espaçamento com 9px em cada lado */
-  background-color: rgba(187, 187, 187, 1);
-  display: flex;  /*permite o posicionamento flexível dos elementos*/
-  flex-wrap: wrap;
-  border-radius: 25px;  /*bordas*/
+.header-principal {
+  height: 12vh;
+  background-color: #c41212;
+  border-bottom: 3px solid whitesmoke;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
-.campos .barraesquerda .salasreservadas button img {
-  width: 20%;
-  height: 24%;
-}
-
-.campos .barraesquerda .salasreservadas button p {
-  font-size: 13px;
-  width: 20%;
-  margin-left: 8px;  /* Adiciona um espaço à esquerda*/
-  margin-top: 5px;  /*Adiciona um espaço acima do elemento*/
-  color: whitesmoke; /*cor do texto*/
-  font-weight: bold; /*negrito*/
-}
-
-.barraesquerda,
-.meio,
-.barradireita {
-  background-color: rgba(187, 187, 187, 1);
-  border-radius: 40px; /*borda*/
-  padding: 10px;
-  margin: 10px; /*margem*/
-}
-.barraesquerda {
-  flex: 1;  /*crescimento flexível dividirá igual os espaços*/
-  max-width: 200px;
-  margin-top: 120px;   /*Adiciona um espaço acima do elemento*/
-  background-color: rgba(237, 237, 237, 1);
-  border: solid rgba(148, 148, 148, 1);  /* Aplica uma borda sólida*/
-  border-width: 8px;  /* Espessura da borda*/
-  height: 390px;  /*altura*/
-}
-.meio {
-  .meio {
-    flex: 1;  /*Este elemento ocupa o dobro do espaço*/
-    display: flex; /*permite o posicionamento flexível dos elementos*/
-    flex-direction: column;  /* Os itens internos serão dispostos em uma coluna*/
-    align-items: center; /* Centraliza os itens na horizontal*/
-    margin-top: 50px; /* Adiciona um espaçamento acima*/
-    background-color: rgba(240, 240, 240, 1);
-    border: solid rgba(148, 148, 148, 1); /* Adiciona uma borda*/
-    border-width: 8px;  /*Espessura da borda em 8px*/
-    padding: 33px; /*Define o espaçamento*/
-    width: 150px;  /*Define a largura*/
-    height: 460px; /*Define a altura*/
-  }
+.header-principal .usuario {
+  position: absolute;
+  right: 7%;
+  top: 3%;
   
 }
-.barradireita {
-  flex: 1;  /*crescimento flexível dividirá igual os espaços*/
-  max-width: 200px;  /*largura máxima*/
-  margin-top: -76px;  /* Adiciona um espaçamento acima*/
-  background-color: rgba(240, 240, 240, 1);
-  border: solid rgba(148, 148, 148, 1);
-  border-width: 8px;  /*Espessura da borda em 8px*/
+
+.header-principal .usuario img {
+  width: 47px;
+  height: 47px;
+  position: absolute;
+  right: 50%;
+  top: 0%;
+  
 }
-.salas {
-  background-color: rgba(237, 237, 237, 1);
-  border-radius: 30px;
-  padding: 50px 30px;
-  margin: 10px 0;
+
+.header-principal .logout {
+  position: absolute;
+  right: 2%;
+  top: 3%;
+}
+
+.header-principal .logout img {
+  width: 47px;
+  height: 47px;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+}
+
+.main-principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 82%;
   width: 100%;
-  height: 100%;
-  text-align: center;   /*Alinha o texto*/
+  justify-items: center;
 }
 
-.salas div span {
-  font-size: 10px; /*tamanho da fonte*/
-  background-color: rgba(187, 187, 187, 1);
-  border-radius: 15px;
-  padding: 14px 8px;
-  margin: 5px;
+.main-principal #sala-tabela {
+  margin-top: 4%;
+  margin-bottom: 4%;
+  width: 90%;
+  border-radius: 10px;
+  background-color: #b5b5b5;
+}
+
+.main-principal #sala-tabela #sala-list-tabela tr {
+  padding: 2%;
+  background-color: #949494;
+  border-radius: 10px;
+  padding: 10%;
+}
+
+.main-principal #sala-tabela #sala-list-tabela tr td {
+  padding-block: 4%;
+  padding-left: 2%;
+  padding-right: 4%;
+}
+
+.footer-principal {
+  font-family: "Trebuchet MS", sans-serif;
+  position: relative;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #980000;
+  height: 8%;
   width: 100%;
-  height: 100%;
-  text-align:center;  /*Alinha o texto*/
-  font-weight:bold; /*negrito*/
-}
-
-.salas h2 {
-  margin: 0 2 10px 0;
-  background-color: rgba(148, 148, 148, 1);
-  border-radius: 15px;
-  padding: 8px 0px;
-  margin: px;
-  width: 100%;
-  font-size: 16px;
-}
-
-.salas div {
-  display: flex;  /*permite o posicionamento flexível dos elementos*/
-  flex-wrap: wrap;  /*Permite que os itens se quebrem em várias linhas*/
-  justify-content: center;  /*Alinha os itens*/
-}
-
-.dias {
-  background-color: rgba(237, 237, 237, 1);
-  border-radius: 30px;
-  padding: 2px;
-  margin: 10px 0;
-  width: 100%;
-  text-align: center;
-}
-
-.dias div span {
-  background-color: rgba(187, 187, 187, 1);
-  border-radius: 15px;
-  padding: 10px 20px;
-  margin: 5px;
-  font-weight: bold;  /*negrito*/
-  font-size: 12px;
-}
-
-.dias h2 {
-  margin: 0 0 10px 0;
-  background-color: rgba(148, 148, 148, 1);
-  border-radius: 15px;
-  padding: 8px 5px;
-  margin: 5px;
-  width: 100%;
-  font-size: 16px;
-}
-
-.dias div {
-  display: flex;  /*permite o posicionamento flexível dos elementos*/
-  flex-wrap: wrap;  /*Permite que os itens se quebrem em várias linhas*/
-  justify-content: center;  /*Alinha os itens*/
-}
-
-main table{
-  width: 100%; /* Largura total da tabela */
-  margin-top: -4px; /* Espaçamento superior */
-  border: 1px solid rgb(221, 221, 221); /* Borda cinza clara */
-  padding: 8px; /* Espaçamento interno */
-  text-align: center; /* Alinhamento à esquerda */
-  background-color: rgba(148, 148, 148, 1); /* Cor de fundo para cabeçalho */
-  color: white; /* Cor do texto no cabeçalho */
-  border-radius: 40px;
-  border-spacing: 3px; /* Espaçamento entre as células */
-}
-
-th { /*para colorir as celulas do meio*/
-  background-color: #786c7d; /* Cor de fundo para cabeçalho */
-  color: white; /* Cor do texto no cabeçalho */
-  border-radius: 40px;
-}
-
-.horarios {
-  background-color: rgba(240, 240, 240, 1);
-  border-radius: 30px;
-  padding: 0px;
-  margin: 10px 0;
-  width: 100%;
-  text-align: center;
-}
-
-.horarios div span {
-  background-color: rgba(187, 187, 187, 1);
-  border-radius: 15px;
-  padding: 10px 20px;
-  margin: 5px;
-  font-weight: bold;
-  font-size: 12px;
-}
-
-.horarios h2 {
-  margin: 0 0 10px 0;
-  background-color: rgba(148, 148, 148, 1);
-  border-radius: 15px;
-  padding: 8px 5px;
-  margin: 5px;
-  width: 100%;
-  font-size: 16px;
-}
-
-.horarios div {
-  display: flex;  /*permite o posicionamento flexível dos elementos*/
-  flex-wrap: wrap;  /*Permite que os itens se quebrem em várias linhas*/
-  justify-content: center;  /*Alinha os itens*/
+  border-top: 2px solid whitesmoke;
+  padding: 3%;
 }
 
 /* --- perfil --- */
