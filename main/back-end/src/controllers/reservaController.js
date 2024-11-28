@@ -192,6 +192,8 @@ module.exports = class AgendamentoController {
   static updateReserva(req, res) {
     const { datahora_inicio, datahora_fim } = req.body;
     const reservaId = req.params.id_reserva;
+
+
   
     // Valida se os campos obrigatórios foram enviados
     if (!datahora_inicio || !datahora_fim) {
