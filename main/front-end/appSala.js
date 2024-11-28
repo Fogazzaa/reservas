@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", getAllSalasTabela);
 // Função que busca as informações das salas e preenche a tabela.
 function getAllSalasTabela() {
   // Realiza uma requisição GET para a URL
-  fetch("http://10.89.240.94:5000/reservas/v1/sala", {
+  fetch("http://localhost:5000/reservas/v1/sala", {
     method: "GET",
     headers: {
       "Content-Type": "application/JSON",

@@ -129,15 +129,15 @@ module.exports = class AgendamentoController {
             );
 
             // Considerando o horário de término da última reserva
-            const proximoHorario = new Date(reservasOrdenadas[0].datahora_fim);
-            proximoHorario.setHours(proximoHorario.getHours() - 3); // Adiciona 10 minutos de intervalo
+            const proximoHorarioInicio = new Date(reservasOrdenadas[0].datahora_fim);
+            proximoHorarioInicio.setHours(proximoHorarioInicio.getHours() - 3); // Adiciona 10 minutos de intervalo
+
+            const proximoHorarioFim = new Date(reservasOrdenadas[0].datahora_fim);
+            proximoHorarioFim.setHours(proximoHorarioFim.getHours() - 3);
+            proximoHorarioFim.setMinutes(proximoHorarioFim.getMinutes() + 50);
 
             return res.status(400).json({
-              error: `A sala já está reservada neste horário. O primeiro horário disponível é ${proximoHorario
-                .toISOString()
-                .replace("T", " ")
-                .substring(0, 19)}`,
-            });
+              error: `A sala já está reservada neste horário. O primeiro horário disponível é ${proximoHorarioInicio.toISOString().replace("T", " ").substring(0, 19)} + ${proximoHorarioFim.toISOString().replace("T", " ").substring(0, 19)}`});
           }
 
           const queryInsert = `INSERT INTO reserva (fk_id_usuario, fk_id_sala, datahora_inicio, datahora_fim)
