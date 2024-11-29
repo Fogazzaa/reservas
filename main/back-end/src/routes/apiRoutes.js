@@ -9,6 +9,8 @@ router.post("/login", usuarioController.loginUsuario); // http://localhost:5000/
 router.get("/login", usuarioController.getAllUsuarios); // http://localhost:5000/reservas/v1/login
 router.put("/usuario/:id_usuario", usuarioController.updateUsuario); // http://localhost:5000/reservas/v1/usuario/id_usuario
 router.delete("/usuario/:id_usuario", usuarioController.deleteUsuario); // http://localhost:5000/reservas/v1/usuario/id_usuario
+router.get('/usuario/perfil/:id_usuario', usuarioController.getUsuarioById); // http://localhost:5000/reservas/v1/usuario/perfil/:id_usuario
+router.get('/usuario/perfil/:fk_id_usuario/reservas', usuarioController.getUsuarioReservas); // http://localhost:5000/reservas/v1/usuario/perfil/:fk_id_usuario/reservas
 
 router.get("/reserva", reservaController.createReservas); // http://localhost:5000/reservas/v1/reserva
 router.post("/reserva", reservaController.createReservas); // http://localhost:5000/reservas/v1/reserva

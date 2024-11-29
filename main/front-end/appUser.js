@@ -88,12 +88,11 @@ function loginUser(event) {
       }); // --- fechamento 'response error'
     }) // --- fechamento 'response'
     .then((data) => {
-      // executa a resposta de sucesso  - retorna ao usuario final
-      // exibe alerta com o nome do usuario com o nome que acabou de ser cadastrado (front)
       alert("Login bem sucedido!");
+      localStorage.setItem("id_usuario", data.usuario.id_usuario);
+      console.log(data.usuario.id_usuario);
       window.location.href = "principal.html";
     }) // --- fechamento 'data'
-    //captura qualquer erro que ocorra durante o processo de requisição/ resposta
     .catch((error) => {
       // exibe alerta no (front) com erro processado
       alert("Erro no Login: " + error.message);

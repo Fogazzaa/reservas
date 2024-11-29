@@ -22,22 +22,23 @@
               <div class="logo">
                 <img src="./img/logo.png" alt="logo SENAI SP" />
               </div>
-              <div class="nome_usuario">
-                <label for="nome_usuario"></label>
-                <input type="text" id="nome_usuario" placeholder="nome" />
-              </div>
-              <div class="email">
-                <label for="email"></label>
-                <input type="email" id="email" placeholder=" e-mail" />
-              </div>
-              <div class="NIF">
-                <label for="NIF"></label>
-                <input type="text" id="NIF" placeholder=" NIF" />
-              </div>
-              <div class="senha">
-                <label for="senha"></label>
-                <input type="password" id="senha" placeholder=" senha" />
-              </div>
+              <label for="nome"></label>
+              <input type="text" id="nome" name="nome" placeholder="Nome Completo do Usuário" />
+    
+              <label for="email"></label>
+              <input type="email" id="email" name="email" placeholder="Email do Usuário" />
+    
+              <label for="NIF"></label>
+              <input type="text" id="NIF" name="NIF" placeholder="NIF do Usuário" />
+    
+              <label for="senha"></label>
+              <input type="text" id="senha" name="senha" placeholder="Senha do Usuário" />
+    
+              <label for="reservas"></label>
+              <select id="reservas" name="reservas">
+                <option value="" disabled selected>Minhas Reservas</option>
+                <!-- As reservas serão preenchidas via JavaScript -->
+              </select>
               <div class="botoes">
                 <div class="editar">
                   <button type="button" onclick="window.location.href='./atualizarperfil.html';">
@@ -55,5 +56,6 @@
             </p>
           </div>
     </footer>
+    <script src="appPerfil.js"></script>
   </body>
 </html>

@@ -39,7 +39,9 @@ module.exports = class usuarioController {
           }
           return res.status(500).json({ error: "Erro Interno do Servidor" });
         }
-        return res.status(201).json({ message: "Usuário Criado com Sucesso!" });
+        return res.status(200).json({
+          message: "Cadastro bem-sucedido",
+        });
       });
     } catch (error) {
       console.error(error);
@@ -75,12 +77,18 @@ module.exports = class usuarioController {
         }
 
         const usuario = results[0];
+        console.log(usuario);
 
         // Verifica se a senha está correta
         if (usuario.senha === senha) {
-          return res
-            .status(200)
-            .json({ message: "Login realizado com sucesso!" });
+          return res.status(200).json({
+            message: "Login realizado com sucesso!",
+            usuario: {
+              id_usuario: usuario.id_usuario,
+              email: usuario.email,
+              nome: usuario.nome,
+            },
+          });
         } else {
           return res.status(401).json({ error: "Senha ou E-mail incorreto" });
         }
@@ -182,6 +190,83 @@ module.exports = class usuarioController {
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: "Erro interno do servidor" });
+    }
+  }
+
+  static async getUsuarioById(req, res) {
+    const id_usuario = req.params.id_usuario;
+
+    if (!id_usuario) {
+      return res.status(400).json({ error: "ID do usuário é obrigatório" });
+    }
+
+    const query = `SELECT * FROM usuario WHERE id_usuario = ?`; // Ajuste o campo `id` conforme o banco
+
+    connect.query(query, [id_usuario], function (err, results) {
+      if (err) {
+        console.error("Erro ao buscar usuário:", err);
+        return res.status(500).json({ error: "Erro interno do servidor" });
+      }
+
+      if (results.length === 0) {
+        return res.status(404).json({ error: "Usuário não encontrado" });
+      }
+
+      // Supondo que você tenha reservas relacionadas ao usuário
+      const usuario = results[0];
+      const queryUsuario = `SELECT * FROM usuario WHERE id_usuario = ?`;
+
+      connect.query(queryUsuario, [id_usuario], function (err) {
+        if (err) {
+          console.error("Erro ao buscar reservas:", err);
+          return res
+            .status(500)
+            .json({ error: "Erro interno ao buscar reservas" });
+        }
+
+        return res.status(200).json({
+          usuario: {
+            id_usuario: usuario.id_usuario,
+            nome: usuario.nome,
+            email: usuario.email,
+            NIF: usuario.NIF,
+            senha: usuario.senha,
+          },
+        });
+      });
+    });
+  }
+
+  static async getUsuarioReservas(req, res) {
+    const fk_id_usuario = req.params.fk_id_usuario; // Obtendo o ID do usuário a partir da URL
+  
+    // Consulta SQL para buscar as reservas do usuário
+    const queryReservas = `
+      SELECT r.id_reserva, s.nome, r.datahora_inicio, r.datahora_fim
+      FROM reserva r
+      JOIN sala s ON r.fk_id_sala = s.id_sala
+      WHERE r.fk_id_usuario = ?
+    `;
+  
+    try {
+      // Executando a consulta SQL
+      connect.query(queryReservas, [fk_id_usuario], (err, results) => {
+        if (err) {
+          console.error("Erro ao buscar reservas:", err);
+          return res.status(500).json({ error: "Erro ao buscar reservas" });
+        }
+  
+        // Se não encontrar reservas, retornar uma lista vazia
+        if (results.length === 0) {
+          return res.status(200).json({ reservas: [] });
+        }
+  
+        // Caso encontre reservas, retornar os dados encontrados
+        return res.status(200).json({ reservas: results });
+      });
+    } catch (error) {
+      console.error('Erro ao buscar reservas:', error);
+      return res.status(500).json({ error: 'Erro interno do servidor' });
     }
   }
 };
