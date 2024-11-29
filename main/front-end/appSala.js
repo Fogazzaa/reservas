@@ -25,37 +25,43 @@ function getAllSalasTabela() {
     // Após obter os dados em JSON, preenche a tabela
     .then((data) => {
       const salaLista = document.getElementById("sala-list-tabela"); // Obtém o elemento da tabela onde os dados das salas estão
-      salaLista.innerHTML = ""; // Limpa a lista antes de Adicionar novos itens
-      // Verifica se há usuario retornados e os adiciona a tabela
+      salaLista.innerHTML = ""; // Limpa a lista antes de adicionar novos itens
+    
+      // Verifica se há salas retornadas e as adiciona à tabela
       data.salas.forEach((sala) => {
-        // Cria uma nova linha
+        // Cria uma nova linha da tabela
         const tr = document.createElement("tr");
-
-        // Cria e adiciona a célula para o nome da sala
+    
+        // Cria a célula para o nome da sala
         const tdNome = document.createElement("td");
         tdNome.textContent = sala.nome; // Atribui o nome
         tr.appendChild(tdNome); // Adiciona a célula à linha
-
-        // Cria e adiciona a célula para a descrição da sala
+    
+        // Cria a célula para a descrição da sala
         const tdDescricao = document.createElement("td");
-        tdDescricao.textContent = sala.descricao; // Atribui a descrição da sala à célula
+        tdDescricao.textContent = sala.descricao; // Atribui a descrição da sala
         tr.appendChild(tdDescricao); // Adiciona a célula à linha
-
-        // Cria e adiciona a célula para o tipo de sala
+    
+        // Cria a célula para o tipo de sala
         const tdTipo = document.createElement("td");
-        tdTipo.textContent = sala.tipo; // Atribui o tipo da sala à célula
+        tdTipo.textContent = sala.tipo; // Atribui o tipo da sala
         tr.appendChild(tdTipo); // Adiciona a célula à linha
-
-        // Cria e adiciona a célula para o bloco onde a sala está localizada
+    
+        // Cria a célula para o bloco onde a sala está localizada
         const tdBloco = document.createElement("td");
-        tdBloco.textContent = sala.bloco; // Atribui o bloco da sala à célula
+        tdBloco.textContent = sala.bloco; // Atribui o bloco da sala
         tr.appendChild(tdBloco); // Adiciona a célula à linha
-
-        // Cria e adiciona a célula para a capacidade da sala
+    
+        // Cria a célula para a capacidade da sala
         const tdCapacidade = document.createElement("td");
-        tdCapacidade.textContent = sala.capacidade; // Atribui a capacidade da sala à célula
+        tdCapacidade.textContent = sala.capacidade; // Atribui a capacidade da sala
         tr.appendChild(tdCapacidade); // Adiciona a célula à linha
-
+    
+        // Adiciona um evento de clique na linha da sala para redirecionar para 'sala.html'
+        tr.addEventListener("click", () => {
+          window.location.href = './sala.html'; // Redireciona para a página de detalhes da sala
+        });
+    
         // Adiciona a linha completa à tabela
         salaLista.appendChild(tr);
       });

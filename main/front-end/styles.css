@@ -17,7 +17,7 @@ body {
 }
 
 header {
-  height: 10vh;
+  height: 11vh;
   background-color: #c41212;
   padding: 1.1%;
   border-bottom: 3px solid whitesmoke;
@@ -76,7 +76,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 82vh;
+  height: 81vh;
 }
 
 footer {
@@ -389,7 +389,6 @@ main #login #formulario-login .botoes .login input:hover {
   position: absolute;
   right: 7%;
   top: 3%;
-  
 }
 
 .header-principal .usuario img {
@@ -398,7 +397,6 @@ main #login #formulario-login .botoes .login input:hover {
   position: absolute;
   right: 50%;
   top: 0%;
-  
 }
 
 .header-principal .logout {
@@ -432,17 +430,37 @@ main #login #formulario-login .botoes .login input:hover {
   background-color: #b5b5b5;
 }
 
+.main-principal #sala-tabela thead {
+  padding: 5%;
+}
+
+.main-principal #sala-tabela thead tr th {
+  font-size:x-large;
+  padding: 20px;
+  padding-right: 98px;
+  background-color: #d9d9d9;
+  color: #6D6D6D;
+  margin: 10px;
+  border: none;
+  border-radius:5px;
+}
+
 .main-principal #sala-tabela #sala-list-tabela tr {
-  padding: 2%;
+  color: white;
+  font-size: large;
   background-color: #949494;
   border-radius: 10px;
-  padding: 10%;
+  width: 100%;
 }
 
 .main-principal #sala-tabela #sala-list-tabela tr td {
   padding-block: 4%;
   padding-left: 2%;
-  padding-right: 4%;
+  padding-right: 1%;
+  width: 1%;
+  font-size: large;
+  border: none;
+  border-radius:5px;
 }
 
 .footer-principal {
@@ -455,7 +473,7 @@ main #login #formulario-login .botoes .login input:hover {
   height: 8%;
   width: 100%;
   border-top: 2px solid whitesmoke;
-  padding: 3%;
+  padding: 2%;
 }
 
 /* --- perfil --- */
