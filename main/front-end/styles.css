@@ -395,8 +395,8 @@ main #login #formulario-login .botoes .login input:hover {
   width: 47px;
   height: 47px;
   position: absolute;
-  right: 50%;
-  top: 0%;
+  right: -2px;
+  top: -2px;
 }
 
 .header-principal .logout {
@@ -409,8 +409,8 @@ main #login #formulario-login .botoes .login input:hover {
   width: 47px;
   height: 47px;
   position: absolute;
-  right: 0%;
-  top: 0%;
+  right: -2px;
+  top: -2px;
 }
 
 .main-principal {
@@ -442,15 +442,41 @@ main #login #formulario-login .botoes .login input:hover {
   color: #6D6D6D;
   margin: 10px;
   border: none;
-  border-radius:5px;
+}
+
+.main-principal #sala-tabela thead tr .salas-disponiveis {
+  font-size:x-large;
+  padding: 20px;
+  padding-right: 98px;
+  background-color: #d9d9d9;
+  color: #6D6D6D;
+  margin: 10px;
+  border-top-left-radius: 10px;
+}
+
+.main-principal #sala-tabela thead tr .filtrar {
+  font-size:x-large;
+  padding: 20px;
+  padding-right: 98px;
+  background-color: #d9d9d9;
+  color: #6D6D6D;
+  margin: 10px;
+  border-top-right-radius: 10px;
 }
 
 .main-principal #sala-tabela #sala-list-tabela tr {
   color: white;
   font-size: large;
   background-color: #949494;
-  border-radius: 10px;
   width: 100%;
+  
+}
+
+.main-principal #sala-tabela #sala-list-tabela :hover{
+  color: white;
+  font-size: large;
+  background-color: #9d9d9d;
+  cursor: pointer;
 }
 
 .main-principal #sala-tabela #sala-list-tabela tr td {
@@ -459,8 +485,7 @@ main #login #formulario-login .botoes .login input:hover {
   padding-right: 1%;
   width: 1%;
   font-size: large;
-  border: none;
-  border-radius:5px;
+  border-top: solid #b5b5b5 8px;
 }
 
 .footer-principal {
