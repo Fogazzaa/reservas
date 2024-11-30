@@ -533,8 +533,8 @@ main #perfil #formulario-perfil #nome {
   border-style: none;
   margin-bottom: 10px;
   border-radius: 15px;
-  padding-inline: 10px;
-  padding-right: 200px;
+  padding-left: 3%;
+  padding-right: 50%;
   padding-block: 15px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
@@ -545,8 +545,8 @@ main #perfil #formulario-perfil #email {
   border-style: none;
   margin-bottom: 10px;
   border-radius: 15px;
-  padding-inline: 10px;
-  padding-right: 200px;
+  padding-left: 3%;
+  padding-right: 50%;
   padding-block: 15px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
@@ -557,8 +557,8 @@ main #perfil #formulario-perfil #NIF {
   border-style: none;
   margin-bottom: 10px;
   border-radius: 15px;
-  padding-inline: 10px;
-  padding-right: 200px;
+  padding-left: 3%;
+  padding-right: 50%;
   padding-block: 15px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
@@ -569,8 +569,8 @@ main #perfil #formulario-perfil #senha {
   border-style: none;
   margin-bottom: 10px;
   border-radius: 15px;
-  padding-inline: 20px;
-  padding-right: 190px;
+  padding-left: 3%;
+  padding-right: 50%;
   padding-block: 15px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
@@ -581,8 +581,8 @@ main #perfil #formulario-perfil #reservas {
   border-style: none;
   margin-bottom: 10px;
   border-radius: 15px;
-  padding-inline: 10px;
-  padding-right: 150px;
+  padding-left: 3%;
+  padding-right: 10%;
   padding-block: 15px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
