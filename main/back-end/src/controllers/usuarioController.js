@@ -77,7 +77,6 @@ module.exports = class usuarioController {
         }
 
         const usuario = results[0];
-        console.log(usuario);
 
         // Verifica se a senha está correta
         if (usuario.senha === senha) {
