@@ -5,31 +5,27 @@ module.exports = class usuarioController {
   static async createUsuarios(req, res) {
     const { NIF, email, senha, nome } = req.body;
 
-    // Valida se todos os campos obrigatórios estão preenchidos
     if (!NIF || !email || !senha || !nome) {
       return res
         .status(400)
         .json({ error: "Todos os campos devem ser preenchidos" });
     }
 
-    // Valida se o NIF é numérico e tem 7 dígitos
     if (isNaN(NIF) || NIF.length !== 7) {
       return res.status(400).json({
         error: "NIF inválido. Deve conter exatamente 7 dígitos numéricos",
       });
     }
 
-    // Valida se o email contém o caractere "@"
     if (!email.includes("@")) {
       return res.status(400).json({ error: "Email inválido. Deve conter @" });
     }
 
-    // Construção da query INSERT para adicionar o usuário ao banco de dados
-    const query = `INSERT INTO usuario (nome, email, NIF, senha) VALUES (?, ?, ?, ?)`;
-    const values = [nome, email, NIF, senha];
+    const queryInsert = `INSERT INTO usuario (nome, email, NIF, senha) VALUES (?, ?, ?, ?)`;
+    const valuesInsert = [nome, email, NIF, senha];
 
     try {
-      connect.query(query, values, function (err) {
+      connect.query(queryInsert, valuesInsert, function (err) {
         if (err) {
           console.error(err);
           if (err.code === "ER_DUP_ENTRY") {
@@ -39,13 +35,32 @@ module.exports = class usuarioController {
           }
           return res.status(500).json({ error: "Erro Interno do Servidor" });
         }
-        return res.status(200).json({
-          message: "Cadastro bem-sucedido",
+
+        // Após inserir o usuário, buscar os dados inseridos para enviar na resposta
+        const querySelect = `SELECT * FROM usuario WHERE email = ?`;
+        connect.query(querySelect, [email], function (err, results) {
+          if (err) {
+            console.error(err);
+            return res.status(500).json({ error: "Erro Interno do Servidor" });
+          }
+
+          if (results.length === 0) {
+            return res.status(404).json({ error: "Usuário não encontrado" });
+          }
+
+          const usuario = results[0];
+          return res.status(200).json({
+            usuario: {
+              id_usuario: usuario.id_usuario,
+              email: usuario.email,
+            },
+            message: "Cadastro bem-sucedido",
+          });
         });
       });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Erro Interno do Servidor" });
+      return res.status(500).json({ error: "Erro Interno do Servidor" });
     }
   }
 

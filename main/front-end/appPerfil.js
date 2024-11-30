@@ -38,20 +38,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const selectReservas = document.getElementById("reservas");
         selectReservas.innerHTML =
           '<option value="" disabled selected>Minhas Reservas</option>';
-  
+
         // Ajustando para acessar "data.reservas"
         if (data.reservas && data.reservas.length > 0) {
           data.reservas.forEach((reserva) => {
             const option = document.createElement("option");
             option.value = reserva.id_reserva;
-  
+
             // Verificando se a data está em um formato compatível
             const dataReserva = new Date(reserva.datahora_inicio);
             if (isNaN(dataReserva)) {
               console.error("Data inválida:", reserva.datahora_inicio);
               return; // Se a data não for válida, não adicionamos a reserva
             }
-  
+
             // Formatando a data para "DD/MM/YYYY HH:MM"
             const dataFormatada = dataReserva.toLocaleString("pt-BR", {
               day: "2-digit",
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
               minute: "2-digit",
               hour12: false, // Formato 24 horas
             });
-  
+
             // Definindo o texto do option com a data formatada
             option.textContent = `${reserva.nome} - ${dataFormatada}`;
             selectReservas.appendChild(option);
@@ -77,5 +77,5 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Erro ao buscar reservas:", error);
         alert("Erro ao buscar reservas. Tente novamente.");
       });
-  }  
+  }
 });
