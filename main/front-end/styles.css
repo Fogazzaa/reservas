@@ -170,7 +170,6 @@ main #cadastro #formulario-cadastro {
   padding: 25px;
   padding-inline: 30px;
   padding-block: 12px;
-  margin-top: 2%;
   padding-top: 60px;
 }
 
@@ -292,7 +291,6 @@ main #login #formulario-login {
   padding: 25px;
   padding-inline: 30px;
   padding-block: 15px;
-  margin-top: 20%;
   padding-top: 70px;
 }
 
@@ -475,7 +473,7 @@ main #login #formulario-login .botoes .login input:hover {
   border-top-left-radius: 10px;
 }
 
-.main-principal #sala-tabela thead tr th #filtrar{
+.main-principal #sala-tabela thead tr th #filtrar {
   color: #ffffff;
   padding: 9px;
   background-color: #c41212;
@@ -484,7 +482,7 @@ main #login #formulario-login .botoes .login input:hover {
   font-weight: bold;
 }
 
-.main-principal #sala-tabela thead tr th #filtrar:hover{
+.main-principal #sala-tabela thead tr th #filtrar:hover {
   color: #ffffff;
   padding: 9px;
   background-color: #d63232;
@@ -586,13 +584,13 @@ main #perfil #formulario-perfil .logo img {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200px;
-  background-color: white;
+  background-color: rgb(239, 239, 239);
   padding: 5px;
   border-radius: 20px;
 }
 
 main #perfil #formulario-perfil {
-  background-color: #cecece;
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -600,9 +598,8 @@ main #perfil #formulario-perfil {
   border-radius: 25px;
   width: 100%;
   height: 100%;
-  padding-inline: 150px;
+  padding-inline: 200px;
   padding-block: 18px;
-  margin-top: 10%;
   padding-top: 70px;
 }
 
@@ -611,11 +608,12 @@ main #perfil #formulario-perfil #nome {
   border-style: none;
   margin-bottom: 10px;
   border-radius: 15px;
-  padding-left: 3%;
-  padding-right: 50%;
+  padding-left: 5%;
+  padding-right: 95%;
   padding-block: 15px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
 }
 
 main #perfil #formulario-perfil #email {
@@ -623,11 +621,12 @@ main #perfil #formulario-perfil #email {
   border-style: none;
   margin-bottom: 10px;
   border-radius: 15px;
-  padding-left: 3%;
-  padding-right: 50%;
+  padding-left: 5%;
+  padding-right: 95%;
   padding-block: 15px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
 }
 
 main #perfil #formulario-perfil #NIF {
@@ -635,11 +634,12 @@ main #perfil #formulario-perfil #NIF {
   border-style: none;
   margin-bottom: 10px;
   border-radius: 15px;
-  padding-left: 3%;
-  padding-right: 50%;
+  padding-left: 5%;
+  padding-right: 95%;
   padding-block: 15px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
 }
 
 main #perfil #formulario-perfil #senha {
@@ -647,11 +647,12 @@ main #perfil #formulario-perfil #senha {
   border-style: none;
   margin-bottom: 10px;
   border-radius: 15px;
-  padding-left: 3%;
-  padding-right: 50%;
+  padding-left: 5%;
+  padding-right: 95%;
   padding-block: 15px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
 }
 
 main #perfil #formulario-perfil #reservas {
@@ -659,11 +660,12 @@ main #perfil #formulario-perfil #reservas {
   border-style: none;
   margin-bottom: 10px;
   border-radius: 15px;
-  padding-left: 3%;
+  padding-left: 5%;
   padding-right: 10%;
   padding-block: 15px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
 }
 
 main #perfil #formulario-perfil .botoes {
