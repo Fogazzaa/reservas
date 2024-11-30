@@ -454,13 +454,13 @@ main #login #formulario-login .botoes .login input:hover {
 
 .main-principal #sala-tabela thead tr th #filtro-nome {
   color: #6d6d6d;
-  padding: 5px;
+  padding: 6px;
   border: none;
   border-radius: 10px;
 }
 
 .main-principal #sala-tabela #sala-list-tabela tr:last-child td {
-  border-bottom: #b5b5b5 solid 8px;
+  border-bottom: #b5b5b5 solid 9px;
 }
 
 .main-principal #sala-tabela thead tr .salas-disponiveis {
@@ -482,6 +482,16 @@ main #login #formulario-login .botoes .login input:hover {
   border: none;
   border-radius: 10px;
   font-weight: bold;
+}
+
+.main-principal #sala-tabela thead tr th #filtrar:hover{
+  color: #ffffff;
+  padding: 9px;
+  background-color: #d63232;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .main-principal #sala-tabela #sala-list-tabela tr {
