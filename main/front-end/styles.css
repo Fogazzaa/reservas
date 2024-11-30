@@ -440,25 +440,48 @@ main #login #formulario-login .botoes .login input:hover {
   background-color: #d9d9d9;
 }
 
+.main-principal #sala-tabela thead tr th label {
+  color: #6d6d6d;
+  margin-inline: 3%;
+}
+
+.main-principal #sala-tabela thead tr th #filtro-data {
+  color: #6d6d6d;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+}
+
+.main-principal #sala-tabela thead tr th #filtro-nome {
+  color: #6d6d6d;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+}
+
+.main-principal #sala-tabela #sala-list-tabela tr:last-child td {
+  border-bottom: #b5b5b5 solid 8px;
+}
+
 .main-principal #sala-tabela thead tr .salas-disponiveis {
   font-size: x-large;
   font-weight: bolder;
   padding-block: 15px;
   padding-right: 98px;
+  padding-left: 5px;
   background-color: #d9d9d9;
   color: #6d6d6d;
   margin: 10px;
   border-top-left-radius: 10px;
 }
 
-.main-principal #sala-tabela thead tr .filtrar {
-  font-size: x-large;
-  padding: 20px;
-  padding-right: 98px;
-  background-color: #d9d9d9;
-  color: #6d6d6d;
-  margin: 10px;
-  border-top-right-radius: 10px;
+.main-principal #sala-tabela thead tr th #filtrar{
+  color: #ffffff;
+  padding: 9px;
+  background-color: #c41212;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
 }
 
 .main-principal #sala-tabela #sala-list-tabela tr {
@@ -468,7 +491,30 @@ main #login #formulario-login .botoes .login input:hover {
   width: 100%;
 }
 
-.main-principal #sala-tabela #sala-list-tabela :hover {
+.main-principal #sala-tabela thead tr th:nth-child(2) {
+  width: 2%;
+}
+
+.main-principal #sala-tabela thead tr th:nth-child(3) {
+  width: 2%;
+}
+
+.main-principal #sala-tabela thead tr th:nth-child(4) {
+  width: 0.1%;
+}
+
+.main-principal #sala-tabela thead tr th:nth-child(5) {
+  width: 1%;
+  border-top-right-radius: 10px;
+}
+
+.main-principal
+  #sala-tabela
+  #sala-list-tabela
+  .main-principal
+  #sala-tabela
+  #sala-list-tabela
+  :hover {
   color: white;
   font-size: large;
   background-color: #9d9d9d;

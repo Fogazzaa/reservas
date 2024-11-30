@@ -28,10 +28,18 @@
       <table id="sala-tabela">
         <thead>
           <th class="salas-disponiveis">Salas Disponíveis</th>
+          <th>
+            <label for="filtro-data">Filtrar por Data:</label>
+            <input type="date" id="filtro-data" />
+          </th>
+          <th>
+            <label for="filtro-nome">Buscar Sala:</label>
+            <input type="text" id="filtro-nome" placeholder="Digite o nome da sala" />
+          </th>
           <th></th>
-          <th></th>
-          <th></th>
-          <th class="filtrar"></th>
+          <th>
+            <button id="filtrar" type="button" onclick="aplicarFiltros()">Filtrar</button>
+          </th>
         </thead>
         <tbody id="sala-list-tabela">
           <tr></tr>
@@ -46,7 +54,11 @@
         </p>
       </div>
     </footer>
-
     <script src="./appSala.js"></script>
+    <script>
+      const inputDate = document.getElementById("filtro-data");
+      const today = new Date().toISOString().split("T")[0]; // Formato YYYY-MM-DD
+      inputDate.min = today;
+    </script>
   </body>
 </html>
