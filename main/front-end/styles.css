@@ -397,6 +397,7 @@ main #login #formulario-login .botoes .login input:hover {
   position: absolute;
   right: -2px;
   top: -2px;
+  cursor: pointer;
 }
 
 .header-principal .logout {
@@ -411,6 +412,7 @@ main #login #formulario-login .botoes .login input:hover {
   position: absolute;
   right: -2px;
   top: -2px;
+  cursor: pointer;
 }
 
 .main-principal {
@@ -446,6 +448,7 @@ main #login #formulario-login .botoes .login input:hover {
 
 .main-principal #sala-tabela thead tr .salas-disponiveis {
   font-size: x-large;
+  font-weight: bolder;
   padding: 20px;
   padding-right: 98px;
   background-color: #d9d9d9;
@@ -479,12 +482,37 @@ main #login #formulario-login .botoes .login input:hover {
 }
 
 .main-principal #sala-tabela #sala-list-tabela tr td {
-  padding-block: 4%;
+  padding-block: 2%;
   padding-left: 2%;
   padding-right: 1%;
   width: 1%;
   font-size: large;
   border-top: solid #b5b5b5 8px;
+  font-weight: bold;
+}
+
+.main-principal #sala-tabela #sala-list-tabela tr td:first-child {
+  padding-block: 2%;
+  padding-left: 2%;
+  padding-right: 1%;
+  width: 1%;
+  font-size: large;
+  border-top: solid #b5b5b5 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-left: #b5b5b5 solid 10px;
+}
+
+.main-principal #sala-tabela #sala-list-tabela tr td:last-child {
+  padding-block: 2%;
+  padding-left: 2%;
+  padding-right: 1%;
+  width: 1%;
+  font-size: large;
+  border-top: solid #b5b5b5 8px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-right: #b5b5b5 solid 10px;
 }
 
 .footer-principal {
