@@ -30,15 +30,25 @@
           <th class="salas-disponiveis">Salas Disponíveis</th>
           <th>
             <label for="filtro-data">Filtrar por Data:</label>
-            <input type="date" id="filtro-data" />
+            <input type="datetime-local" id="filtro-data" />
           </th>
           <th>
             <label for="filtro-nome">Buscar Sala:</label>
-            <input type="text" id="filtro-nome" placeholder="Digite o nome da sala" />
+            <input
+              type="text"
+              id="filtro-nome"
+              placeholder="Digite o nome da sala"
+            />
           </th>
           <th></th>
           <th>
-            <button id="filtrar" type="button" onclick="aplicarFiltros()">Filtrar</button>
+            <button
+              id="filtrar"
+              type="button"
+              onclick="getAllSalasTabelaFiltroData()"
+            >
+              Filtrar
+            </button>
           </th>
         </thead>
         <tbody id="sala-list-tabela">
@@ -56,9 +66,23 @@
     </footer>
     <script src="./appSala.js"></script>
     <script>
-      const inputDate = document.getElementById("filtro-data");
-      const today = new Date().toISOString().split("T")[0]; // Formato YYYY-MM-DD
-      inputDate.min = today;
+      const inputDateTime = document.getElementById("filtro-data");
+
+      // Obtém a data atual
+      const now = new Date();
+
+      // Formata a data no padrão esperado para "datetime-local"
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, "0"); // Adiciona zero à esquerda
+      const day = String(now.getDate()).padStart(2, "0");
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+
+      // Monta o valor no formato "YYYY-MM-DDTHH:mm"
+      const formattedNow = `${year}-${month}-${day}T${hours}:${minutes}`;
+
+      // Define o valor mínimo
+      inputDateTime.min = formattedNow;
     </script>
   </body>
 </html>

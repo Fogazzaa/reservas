@@ -48,7 +48,7 @@ function createUser(event) {
       localStorage.setItem("id_usuario", data.usuario.id_usuario);
       window.location.href = "principal.html";
     }) // --- fechamento 'data'
-    
+
     .catch((error) => {
       // exibe alerta no (front) com erro processado
       alert("Erro no cadastro: " + error.message);

@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", getAllSalasTabelaFiltroNome);
 
 // Função que busca as informações das salas e preenche a tabela.
 function getAllSalasTabela() {
-  // Realiza uma requisição GET para a URL
   fetch("http://localhost:5000/reservas/v1/sala", {
     method: "GET",
     headers: {
@@ -13,73 +12,68 @@ function getAllSalasTabela() {
     },
   })
     .then((response) => {
-      // Trata a resposta da requisição
       if (response.ok) {
-        // Se for bem-sucedida
-        return response.json(); //converte a resposta para formato JSON
+        return response.json(); // Converte a resposta para JSON
       }
       return response.json().then((err) => {
-        // Caso contrário, lança um erro
-        throw new Error(err.error);
+        throw new Error(err.error); // Lança um erro caso a resposta não seja bem-sucedida
       });
     })
-
-    // Após obter os dados em JSON, preenche a tabela
     .then((data) => {
-      const salaLista = document.getElementById("sala-list-tabela"); // Obtém o elemento da tabela onde os dados das salas estão
-      salaLista.innerHTML = ""; // Limpa a lista antes de adicionar novos itens
-    
-      // Verifica se há salas retornadas e as adiciona à tabela
+      const salaLista = document.getElementById("sala-list-tabela");
+      salaLista.innerHTML = ""; // Limpa a tabela antes de adicionar novos itens
+
       data.salas.forEach((sala) => {
-        // Cria uma nova linha da tabela
         const tr = document.createElement("tr");
-    
-        // Cria a célula para o nome da sala
+
+        // Cria e preenche a célula para o nome da sala
         const tdNome = document.createElement("td");
-        tdNome.textContent = sala.nome; // Atribui o nome
-        tr.appendChild(tdNome); // Adiciona a célula à linha
-    
-        // Cria a célula para a descrição da sala
+        tdNome.textContent = sala.nome;
+        tr.appendChild(tdNome);
+
+        // Cria e preenche a célula para a descrição da sala
         const tdDescricao = document.createElement("td");
-        tdDescricao.textContent = sala.descricao; // Atribui a descrição da sala
-        tr.appendChild(tdDescricao); // Adiciona a célula à linha
-    
-        // Cria a célula para o tipo de sala
+        tdDescricao.textContent = sala.descricao;
+        tr.appendChild(tdDescricao);
+
+        // Cria e preenche a célula para o tipo da sala
         const tdTipo = document.createElement("td");
-        tdTipo.textContent = sala.tipo; // Atribui o tipo da sala
-        tr.appendChild(tdTipo); // Adiciona a célula à linha
-    
-        // Cria a célula para o bloco onde a sala está localizada
+        tdTipo.textContent = sala.tipo;
+        tr.appendChild(tdTipo);
+
+        // Cria e preenche a célula para o bloco
         const tdBloco = document.createElement("td");
-        tdBloco.textContent = sala.bloco; // Atribui o bloco da sala
-        tr.appendChild(tdBloco); // Adiciona a célula à linha
-    
-        // Cria a célula para a capacidade da sala
+        tdBloco.textContent = sala.bloco;
+        tr.appendChild(tdBloco);
+
+        // Cria e preenche a célula para a capacidade
         const tdCapacidade = document.createElement("td");
-        tdCapacidade.textContent = sala.capacidade; // Atribui a capacidade da sala
-        tr.appendChild(tdCapacidade); // Adiciona a célula à linha
-    
-        // Adiciona um evento de clique na linha da sala para redirecionar para 'sala.html'
+        tdCapacidade.textContent = sala.capacidade;
+        tr.appendChild(tdCapacidade);
+
+        // Adiciona evento de clique para redirecionar para a página de detalhes
         tr.addEventListener("click", () => {
-          window.location.href = './sala.html'; // Redireciona para a página de detalhes da sala
+          window.location.href = "./sala.html";
         });
-    
-        // Adiciona a linha completa à tabela
-        salaLista.appendChild(tr);
+
+        salaLista.appendChild(tr); // Adiciona a linha à tabela
       });
     })
-    // Se ocorrer algum erro durante o processo, exibe um alerta e imprime o erro no console
     .catch((error) => {
-      alert("Erro ao obter salas: " + error.message); // Exibe a mensagem de erro
-      console.error("Erro: ", error.message); // Loga o erro no console
+      alert("Erro ao obter salas: " + error.message); // Exibe o erro para o usuário
+      console.error("Erro:", error.message); // Registra o erro no console
     });
 }
 
 function getAllSalasTabelaFiltroData() {
   // Realiza uma requisição GET para a URL
-  const data = document.getElementById("filtro-data").value;
+  const data_inicio_string = document.getElementById("filtro-data").value;
+  const data_inicio = new Date(data_inicio_string);
+  const data_fim_string = document.getElementById("filtro-data").value;
+  const data_fim = new Date(data_fim_string);
+  data_fim.setDate(data_inicio.getDate() + 1);
 
-  console.log(`Filtrar por data: ${data}, Nome da sala: ${nome}`);
+  console.log(`Filtrar por data: ${data_inicio} - ${data_fim}`);
   fetch("http://localhost:5000/reservas/v1/sala", {
     method: "GET",
     headers: {
@@ -102,42 +96,42 @@ function getAllSalasTabelaFiltroData() {
     .then((data) => {
       const salaLista = document.getElementById("sala-list-tabela"); // Obtém o elemento da tabela onde os dados das salas estão
       salaLista.innerHTML = ""; // Limpa a lista antes de adicionar novos itens
-    
+
       // Verifica se há salas retornadas e as adiciona à tabela
       data.salas.forEach((sala) => {
         // Cria uma nova linha da tabela
         const tr = document.createElement("tr");
-    
+
         // Cria a célula para o nome da sala
         const tdNome = document.createElement("td");
         tdNome.textContent = sala.nome; // Atribui o nome
         tr.appendChild(tdNome); // Adiciona a célula à linha
-    
+
         // Cria a célula para a descrição da sala
         const tdDescricao = document.createElement("td");
         tdDescricao.textContent = sala.descricao; // Atribui a descrição da sala
         tr.appendChild(tdDescricao); // Adiciona a célula à linha
-    
+
         // Cria a célula para o tipo de sala
         const tdTipo = document.createElement("td");
         tdTipo.textContent = sala.tipo; // Atribui o tipo da sala
         tr.appendChild(tdTipo); // Adiciona a célula à linha
-    
+
         // Cria a célula para o bloco onde a sala está localizada
         const tdBloco = document.createElement("td");
         tdBloco.textContent = sala.bloco; // Atribui o bloco da sala
         tr.appendChild(tdBloco); // Adiciona a célula à linha
-    
+
         // Cria a célula para a capacidade da sala
         const tdCapacidade = document.createElement("td");
         tdCapacidade.textContent = sala.capacidade; // Atribui a capacidade da sala
         tr.appendChild(tdCapacidade); // Adiciona a célula à linha
-    
+
         // Adiciona um evento de clique na linha da sala para redirecionar para 'sala.html'
         tr.addEventListener("click", () => {
-          window.location.href = './sala.html'; // Redireciona para a página de detalhes da sala
+          window.location.href = "./sala.html"; // Redireciona para a página de detalhes da sala
         });
-    
+
         // Adiciona a linha completa à tabela
         salaLista.appendChild(tr);
       });
@@ -153,7 +147,7 @@ function getAllSalasTabelaFiltroNome() {
   // Realiza uma requisição GET para a URL
   const nome = document.getElementById("filtro-nome").value;
 
-  console.log(`Filtrar por data: ${data}, Nome da sala: ${nome}`);
+  console.log(`Nome da sala: ${nome}`);
   fetch("http://localhost:5000/reservas/v1/sala", {
     method: "GET",
     headers: {
@@ -176,42 +170,42 @@ function getAllSalasTabelaFiltroNome() {
     .then((data) => {
       const salaLista = document.getElementById("sala-list-tabela"); // Obtém o elemento da tabela onde os dados das salas estão
       salaLista.innerHTML = ""; // Limpa a lista antes de adicionar novos itens
-    
+
       // Verifica se há salas retornadas e as adiciona à tabela
       data.salas.forEach((sala) => {
         // Cria uma nova linha da tabela
         const tr = document.createElement("tr");
-    
+
         // Cria a célula para o nome da sala
         const tdNome = document.createElement("td");
         tdNome.textContent = sala.nome; // Atribui o nome
         tr.appendChild(tdNome); // Adiciona a célula à linha
-    
+
         // Cria a célula para a descrição da sala
         const tdDescricao = document.createElement("td");
         tdDescricao.textContent = sala.descricao; // Atribui a descrição da sala
         tr.appendChild(tdDescricao); // Adiciona a célula à linha
-    
+
         // Cria a célula para o tipo de sala
         const tdTipo = document.createElement("td");
         tdTipo.textContent = sala.tipo; // Atribui o tipo da sala
         tr.appendChild(tdTipo); // Adiciona a célula à linha
-    
+
         // Cria a célula para o bloco onde a sala está localizada
         const tdBloco = document.createElement("td");
         tdBloco.textContent = sala.bloco; // Atribui o bloco da sala
         tr.appendChild(tdBloco); // Adiciona a célula à linha
-    
+
         // Cria a célula para a capacidade da sala
         const tdCapacidade = document.createElement("td");
         tdCapacidade.textContent = sala.capacidade; // Atribui a capacidade da sala
         tr.appendChild(tdCapacidade); // Adiciona a célula à linha
-    
+
         // Adiciona um evento de clique na linha da sala para redirecionar para 'sala.html'
         tr.addEventListener("click", () => {
-          window.location.href = './sala.html'; // Redireciona para a página de detalhes da sala
+          window.location.href = "./sala.html"; // Redireciona para a página de detalhes da sala
         });
-    
+
         // Adiciona a linha completa à tabela
         salaLista.appendChild(tr);
       });

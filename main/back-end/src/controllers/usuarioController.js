@@ -208,36 +208,39 @@ module.exports = class usuarioController {
   }
 
   static async getUsuarioById(req, res) {
-    const id_usuario = req.params.id_usuario;
-
+    const id_usuario = req.params.id_usuario; // Obtém o ID do usuário a partir dos parâmetros da URL
+  
+    // Valida se o ID foi fornecido
     if (!id_usuario) {
       return res.status(400).json({ error: "ID do usuário é obrigatório" });
     }
-
-    const query = `SELECT * FROM usuario WHERE id_usuario = ?`; // Ajuste o campo `id` conforme o banco
-
+  
+    const query = `SELECT * FROM usuario WHERE id_usuario = ?`; // Consulta SQL para buscar o usuário pelo ID
+  
     connect.query(query, [id_usuario], function (err, results) {
       if (err) {
-        console.error("Erro ao buscar usuário:", err);
-        return res.status(500).json({ error: "Erro interno do servidor" });
+        console.error("Erro ao buscar usuário:", err); // Loga o erro no console para depuração
+        return res.status(500).json({ error: "Erro interno do servidor" }); // Retorna erro genérico ao cliente
       }
-
+  
+      // Verifica se o usuário foi encontrado
       if (results.length === 0) {
         return res.status(404).json({ error: "Usuário não encontrado" });
       }
-
-      // Supondo que você tenha reservas relacionadas ao usuário
+  
+      // Obtém os dados do usuário encontrado
       const usuario = results[0];
-      const queryUsuario = `SELECT * FROM usuario WHERE id_usuario = ?`;
-
+      const queryUsuario = `SELECT * FROM usuario WHERE id_usuario = ?`; // Consulta redundante, pode ser ajustada
+  
       connect.query(queryUsuario, [id_usuario], function (err) {
         if (err) {
           console.error("Erro ao buscar reservas:", err);
-          return res
-            .status(500)
-            .json({ error: "Erro interno ao buscar reservas" });
+          return res.status(500).json({
+            error: "Erro interno ao buscar reservas",
+          });
         }
-
+  
+        // Retorna os dados do usuário no formato JSON
         return res.status(200).json({
           usuario: {
             id_usuario: usuario.id_usuario,
@@ -250,37 +253,38 @@ module.exports = class usuarioController {
       });
     });
   }
-
+  
   static async getUsuarioReservas(req, res) {
-    const id_usuario = req.params.id_usuario; // Obtendo o ID do usuário a partir da URL
-
-    // Consulta SQL para buscar as reservas do usuário
+    const id_usuario = req.params.id_usuario; // Obtém o ID do usuário a partir dos parâmetros da URL
+  
+    // Consulta SQL para buscar as reservas do usuário, incluindo informações da sala
     const queryReservas = `
       SELECT r.id_reserva, s.nome, r.datahora_inicio, r.datahora_fim
       FROM reserva r
       JOIN sala s ON r.fk_id_sala = s.id_sala
       WHERE r.fk_id_usuario = ?
     `;
-
+  
     try {
-      // Executando a consulta SQL
+      // Executa a consulta no banco de dados
       connect.query(queryReservas, [id_usuario], (err, results) => {
         if (err) {
-          console.error("Erro ao buscar reservas:", err);
+          console.error("Erro ao buscar reservas:", err); // Loga o erro no console
           return res.status(500).json({ error: "Erro ao buscar reservas" });
         }
-
-        // Se não encontrar reservas, retornar uma lista vazia
+  
+        // Verifica se há reservas encontradas
         if (results.length === 0) {
-          return res.status(200).json({ reservas: [] });
+          return res.status(200).json({ reservas: [] }); // Retorna lista vazia se não houver reservas
         }
-
-        // Caso encontre reservas, retornar os dados encontrados
+  
+        // Retorna as reservas encontradas no formato JSON
         return res.status(200).json({ reservas: results });
       });
     } catch (error) {
-      console.error("Erro ao buscar reservas:", error);
+      console.error("Erro ao buscar reservas:", error); // Loga erros inesperados
       return res.status(500).json({ error: "Erro interno do servidor" });
     }
   }
+  
 };
