@@ -17,7 +17,7 @@ body {
 }
 
 header {
-  height: 11vh;
+  height: 13vh;
   background-color: #c41212;
   padding: 1.1%;
   border-bottom: 3px solid whitesmoke;
@@ -76,7 +76,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 81vh;
+  height: 79vh;
 }
 
 footer {
@@ -592,8 +592,8 @@ main #perfil #formulario-perfil {
   border-radius: 25px;
   width: 100%;
   height: 100%;
-  padding-inline: 200px;
-  padding-block: 18px;
+  padding-inline: 150px;
+  padding-block: 14px;
   padding-top: 70px;
 }
 
@@ -604,7 +604,7 @@ main #perfil #formulario-perfil #nome {
   border-radius: 15px;
   padding-left: 5%;
   padding-right: 95%;
-  padding-block: 15px;
+  padding-block: 8px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
   color: rgb(118, 118, 118);
@@ -617,7 +617,7 @@ main #perfil #formulario-perfil #email {
   border-radius: 15px;
   padding-left: 5%;
   padding-right: 95%;
-  padding-block: 15px;
+  padding-block: 8px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
   color: rgb(118, 118, 118);
@@ -630,7 +630,7 @@ main #perfil #formulario-perfil #NIF {
   border-radius: 15px;
   padding-left: 5%;
   padding-right: 95%;
-  padding-block: 15px;
+  padding-block: 8px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
   color: rgb(118, 118, 118);
@@ -643,7 +643,7 @@ main #perfil #formulario-perfil #senha {
   border-radius: 15px;
   padding-left: 5%;
   padding-right: 95%;
-  padding-block: 15px;
+  padding-block: 8px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
   color: rgb(118, 118, 118);
@@ -656,7 +656,16 @@ main #perfil #formulario-perfil #reservas {
   border-radius: 15px;
   padding-left: 5%;
   padding-right: 10%;
-  padding-block: 15px;
+  padding-block: 8px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
+}
+
+main #perfil #formulario-perfil #reservas option{
+  background-color: #ebebeb;
+  border-style: none;
+  border-radius: 15px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
   color: rgb(118, 118, 118);
