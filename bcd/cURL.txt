@@ -1,7 +1,7 @@
 
  - CADASTRO:
 
-curl --location 'http://10.89.240.94:5000/reservas/v1/cadastro' \
+curl --location 'http://10.89.240.84:5000/reservas/v1/cadastro' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "nome": "Gustavo Almeida",
@@ -14,7 +14,7 @@ curl --location 'http://10.89.240.94:5000/reservas/v1/cadastro' \
 
  - LOGIN:
 
-curl --location 'http://10.89.240.94:5000/reservas/v1/login' \
+curl --location 'http://10.89.240.84:5000/reservas/v1/login' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "email":"gustavo.almeida@example.com",
@@ -25,14 +25,14 @@ curl --location 'http://10.89.240.94:5000/reservas/v1/login' \
 
  - GET:
 
-curl --location 'http://10.89.240.94:5000/reservas/v1/login' \
+curl --location 'http://10.89.240.84:5000/reservas/v1/login' \
 --header 'Content-Type: application/json'
 
 -------------------------------------------------------------------------------
 
  - PUT:
 
-curl --location --request PUT 'http://10.89.240.94:5000/reservas/v1/usuario/1' \
+curl --location --request PUT 'http://10.89.240.84:5000/reservas/v1/usuario/1' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "nome": "Renata Souza",
@@ -44,7 +44,7 @@ curl --location --request PUT 'http://10.89.240.94:5000/reservas/v1/usuario/1' \
 
  - DELETE:
 
-curl --location --request DELETE 'http://10.89.240.94:5000/reservas/v1/usuario/1' \
+curl --location --request DELETE 'http://10.89.240.84:5000/reservas/v1/usuario/1' \
 --header 'Content-Type: application/json' \
 --data ''
 
@@ -52,7 +52,7 @@ curl --location --request DELETE 'http://10.89.240.94:5000/reservas/v1/usuario/1
 
  - RESERVA - POST:
 
-curl --location --request GET 'http://10.89.240.94:5000/reservas/v1/reserva' \
+curl --location --request GET 'http://10.89.240.84:5000/reservas/v1/reserva' \
 --header 'Content-Type: application/json' \
 --data '{
     "fk_id_usuario":"1",
@@ -65,13 +65,13 @@ curl --location --request GET 'http://10.89.240.94:5000/reservas/v1/reserva' \
 
  - RESERVA - GET:
 
-curl --location 'http://10.89.240.94:5000/reservas/v1/reservas'
+curl --location 'http://10.89.240.84:5000/reservas/v1/reservas'
 
 -------------------------------------------------------------------------------
 
  - RESERVA - PUT:
 
-curl --location --request PUT 'http://10.89.240.94:5000/reservas/v1/reserva/1' \
+curl --location --request PUT 'http://10.89.240.84:5000/reservas/v1/reserva/1' \
 --header 'Content-Type: application/json' \
 --data '{ 
     "datahora_inicio":"2024-12-31 09:00:00", 
@@ -83,7 +83,7 @@ curl --location --request PUT 'http://10.89.240.94:5000/reservas/v1/reserva/1' \
 
  - RESERVA - DELETE:
 
-curl --location --request DELETE 'http://10.89.240.94:5000/reservas/v1/reserva/1' \
+curl --location --request DELETE 'http://10.89.240.84:5000/reservas/v1/reserva/1' \
 --header 'Content-Type: application/json' \
 --data ''
 
@@ -91,7 +91,7 @@ curl --location --request DELETE 'http://10.89.240.94:5000/reservas/v1/reserva/1
 
  - SALA - POST:
 
-curl --location 'http://10.89.240.94:5000/reservas/v1/sala' \
+curl --location 'http://10.89.240.84:5000/reservas/v1/sala' \
 --header 'Content-Type: application/json' \
 --data '{
     "nome":"SALA TESTE",
@@ -105,14 +105,14 @@ curl --location 'http://10.89.240.94:5000/reservas/v1/sala' \
 
  - SALA - GET:
 
-curl --location 'http://10.89.240.94:5000/reservas/v1/sala' \
+curl --location 'http://10.89.240.84:5000/reservas/v1/sala' \
 --data ''
 
 -------------------------------------------------------------------------------
 
  - SALA - PUT:	
 
-curl --location --request PUT 'http://10.89.240.94:5000/reservas/v1/sala/1' \
+curl --location --request PUT 'http://10.89.240.84:5000/reservas/v1/sala/1' \
 --header 'Content-Type: application/json' \
 --data '{
     "nome":"SALA TESTE 2",
@@ -126,14 +126,14 @@ curl --location --request PUT 'http://10.89.240.94:5000/reservas/v1/sala/1' \
 
  - SALA - DELETE:	
 
-curl --location --request DELETE 'http://10.89.240.94:5000/reservas/v1/sala/1' \
+curl --location --request DELETE 'http://10.89.240.84:5000/reservas/v1/sala/1' \
 --data ''
 
 -------------------------------------------------------------------------------
 
  - SALAS HORARIO -GET
 
-curl --location --request GET 'http://10.89.240.94:5000/reservas/v1/salasdisponivelhorario' \
+curl --location --request GET 'http://10.89.240.84:5000/reservas/v1/salasdisponivelhorario' \
 --header 'Content-Type: application/json' \
 --data '{
     "data_inicio":"2024-12-28 08:00:00",
@@ -144,7 +144,7 @@ curl --location --request GET 'http://10.89.240.94:5000/reservas/v1/salasdisponi
 
  - SALAS DIAS - GET
 
-curl --location --request GET 'http://10.89.240.94:5000/reservas/v1/salasdisponiveldia' \
+curl --location --request GET 'http://10.89.240.84:5000/reservas/v1/salasdisponiveldia' \
 --header 'Content-Type: application/json' \
 --data '{
     "data_inicio":"2024-12-28 08:00:00",
@@ -155,5 +155,5 @@ curl --location --request GET 'http://10.89.240.94:5000/reservas/v1/salasdisponi
 
  - SALAS DISPONIVEIS - GET
 
-curl --location 'http://10.89.240.94:5000/reservas/v1/salasDisponivel' \
+curl --location 'http://10.89.240.84:5000/reservas/v1/salasDisponivel' \
 --data ''
