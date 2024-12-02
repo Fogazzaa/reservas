@@ -17,7 +17,7 @@ body {
 }
 
 header {
-  height: 11vh;
+  height: 13vh;
   background-color: #c41212;
   padding: 1.1%;
   border-bottom: 3px solid whitesmoke;
@@ -356,7 +356,7 @@ main #login #formulario-login .botoes .login input:hover {
 
 /* --- principal --- */
 
-.logo-principal img {
+.logo-principal img { /*logo*/
   position: relative;
   top: 50%;
   left: 65%;
@@ -367,24 +367,25 @@ main #login #formulario-login .botoes .login input:hover {
   border-radius: 20px;
 }
 
-.body-principal {
+ /* Estilo para o corpo principal da página */
+.body-principal { /*tudo*/
   font-family: Arial, sans-serif;
   background-color: #d6d6d6;
   color: whitesmoke;
   height: 100%;
 }
 
-.header-principal {
+.header-principal { /*cabeçalho principal*/
   height: 12vh;
   background-color: #c41212;
   border-bottom: 3px solid whitesmoke;
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /*Alinha os itens (horizontalmente)*/
 }
 
 .header-principal .usuario {
-  position: absolute;
+  position: absolute; /*Define a posição como absoluta, permitindo posicionar em relação ao contêiner*/
   right: 7%;
   top: 3%;
 }
@@ -392,7 +393,7 @@ main #login #formulario-login .botoes .login input:hover {
 .header-principal .usuario img {
   width: 47px;
   height: 47px;
-  position: absolute;
+  position: absolute; /*Define a posição como absoluta, permitindo posicionar em relação ao contêiner*/
   right: -2px;
   top: -2px;
   cursor: pointer;
@@ -413,16 +414,17 @@ main #login #formulario-login .botoes .login input:hover {
   cursor: pointer;
 }
 
-.main-principal {
+.main-principal { /*tudo do meio*/
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /*Centraliza horizontalmente dentro do contêiner */
+  align-items: center; /*Centraliza verticalmente dentro do contêiner */
   height: 82%;
   width: 100%;
   justify-items: center;
 }
 
-.main-principal #sala-tabela {
+/*Estilo para a tabela*/
+.main-principal #sala-tabela { /*tabela*/
   margin-top: 4%;
   margin-bottom: 4%;
   width: 85%;
@@ -430,50 +432,53 @@ main #login #formulario-login .botoes .login input:hover {
   background-color: #b5b5b5;
 }
 
+/*Estilo para o cabeçalho da tabela*/
 .main-principal #sala-tabela thead {
   padding: 5%;
 }
 
-.main-principal #sala-tabela thead tr th {
+/*Estilo para as células de cabeçalho (th)*/
+.main-principal #sala-tabela thead tr th { /*Estilo para as células de cabeçalho (th)*/
   background-color: #d9d9d9;
 }
 
+/*é a parte de filtrar por data e buscar por nome*/
 .main-principal #sala-tabela thead tr th label {
   color: #6d6d6d;
-  margin-inline: 3%;
+  margin-inline: 3%; /*Adiciona uma margem horizontal (esquerda e direita) ao redor do label*/
 }
 
-.main-principal #sala-tabela thead tr th #filtro-data {
+.main-principal #sala-tabela thead tr th #filtro-data { /*é o escrito filtrar data*/
   color: #6d6d6d;
   padding: 5px;
   border: none;
   border-radius: 10px;
 }
 
-.main-principal #sala-tabela thead tr th #filtro-nome {
+.main-principal #sala-tabela thead tr th #filtro-nome { /*é o escrito buscar sala*/
   color: #6d6d6d;
   padding: 6px;
-  border: none;
+  border: none; /*Remove qualquer borda e garante bordas não visíveis*/
   border-radius: 10px;
 }
 
-.main-principal #sala-tabela #sala-list-tabela tr:last-child td {
+.main-principal #sala-tabela #sala-list-tabela tr:last-child td { /*última celula da tabela*/
   border-bottom: #b5b5b5 solid 9px;
 }
 
-.main-principal #sala-tabela thead tr .salas-disponiveis {
+.main-principal #sala-tabela thead tr .salas-disponiveis { /*celula de salas disponiveis*/
   font-size: x-large;
-  font-weight: bolder;
-  padding-block: 15px;
-  padding-right: 98px;
-  padding-left: 5px;
+  font-weight: bolder; /*Aumenta o peso da fonte*/
+  padding-block: 15px; /*Adiciona um preenchimento na parte superior e inferior*/
+  padding-right: 98px; /*Adiciona um preenchimento à direita*/
+  padding-left: 5px;   /*Adiciona um preenchimento à esquerda*/
   background-color: #d9d9d9;
   color: #6d6d6d;
   margin: 10px;
-  border-top-left-radius: 10px;
+  border-top-left-radius: 10px;  /*Arredonda o canto superior e esquerdo*/
 }
 
-.main-principal #sala-tabela thead tr th #filtrar {
+.main-principal #sala-tabela thead tr th #filtrar {  /*botão filtrar*/
   color: #ffffff;
   padding: 9px;
   background-color: #c41212;
@@ -482,58 +487,62 @@ main #login #formulario-login .botoes .login input:hover {
   font-weight: bold;
 }
 
-.main-principal #sala-tabela thead tr th #filtrar:hover {
+.main-principal #sala-tabela thead tr th #filtrar:hover { /*botão filtrar estilização do mouse*/
   color: #ffffff;
   padding: 9px;
   background-color: #d63232;
   border: none;
   border-radius: 10px;
   font-weight: bold;
-  cursor: pointer;
+  cursor: pointer; /*Muda o cursor para uma mão*/
 }
 
-.main-principal #sala-tabela #sala-list-tabela tr {
+.main-principal #sala-tabela #sala-list-tabela tr { /*linhas da tabela*/
   color: white;
   font-size: large;
   background-color: #949494;
   width: 100%;
 }
 
+/*Segunda coluna do cabeçalho da tabela*/
 .main-principal #sala-tabela thead tr th:nth-child(2) {
   width: 2%;
 }
 
+/*Terceira coluna do cabeçalho da tabela*/
 .main-principal #sala-tabela thead tr th:nth-child(3) {
   width: 2%;
 }
 
+/*Quarta coluna do cabeçalho da tabela*/
 .main-principal #sala-tabela thead tr th:nth-child(4) {
   width: 0.1%;
 }
 
+/*Quinta coluna do cabeçalho da tabela*/
 .main-principal #sala-tabela thead tr th:nth-child(5) {
   width: 1%;
   border-top-right-radius: 10px;
 }
 
-.main-principal #sala-tabela #sala-list-tabela :hover {
+.main-principal #sala-tabela #sala-list-tabela :hover {  /*aplicar estilos nas linhas da tabela*/
   color: white;
   font-size: large;
   background-color: #a0a0a0;
-  cursor: pointer;
+  cursor: pointer; /*Muda o cursor para uma mão*/
 }
 
-.main-principal #sala-tabela #sala-list-tabela tr td {
+.main-principal #sala-tabela #sala-list-tabela tr td { /*celulas da sala-list-tabela*/
   padding-block: 1%;
   padding-left: 2%;
   padding-right: 1%;
   width: 1%;
   font-size: large;
   border-top: solid #b5b5b5 8px;
-  font-weight: bold;
+  font-weight: bold; /*Define o texto em negrito*/
 }
 
-.main-principal #sala-tabela #sala-list-tabela tr td:first-child {
+.main-principal #sala-tabela #sala-list-tabela tr td:first-child { /*primeira célula da sala-list-tabela*/
   padding-block: 1%;
   padding-left: 2%;
   padding-right: 1%;
@@ -545,7 +554,7 @@ main #login #formulario-login .botoes .login input:hover {
   border-left: #b5b5b5 solid 10px;
 }
 
-.main-principal #sala-tabela #sala-list-tabela tr td:last-child {
+.main-principal #sala-tabela #sala-list-tabela tr td:last-child { /*última célula*/
   padding-block: 1%;
   padding-left: 2%;
   padding-right: 1%;
@@ -557,12 +566,12 @@ main #login #formulario-login .botoes .login input:hover {
   border-right: #b5b5b5 solid 10px;
 }
 
-.footer-principal {
+.footer-principal { /*rodapé*/
   font-family: "Trebuchet MS", sans-serif;
   position: relative;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /*Ajusta a posição para centralizar o rodapé*/
   background-color: #980000;
   height: 8%;
   width: 100%;
@@ -592,8 +601,8 @@ main #perfil #formulario-perfil {
   border-radius: 25px;
   width: 100%;
   height: 100%;
-  padding-inline: 200px;
-  padding-block: 18px;
+  padding-inline: 150px;
+  padding-block: 14px;
   padding-top: 70px;
 }
 
@@ -604,7 +613,7 @@ main #perfil #formulario-perfil #nome {
   border-radius: 15px;
   padding-left: 5%;
   padding-right: 95%;
-  padding-block: 15px;
+  padding-block: 8px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
   color: rgb(118, 118, 118);
@@ -617,7 +626,7 @@ main #perfil #formulario-perfil #email {
   border-radius: 15px;
   padding-left: 5%;
   padding-right: 95%;
-  padding-block: 15px;
+  padding-block: 8px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
   color: rgb(118, 118, 118);
@@ -630,7 +639,7 @@ main #perfil #formulario-perfil #NIF {
   border-radius: 15px;
   padding-left: 5%;
   padding-right: 95%;
-  padding-block: 15px;
+  padding-block: 8px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
   color: rgb(118, 118, 118);
@@ -643,7 +652,7 @@ main #perfil #formulario-perfil #senha {
   border-radius: 15px;
   padding-left: 5%;
   padding-right: 95%;
-  padding-block: 15px;
+  padding-block: 8px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
   color: rgb(118, 118, 118);
@@ -656,7 +665,16 @@ main #perfil #formulario-perfil #reservas {
   border-radius: 15px;
   padding-left: 5%;
   padding-right: 10%;
-  padding-block: 15px;
+  padding-block: 8px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
+}
+
+main #perfil #formulario-perfil #reservas option{
+  background-color: #ebebeb;
+  border-style: none;
+  border-radius: 15px;
   font-size: medium;
   font-family: "Trebuchet MS", sans-serif;
   color: rgb(118, 118, 118);

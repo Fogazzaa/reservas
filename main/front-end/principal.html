@@ -3,85 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>principal</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="icon" href="./img/iconesenai.png" type="image/x-icon" />
+    <title>principal</title> <!-- Define o título da página, que aparece na aba do navegador -->
+    <link rel="stylesheet" href="./styles.css" /> <!-- Link para o arquivo de estilo CSS -->
+    <link rel="icon" href="./img/iconesenai.png" type="image/x-icon" />   <!-- Define o ícone da página que aparece na aba do navegador -->
   </head>
 
-  <body class="body-principal">
-    <header class="header-principal">
-      <div class="logo-principal">
-        <img src="./img/logo.png" alt="logo SENAI SP" />
+  <body class="body-principal"> <!-- corpo da página-->
+    <header class="header-principal">  <!-- cabeçalho da página-->
+      <div class="logo-principal"> <!-- Div para a logo-->
+        <img src="./img/logo.png" alt="logo SENAI SP" />  <!-- Imagem da logo do SENAI SP -->
       </div>
-      <div class="usuario">
-        <button onclick="window.location.href='./perfil.html';">
-          <img src="./img/iconeperfil.png" alt="iconeperfil" />
+      <div class="usuario">  <!--Div para o usuário, onde um botão de perfil será exibido -->
+        <button onclick="window.location.href='./perfil.html';">  <!--Botão que redirecionar para a página de perfil-->
+          <img src="./img/iconeperfil.png" alt="iconeperfil" />  <!--Imagem-->
         </button>
-      </div>
-      <div class="logout">
-        <button onclick="window.location.href='./inicial.html';">
-          <img src="./img/iconelogout.png" alt="iconesala" />
+      </div> <!--contêiner para agrupar outros elementos-->
+      <div class="logout">  <!-- Div para a opção de logout -->
+        <button onclick="window.location.href='./inicial.html';"> <!--Botão que redireciona para a página inicial ao ser clicado-->
+          <img src="./img/iconelogout.png" alt="iconesala" />  <!--Imagem-->
         </button>
       </div>
     </header>
-    <main class="main-principal">
-      <table id="sala-tabela">
-        <thead>
-          <th class="salas-disponiveis">Salas Disponíveis</th>
-          <th>
-            <label for="filtro-data">Filtrar por Data:</label>
-            <input type="datetime-local" id="filtro-data" />
+    <main class="main-principal"> <!--seção principal da página-->
+      <table id="sala-tabela">  <!-- Tabela que contém informações sobre salas-->
+        <!--Esse identificador permite que você acesse e manipule a tabela-->
+
+        <thead>  <!--agrupa o cabeçalho da tabela-->
+          <th class="salas-disponiveis">Salas Disponíveis</th> <!--Cabeçalho da coluna para salas disponíveis-->
+          <th>  <!--Início de uma nova coluna-->
+            <label for="filtro-data">Filtrar por Data:</label> <!--Rótulo para o campo de filtro por data-->
+            <input type="datetime-local" id="filtro-data" /> <!--Campo de entrada para selecionar uma data-->
           </th>
-          <th>
-            <label for="filtro-nome">Buscar Sala:</label>
-            <input
-              type="text"
-              id="filtro-nome"
-              placeholder="Digite o nome da sala"
-            />
+          <th> <!--Início de uma nova coluna-->
+            <label for="filtro-nome">Buscar Sala:</label> <!--Rótulo para o campo de busca de sala-->
+            <input type="text" id="filtro-nome" placeholder="Digite o nome da sala"/> <!--Campo de entrada para digitar o nome da sala-->
+            <!--O placeholder ajuda os usuários a entender o formato ou conteúdo esperado-->
+            
           </th>
-          <th></th>
-          <th>
-            <button
-              id="filtrar"
-              type="button"
-              onclick="getAllSalasTabelaFiltroData()"
-            >
-              Filtrar
-            </button>
+          <th></th> <!-- Coluna vazia -->
+          <th>  <!-- Início de uma nova coluna -->
+            <button id="filtrar" type="button" onclick="getAllSalasTabelaFiltroData()">Filtrar</button>
+            <!--Botão que aplica filtros ao ser clicado-->
+              
           </th>
         </thead>
-        <tbody id="sala-list-tabela">
-          <tr></tr>
+        <tbody id="sala-list-tabela"> <!--Corpo da tabela onde as salas serão listadas, com um ID "sala-list-tabela"-->
+          <tr></tr>  <!-- Linha vazia (pode ser preenchida dinamicamente com JavaScript) -->
         </tbody>
       </table>
     </main>
 
-    <footer class="footer-principal">
-      <div class="desenvolvido">
+    <footer class="footer-principal"> <!--Rodapé da página-->
+      <div class="desenvolvido"> <!--Div para informações de desenvolvimento-->
         <p>
           &copy; Desenvolvido por: Vinicius Fogaça, Maria Júlia e Maria Clara
         </p>
       </div>
     </footer>
-    <script src="./appSala.js"></script>
+    <script src="./appSala.js"></script> <!--Link para o arquivo-->
     <script>
-      const inputDateTime = document.getElementById("filtro-data");
+      const inputDateTime = document.getElementById("filtro-data"); 
+      //getElementById - busca e retorna o primeiro elemento
+      //possui o atributo id igual a "filtro-data"
 
-      // Obtém a data atual
+      //Obtém a data atual
       const now = new Date();
 
-      // Formata a data no padrão esperado para "datetime-local"
-      const year = now.getFullYear();
-      const month = String(now.getMonth() + 1).padStart(2, "0"); // Adiciona zero à esquerda
-      const day = String(now.getDate()).padStart(2, "0");
-      const hours = String(now.getHours()).padStart(2, "0");
-      const minutes = String(now.getMinutes()).padStart(2, "0");
+      //Formata a data no padrão esperado para "datetime-local"
+      const year = now.getFullYear(); //obtém a data atual e extrai o ano dessa data
+      const month = String(now.getMonth() + 1).padStart(2, "0");  //now.getMonth() + 1 - soma 1 ao resultado de getMonth()
+      const day = String(now.getDate()).padStart(2, "0"); //Atribui a essa constante o dia do mês atual
+      //converte para uma string
+      //formatado para ter sempre dois dígitos
+      const hours = String(now.getHours()).padStart(2, "0"); //Atribui a essa constante a hora atual
+      //convertida para uma string
+      //formata para ter sempre dois dígitos
+      const minutes = String(now.getMinutes()).padStart(2, "0"); 
+      //Atribui a essa constante os minutos atuais
+      //converte para uma string
+      //formata para ter sempre dois dígitos
 
       // Monta o valor no formato "YYYY-MM-DDTHH:mm"
       const formattedNow = `${year}-${month}-${day}T${hours}:${minutes}`;
 
-      // Define o valor mínimo
+      //Atribui a essa constante uma string formatada que representa a data e hora atuais
       inputDateTime.min = formattedNow;
     </script>
   </body>
