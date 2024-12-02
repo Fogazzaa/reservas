@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (id_usuario) {
     // Busca os dados do usuário
-    fetch(`http://localhost:5000/reservas/v1/usuario/perfil/${id_usuario}`)
+    fetch(`http://10.89.240.84:5000/reservas/v1/usuario/perfil/${id_usuario}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.usuario) {
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function carregarReservasUsuario(id_usuario) {
     // Busca as reservas do usuário
     fetch(
-      `http://localhost:5000/reservas/v1/usuario/perfil/${id_usuario}/reservas`
+      `http://10.89.240.84:5000/reservas/v1/usuario/perfil/${id_usuario}/reservas`
     )
       .then((response) => response.json())
       .then((data) => {

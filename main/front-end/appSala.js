@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", getAllSalasTabelaFiltroNome);
 
 // Função que busca as informações das salas e preenche a tabela.
 function getAllSalasTabela() {
-  fetch("http://localhost:5000/reservas/v1/sala", {
+  fetch("http://10.89.240.84:5000/reservas/v1/sala", {
     method: "GET",
     headers: {
       "Content-Type": "application/JSON",
@@ -74,7 +74,7 @@ function getAllSalasTabelaFiltroData() {
   data_fim.setDate(data_inicio.getDate() + 1);
 
   console.log(`Filtrar por data: ${data_inicio} - ${data_fim}`);
-  fetch("http://localhost:5000/reservas/v1/sala", {
+  fetch("http://10.89.240.84:5000/reservas/v1/sala", {
     method: "GET",
     headers: {
       "Content-Type": "application/JSON",
@@ -148,7 +148,7 @@ function getAllSalasTabelaFiltroNome() {
   const nome = document.getElementById("filtro-nome").value;
 
   console.log(`Nome da sala: ${nome}`);
-  fetch("http://localhost:5000/reservas/v1/sala", {
+  fetch("http://10.89.240.84:5000/reservas/v1/sala", {
     method: "GET",
     headers: {
       "Content-Type": "application/JSON",
