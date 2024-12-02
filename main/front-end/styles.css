@@ -417,14 +417,14 @@ main #login #formulario-login .botoes .login input:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 82%;
+  height: 100%;
   width: 100%;
   justify-items: center;
 }
 
 .main-principal #sala-tabela {
   margin-top: 4%;
-  margin-bottom: 4%;
+  margin-bottom: 6%;
   width: 85%;
   border-radius: 10px;
   background-color: #b5b5b5;
@@ -559,7 +559,7 @@ main #login #formulario-login .botoes .login input:hover {
 
 .footer-principal {
   font-family: "Trebuchet MS", sans-serif;
-  position: relative;
+  position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);

@@ -25,7 +25,7 @@ class AppController {
     //URL base:
     const apiRoutes = require("./routes/apiRoutes");
     this.express.use("/reservas/v1", apiRoutes);
-    //Então a rota será: http://localhost:5000/reservas/v1
+    //Então a rota será: http://10.89.240.84:5000/reservas/v1
   }
 }
 //Exportândo a instância de express configurada, para que seja acessada em outros arquivos
