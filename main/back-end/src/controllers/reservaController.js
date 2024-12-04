@@ -110,6 +110,9 @@ module.exports = class AgendamentoController {
             const proximoHorarioInicio = new Date(
               reservasOrdenadas[0].datahora_fim
             );
+
+            proximoHorarioInicio.setHours(proximoHorarioInicio.getHours() - 3);
+            
             const proximoHorarioFim = new Date(
               proximoHorarioInicio.getTime() + limite
             );
