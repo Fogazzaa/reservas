@@ -1,0 +1,803 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url("./img/fundo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  color: whitesmoke;
+  height: 100vh;
+  margin: 0;
+}
+
+header {
+  height: 13vh;
+  background-color: #c41212;
+  padding: 1.1%;
+  border-bottom: 3px solid whitesmoke;
+}
+
+header .botao-home {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
+header .botao-home button {
+  background-color: transparent;
+  border: transparent;
+}
+
+header .botao-home button img {
+  width: 50px;
+  height: auto;
+}
+
+header .botao-login button {
+  background-color: rgb(255, 0, 0);
+  color: whitesmoke;
+  border-color: transparent;
+  padding: 0.8%;
+  border-radius: 7px;
+  position: absolute;
+  right: 2%;
+  top: 3%;
+  align-items: center;
+  font-weight: bold;
+  font-size: small;
+}
+
+header .botao-cadastre-se-inicial button {
+  background-color: rgb(255, 0, 0);
+  color: whitesmoke;
+  border-color: transparent;
+  padding: 0.8%;
+  border-radius: 7px;
+  position: absolute;
+  right: 8%;
+  top: 3%;
+  font-weight: bold;
+  font-size: small;
+}
+header .logo {
+  position: relative;
+  top: 1px;
+  width: auto;
+  border-radius: 20px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 81vh;
+}
+
+footer {
+  font-family: "Trebuchet MS", sans-serif;
+  position: absolute;
+  bottom: 0;
+  background-color: #980000;
+  height: 8vh;
+  width: 100%;
+  border-top: 2px solid whitesmoke;
+}
+
+footer .desenvolvido p {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* --- inicial --- */
+
+.header-inicial {
+  background-color: #c41212;
+  padding: 3%;
+  border-bottom: 3px solid whitesmoke;
+}
+
+.logo-inicial img {
+  position: relative;
+  top: 40%;
+  left: 6%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  background-color: white;
+  padding: 6px;
+  border-radius: 20px;
+}
+
+main .fundo-inicial img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 40%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+main .texto-inicial h1 {
+  font-size: 80px;
+  margin-right: 40%;
+  margin-top: 2%;
+  margin-bottom: 8%;
+  margin-left: 10%;
+}
+
+/* --- cadastro --- */
+
+main #cadastro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main #cadastro #formulario-cadastro .logo img {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+main #cadastro #formulario-cadastro {
+  background-color: #ffdada;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 25px;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  padding-inline: 30px;
+  padding-block: 12px;
+  padding-top: 60px;
+}
+
+main #cadastro #formulario-cadastro .nome input {
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding: 8%;
+  padding-inline: 20px;
+  padding-block: 12px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #cadastro #formulario-cadastro .email input {
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding: 8%;
+  padding-inline: 20px;
+  padding-block: 12px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #cadastro #formulario-cadastro .NIF input {
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding: 8%;
+  padding-inline: 20px;
+  padding-block: 12px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #cadastro #formulario-cadastro .senha input {
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding: 8%;
+  padding-inline: 20px;
+  padding-block: 12px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #cadastro #formulario-cadastro .botoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+main #cadastro #formulario-cadastro .botoes .cadastre-se input {
+  right: 50%;
+  border-style: none;
+  background-color: #ff2424;
+  border-radius: 15px;
+  border-color: transparent;
+  padding: 13px;
+  color: #ffffff;
+  font-size: medium;
+  margin-top: 8px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #cadastro #formulario-cadastro .botoes .login button {
+  display: flex;
+  right: 20%;
+  position: relative;
+  border-style: none;
+  background-color: transparent;
+  border-radius: 15px;
+  border-color: transparent;
+  padding: 15%;
+  color: #980000;
+  text-decoration: underline;
+  font-size: medium;
+  margin-top: 5px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #cadastro #formulario-cadastro .cadastre-se input:hover {
+  background-color: #ff5353;
+}
+
+main #cadastro #formulario-cadastro .login input:hover {
+  color: #973030;
+}
+
+/* --- login --- */
+
+main #login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main #login #formulario-login .logo img {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+main #login #formulario-login {
+  background-color: #ffdada;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 25px;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  padding-inline: 30px;
+  padding-block: 15px;
+  padding-top: 70px;
+}
+
+main #login #formulario-login .email input {
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding: 8%;
+  padding-inline: 20px;
+  padding-block: 12px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #login #formulario-login .senha input {
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding: 8%;
+  padding-inline: 20px;
+  padding-block: 12px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #cadastro #formulario-login .botoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+main #login #formulario-login .botoes .login input {
+  width: 100%;
+  border-style: none;
+  background-color: #ff2424;
+  border-radius: 15px;
+  border-color: transparent;
+  padding: 15%;
+  color: #ffffff;
+  font-size: medium;
+  margin-top: 8px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #login #formulario-login .botoes .cadastre-se button {
+  border-style: none;
+  background-color: transparent;
+  border-radius: 15px;
+  border-color: transparent;
+  padding: 0%;
+  color: #980000;
+  text-decoration: underline;
+  font-size: medium;
+  margin-bottom: 10px;
+  margin-top: 12px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main #login #formulario-login .botoes .login input:hover {
+  background-color: #ff5353;
+}
+
+/* --- principal --- */
+
+.logo-principal img { /*logo*/
+  position: relative;
+  top: 50%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  background-color: white;
+  padding: 6px;
+  border-radius: 20px;
+}
+
+ /* Estilo para o corpo principal da página */
+.body-principal { /*tudo*/
+  font-family: Arial, sans-serif;
+  background-color: #d6d6d6;
+  color: whitesmoke;
+  height: 100%;
+}
+
+.header-principal { /*cabeçalho principal*/
+  height: 12vh;
+  background-color: #c41212;
+  border-bottom: 3px solid whitesmoke;
+  width: 100%;
+  display: flex;
+  flex-direction: row; /*Alinha os itens (horizontalmente)*/
+}
+
+.header-principal .usuario {
+  position: absolute; /*Define a posição como absoluta, permitindo posicionar em relação ao contêiner*/
+  right: 7%;
+  top: 3%;
+}
+
+.header-principal .usuario img {
+  width: 47px;
+  height: 47px;
+  position: absolute; /*Define a posição como absoluta, permitindo posicionar em relação ao contêiner*/
+  right: -2px;
+  top: -2px;
+  cursor: pointer;
+}
+
+.header-principal .logout {
+  position: absolute;
+  right: 2%;
+  top: 3%;
+}
+
+.header-principal .logout img {
+  width: 47px;
+  height: 47px;
+  position: absolute;
+  right: -2px;
+  top: -2px;
+  cursor: pointer;
+}
+
+.main-principal { /*tudo do meio*/
+  display: flex;
+  justify-content: center; /*Centraliza horizontalmente dentro do contêiner */
+  align-items: center; /*Centraliza verticalmente dentro do contêiner */
+  height: 82%;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  justify-items: center;
+}
+
+/*Estilo para a tabela*/
+.main-principal #sala-tabela { /*tabela*/
+  margin-top: 4%;
+  margin-bottom: 6%;
+  width: 85%;
+  border-radius: 10px;
+  background-color: #b5b5b5;
+}
+
+/*Estilo para o cabeçalho da tabela*/
+.main-principal #sala-tabela thead {
+  padding: 5%;
+}
+
+/*Estilo para as células de cabeçalho (th)*/
+.main-principal #sala-tabela thead tr th { /*Estilo para as células de cabeçalho (th)*/
+  background-color: #d9d9d9;
+}
+
+/*é a parte de filtrar por data e buscar por nome*/
+.main-principal #sala-tabela thead tr th label {
+  color: #6d6d6d;
+  margin-inline: 3%; /*Adiciona uma margem horizontal (esquerda e direita) ao redor do label*/
+}
+
+.main-principal #sala-tabela thead tr th #filtro-data { /*é o escrito filtrar data*/
+  color: #6d6d6d;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+}
+
+.main-principal #sala-tabela thead tr th #filtro-nome { /*é o escrito buscar sala*/
+  color: #6d6d6d;
+  padding: 6px;
+  border: none; /*Remove qualquer borda e garante bordas não visíveis*/
+  border-radius: 10px;
+}
+
+.main-principal #sala-tabela thead tr th #filtro-horario { /*é o escrito buscar sala*/
+  color: #6d6d6d;
+  padding: 6px;
+  border: none; /*Remove qualquer borda e garante bordas não visíveis*/
+  border-radius: 10px;
+}
+
+.main-principal #sala-tabela #sala-list-tabela tr:last-child td { /*última celula da tabela*/
+  border-bottom: #b5b5b5 solid 9px;
+}
+
+.main-principal #sala-tabela thead tr .salas-disponiveis { /*celula de salas disponiveis*/
+  font-size: x-large;
+  font-weight: bolder; /*Aumenta o peso da fonte*/
+  padding-block: 15px; /*Adiciona um preenchimento na parte superior e inferior*/
+  padding-right: 98px; /*Adiciona um preenchimento à direita*/
+  padding-left: 5px;   /*Adiciona um preenchimento à esquerda*/
+  background-color: #d9d9d9;
+  color: #6d6d6d;
+  margin: 10px;
+  border-top-left-radius: 10px;  /*Arredonda o canto superior e esquerdo*/
+}
+
+.main-principal #sala-tabela thead tr th #filtrar {  /*botão filtrar*/
+  color: #ffffff;
+  padding: 9px;
+  background-color: #c41212;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.main-principal #sala-tabela thead tr th #filtrar:hover { /*botão filtrar estilização do mouse*/
+  color: #ffffff;
+  padding: 9px;
+  background-color: #d63232;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer; /*Muda o cursor para uma mão*/
+}
+
+.main-principal #sala-tabela #sala-list-tabela tr { /*linhas da tabela*/
+  color: white;
+  font-size: large;
+  background-color: #949494;
+  width: 100%;
+}
+
+/*Segunda coluna do cabeçalho da tabela*/
+.main-principal #sala-tabela thead tr th:nth-child(2) {
+  width: 2%;
+}
+
+/*Terceira coluna do cabeçalho da tabela*/
+.main-principal #sala-tabela thead tr th:nth-child(3) {
+  width: 2%;
+}
+
+/*Quarta coluna do cabeçalho da tabela*/
+.main-principal #sala-tabela thead tr th:nth-child(4) {
+  width: 0.1%;
+}
+
+/*Quinta coluna do cabeçalho da tabela*/
+.main-principal #sala-tabela thead tr th:nth-child(5) {
+  width: 1%;
+  border-top-right-radius: 10px;
+}
+
+.main-principal #sala-tabela #sala-list-tabela :hover {  /*aplicar estilos nas linhas da tabela*/
+  color: white;
+  font-size: large;
+  background-color: #a0a0a0;
+  cursor: pointer; /*Muda o cursor para uma mão*/
+}
+
+.main-principal #sala-tabela #sala-list-tabela tr td { /*celulas da sala-list-tabela*/
+  padding-block: 1%;
+  padding-left: 2%;
+  padding-right: 1%;
+  width: 1%;
+  font-size: large;
+  border-top: solid #b5b5b5 8px;
+  font-weight: bold; /*Define o texto em negrito*/
+}
+
+.main-principal #sala-tabela #sala-list-tabela tr td:first-child { /*primeira célula da sala-list-tabela*/
+  padding-block: 1%;
+  padding-left: 2%;
+  padding-right: 1%;
+  width: 1%;
+  font-size: large;
+  border-top: solid #b5b5b5 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-left: #b5b5b5 solid 10px;
+}
+
+.main-principal #sala-tabela #sala-list-tabela tr td:last-child { /*última célula*/
+  padding-block: 1%;
+  padding-left: 2%;
+  padding-right: 1%;
+  width: 1%;
+  font-size: large;
+  border-top: solid #b5b5b5 8px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-right: #b5b5b5 solid 10px;
+}
+
+.footer-principal { /*rodapé*/
+  font-family: "Trebuchet MS", sans-serif;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); /*Ajusta a posição para centralizar o rodapé*/
+  background-color: #980000;
+  height: 8%;
+  width: 100%;
+  border-top: 2px solid whitesmoke;
+  padding: 2%;
+}
+
+/* --- perfil --- */
+
+main #perfil #formulario-perfil .logo img {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  background-color: rgb(239, 239, 239);
+  padding: 5px;
+  border-radius: 20px;
+}
+
+main #perfil #formulario-perfil {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 25px;
+  width: 100%;
+  height: 100%;
+  padding-inline: 150px;
+  padding-block: 14px;
+  padding-top: 70px;
+}
+
+main #perfil #formulario-perfil #nome {
+  background-color: #ebebeb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-left: 5%;
+  padding-right: 95%;
+  padding-block: 8px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
+}
+
+main #perfil #formulario-perfil #email {
+  background-color: #ebebeb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-left: 5%;
+  padding-right: 95%;
+  padding-block: 8px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
+}
+
+main #perfil #formulario-perfil #NIF {
+  background-color: #ebebeb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-left: 5%;
+  padding-right: 95%;
+  padding-block: 8px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
+}
+
+main #perfil #formulario-perfil #senha {
+  background-color: #ebebeb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-left: 5%;
+  padding-right: 95%;
+  padding-block: 8px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
+}
+
+main #perfil #formulario-perfil #reservas {
+  background-color: #ebebeb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-left: 5%;
+  padding-right: 10%;
+  padding-block: 8px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
+}
+
+main #perfil #formulario-perfil #reservas option{
+  background-color: #ebebeb;
+  border-style: none;
+  border-radius: 15px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
+}
+
+main #perfil #formulario-perfil .botoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+main #perfil #formulario-perfil .botoes .editar button {
+  right: 50%;
+  border-style: none;
+  background-color: transparent;
+  border-radius: 15px;
+  border-color: transparent;
+  padding: 13px;
+  color: #b11010;
+  font-size: medium;
+  margin-top: 8px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+/* --- atualizar - perfil --- */
+
+main #atualizar-perfil #formulario-atualizar-perfil .logo img {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  background-color: rgb(239, 239, 239);
+  padding: 5px;
+  border-radius: 20px;
+}
+
+main #atualizar-perfil #formulario-atualizar-perfil {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 25px;
+  width: 100%;
+  height: 100%;
+  padding-inline: 200px;
+  padding-block: 18px;
+  padding-top: 70px;
+}
+
+main #atualizar-perfil #formulario-atualizar-perfil .nome input {
+  background-color: #ebebeb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-left: 5%;
+  padding-block: 15px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
+}
+
+main #atualizar-perfil #formulario-atualizar-perfil .email input {
+  background-color: #ebebeb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-left: 5%;
+  padding-block: 15px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
+}
+
+main #atualizar-perfil #formulario-atualizar-perfil .senha input {
+  background-color: #ebebeb;
+  border-style: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding-left: 5%;
+  padding-block: 15px;
+  font-size: medium;
+  font-family: "Trebuchet MS", sans-serif;
+  color: rgb(118, 118, 118);
+}
+
+main #atualizar-perfil #formulario-atualizar-perfil .botoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+main #atualizar-perfil #formulario-atualizar-perfil .botoes .atualizar input {
+  right: 50%;
+  border-style: none;
+  background-color: #ff2424;
+  border-radius: 15px;
+  border-color: transparent;
+  padding: 13px;
+  color: #ffffff;
+  font-size: medium;
+  margin-top: 8px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+main
+  #atualizar-perfil
+  #formulario-atualizar-perfil
+  .botoes
+  .atualizar
+  input:hover {
+  background-color: #ff5353;
+}

@@ -1,0 +1,31 @@
+\connect alunods@localhost:3306
+ password: senai@604
+
+create database rs; 
+use rs;
+create table if not exists usuario(
+     id_usuario int primary key auto_increment,
+     nome varchar(255) not null, 
+     email varchar(255) unique not null,
+     NIF char(7) unique not null,
+     senha varchar(255) not null
+ );
+
+create table if not exists sala(
+     id_sala int primary key auto_increment,
+     nome varchar(255) unique not null,
+     descricao text, 
+     bloco varchar(255) not null, 
+     tipo varchar(255) not null,
+     capacidade int not null
+ );
+
+create table if not exists reserva(
+     id_reserva int primary key auto_increment,
+     fk_id_sala int not null,
+     fk_id_usuario int not null,
+     datahora_inicio datetime not null, 
+     datahora_fim datetime not null,
+     foreign key (fk_id_sala) references sala(id_sala),
+     foreign key (fk_id_usuario) references usuario(id_usuario)
+ );
