@@ -1,7 +1,6 @@
 const connect = require("../db/connect");
 
 module.exports = class usuarioController {
-
   static async createUsuarios(req, res) {
     const { NIF, email, senha, nome } = req.body;
 
@@ -205,29 +204,29 @@ module.exports = class usuarioController {
 
   static async getUsuarioById(req, res) {
     const id_usuario = req.params.id_usuario; // Obtém o ID do usuário a partir dos parâmetros da URL
-  
+
     // Valida se o ID foi fornecido
     if (!id_usuario) {
       return res.status(400).json({ error: "ID do usuário é obrigatório" });
     }
-  
+
     const query = `SELECT * FROM usuario WHERE id_usuario = ?`; // Consulta SQL para buscar o usuário pelo ID
-  
+
     connect.query(query, [id_usuario], function (err, results) {
       if (err) {
         console.error("Erro ao buscar usuário:", err); // Loga o erro no console para depuração
         return res.status(500).json({ error: "Erro interno do servidor" }); // Retorna erro genérico ao cliente
       }
-  
+
       // Verifica se o usuário foi encontrado
       if (results.length === 0) {
         return res.status(404).json({ error: "Usuário não encontrado" });
       }
-  
+
       // Obtém os dados do usuário encontrado
       const usuario = results[0];
       const queryUsuario = `SELECT * FROM usuario WHERE id_usuario = ?`; // Consulta redundante, pode ser ajustada
-  
+
       connect.query(queryUsuario, [id_usuario], function (err) {
         if (err) {
           console.error("Erro ao buscar reservas:", err);
@@ -235,7 +234,7 @@ module.exports = class usuarioController {
             error: "Erro interno ao buscar reservas",
           });
         }
-  
+
         // Retorna os dados do usuário no formato JSON
         return res.status(200).json({
           usuario: {
@@ -249,10 +248,10 @@ module.exports = class usuarioController {
       });
     });
   }
-  
+
   static async getUsuarioReservas(req, res) {
     const id_usuario = req.params.id_usuario; // Obtém o ID do usuário a partir dos parâmetros da URL
-  
+
     // Consulta SQL para buscar as reservas do usuário, incluindo informações da sala
     const queryReservas = `
       SELECT r.id_reserva, s.nome, r.datahora_inicio, r.datahora_fim
@@ -260,7 +259,7 @@ module.exports = class usuarioController {
       JOIN sala s ON r.fk_id_sala = s.id_sala
       WHERE r.fk_id_usuario = ?
     `;
-  
+
     try {
       // Executa a consulta no banco de dados
       connect.query(queryReservas, [id_usuario], (err, results) => {
@@ -268,12 +267,12 @@ module.exports = class usuarioController {
           console.error("Erro ao buscar reservas:", err); // Loga o erro no console
           return res.status(500).json({ error: "Erro ao buscar reservas" });
         }
-  
+
         // Verifica se há reservas encontradas
         if (results.length === 0) {
           return res.status(200).json({ reservas: [] }); // Retorna lista vazia se não houver reservas
         }
-  
+
         // Retorna as reservas encontradas no formato JSON
         return res.status(200).json({ reservas: results });
       });
@@ -282,5 +281,4 @@ module.exports = class usuarioController {
       return res.status(500).json({ error: "Erro interno do servidor" });
     }
   }
-  
 };
