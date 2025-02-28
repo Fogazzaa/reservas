@@ -1,8 +1,8 @@
-import Login from "./screens/Login";
-import Cadastro from "./screens/Cadastro";
+import Login from "./pages/Login";
+import Cadastro from "./pages/Cadastro";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Principal from "./screens/Principal";
+import Principal from "./pages/Principal";
 
 const Stack = createStackNavigator();
 
