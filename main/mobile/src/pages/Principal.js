@@ -60,16 +60,20 @@ function Principal({ navigation }) {
       </View>
       <View style={styles.body}>
         <View style={styles.tableHeader}>
-          <Text style={[styles.tableHeaderCell, styles.headerNome]}>Nome</Text>
+          <Text style={[styles.tableHeaderCell, styles.headerNome]}>
+            Nome
+            </Text>
           <Text style={[styles.tableHeaderCell, styles.headerDescricao]}>
             Descrição
           </Text>
           <Text style={[styles.tableHeaderCell, styles.headerBloco]}>
             Bloco
           </Text>
-          <Text style={[styles.tableHeaderCell, styles.headerTipo]}>Tipo</Text>
+          <Text style={[styles.tableHeaderCell, styles.headerTipo]}>
+            Tipo
+            </Text>
           <Text style={[styles.tableHeaderCell, styles.headerCapacidade]}>
-            Cap.
+            Capacidade
           </Text>
         </View>
         <FlatList
@@ -112,14 +116,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     resizeMode: "contain",
-    marginLeft: 230,
+    marginLeft: 300,
   },
   imageButtonToHome: {
     justifyContent: "center",
     alignItems: "center",
     resizeMode: "contain",
-    width: 37,
-    height: 37,
+    width: 40,
+    height: 40,
   },
   body: {
     padding: 8,
@@ -141,11 +145,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     paddingVertical: 5,
   },
-  headerNome: { width: 40, marginLeft: 30 },
-  headerDescricao: { width: 100, marginLeft: 40 },
+  headerNome: { width: 50, marginLeft: 25 },
+  headerDescricao: { width: 100, marginLeft: 30 },
   headerBloco: { width: 70 },
-  headerTipo: { width: 80, marginLeft: -12 },
-  headerCapacidade: { width: 80, marginLeft: -20 },
+  headerTipo: { width: 80, marginLeft: -5 },
+  headerCapacidade: { width: 100, marginLeft: 1,},
 
   row: {
     flexDirection: "row",
@@ -208,6 +212,7 @@ const styles = StyleSheet.create({
     width: 40,
     flexWrap: "wrap",
     textAlign: "center",
+    justifyContent:"center",
     color: "white",
     paddingHorizontal: 5,
     paddingVertical: 5,
