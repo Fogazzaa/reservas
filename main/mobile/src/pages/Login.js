@@ -45,7 +45,7 @@ export default function Login({ navigation }) {
           behavior={Platform.OS === "ios" ? "padding" : "height"}
           style={{ flex: 1 }}
         >
-          <View style={styles.container}>
+          <View style={styles.body}>
             <Image source={require("../../img/logo.png")} style={styles.logo} />
             <TextInput
               placeholder=" e-mail"
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  container: {
+  body: {
     minHeight: 180,
     marginVertical: 100,
     justifyContent: "center",

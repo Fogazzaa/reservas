@@ -20,7 +20,7 @@ router.put("/reserva/:id_reserva", reservaController.updateReserva);
 router.delete("/reserva/:id_reserva", reservaController.deleteReserva);
 
 router.post("/sala", salaController.createSalas);
-router.get("/sala", salaController.getAllSalasTabela);
+router.get("/salas", salaController.getAllSalasTabela);
 router.put("/sala/:id_sala", salaController.updateSala);
 router.delete("/sala/:id_sala", salaController.deleteSala);
 
