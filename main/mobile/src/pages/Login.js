@@ -36,7 +36,7 @@ export default function Login({ navigation }) {
   }
   return (
     <ImageBackground
-      source={require("../../img/fundo.png")}
+      source={require("../img/fundo.png")}
       style={styles.background}
       resizeMode="cover"
     >
@@ -46,7 +46,7 @@ export default function Login({ navigation }) {
           style={{ flex: 1 }}
         >
           <View style={styles.body}>
-            <Image source={require("../../img/logo.png")} style={styles.logo} />
+            <Image source={require("../img/logo.png")} style={styles.logo} />
             <TextInput
               placeholder=" e-mail"
               value={usuario.email}

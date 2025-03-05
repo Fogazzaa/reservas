@@ -42,18 +42,18 @@ function Principal({ navigation }) {
 
   return (
     <ImageBackground
-      source={require("../../img/fundo.png")}
+      source={require("../img/fundo.png")}
       style={styles.background}
       resizeMode="cover"
     >
       <View style={styles.header}>
-        <Image source={require("../../img/logo.png")} style={styles.logo} />
+        <Image source={require("../img/logo.png")} style={styles.logo} />
         <TouchableOpacity
           style={styles.buttonToHome}
           onPress={() => navigation.navigate("Home")}
         >
           <Image
-            source={require("../../img/iconelogout.png")}
+            source={require("../img/iconelogout.png")}
             style={styles.imageButtonToHome}
           />
         </TouchableOpacity>

@@ -6,7 +6,7 @@ const salaController = require("../controllers/salaController");
 
 router.post("/cadastro", usuarioController.createUsuarios);
 router.post("/login", usuarioController.loginUsuario);
-router.get("/login", usuarioController.getAllUsuarios);
+router.get("/usuarios", usuarioController.getAllUsuarios);
 router.put("/usuario/:id_usuario", usuarioController.updateUsuario);
 router.delete("/usuario/:id_usuario", usuarioController.deleteUsuario);
 
